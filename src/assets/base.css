@@ -3,20 +3,25 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
-  position: relative;
-  font-weight: normal;
-  
+  padding: 0;
 }
-html{
+html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
 body {
- min-height: 100vh;
- background-color: #c9dcbe;
- font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  background-color: #c9dcbe;
+  font-family: 'Montserrat', sans-serif;
 }
-.color-orange{
-  color:#e2882f;
+.color-orange {
+  color: #e2882f;
+}
+.family-Nerko {
+  font-family: 'Nerko One', cursive;
+}
+.error {
+  font-size: 1.2rem;
+  color: tomato;
 }

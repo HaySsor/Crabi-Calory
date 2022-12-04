@@ -41,7 +41,9 @@
         <div class="flor"></div>
       </div>
       <div class="info__box">
-        <button class="info__box-button">Sign in / Login</button>
+        <RouterLink :to="{name:'login'}">
+          <button class="info__box-button">Sign in / Login</button>
+        </RouterLink>
       </div>
     </article>
   </section>

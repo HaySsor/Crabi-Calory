@@ -3,10 +3,14 @@
     <ul class="nav__logo">
       <li class="nav__logo-box">
         <img src="/icons/crab.png" alt="Logo" class="nav__logo-box-img" />
-        <span class="nav__logo-box-name">Crabi <span class="color-orange">Calory</span></span>
+        <span class="nav__logo-box-name"
+          >Crabi <span class="color-orange">Calory</span></span
+        >
       </li>
       <li class="nav__logo-login">
-        <i class="fa-solid fa-user"></i>
+        <RouterLink :to="{name: 'login'}">
+          <App-icon class="icon" icon="mdi:user" width="40" height="30" />
+        </RouterLink>
       </li>
     </ul>
   </nav>
@@ -14,13 +18,14 @@
 
 <script>
 export default {
-    name:'NavbarHomePage',
+  name: 'NavbarHomePage',
 };
 </script>
 
 <style lang="scss" scoped>
 .nav {
-  padding-top: 10px;
+  padding: 10px;
+  padding-left: 20px;
   display: flex;
   &__logo {
     list-style: none;
@@ -44,9 +49,10 @@ export default {
       }
     }
     &-login {
-      padding: 10px 20px;
-      font-size: 20px;
-      color: #e2882f;
+      padding: 0px 15px;
+      .icon {
+        color: #e2882f;
+      }
     }
   }
 }
