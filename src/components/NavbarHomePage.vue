@@ -7,7 +7,16 @@
           >Crabi <span class="color-orange">Calory</span></span
         >
       </li>
-      <li class="nav__logo-login">
+      <li v-if="userStore.userLoggedIn">
+        <RouterLink :to="{name: 'userHomePage'}">
+          <App-icon
+            icon="material-symbols:home"
+            class="icon"
+            width="40"
+            height="30" />
+        </RouterLink>
+      </li>
+      <li class="nav__logo-login" v-else>
         <RouterLink :to="{name: 'login'}">
           <App-icon class="icon" icon="mdi:user" width="40" height="30" />
         </RouterLink>
@@ -17,8 +26,13 @@
 </template>
 
 <script>
+import {mapStores} from 'pinia';
+import useUserStore from '@/stores/user';
 export default {
   name: 'NavbarHomePage',
+  computed: {
+    ...mapStores(useUserStore),
+  },
 };
 </script>
 

@@ -110,6 +110,8 @@
 <script>
 import {conversion} from '@/helper/demandConversion';
 import AppModal from '@/components/AppModal.vue';
+import {mapActions} from 'pinia';
+import useUserStore from '@/stores/user';
 
 export default {
   name: 'AppRegistration',
@@ -137,6 +139,7 @@ export default {
       showModal: false,
       regInSubmission: false,
       passData: true,
+      newUser: {},
     };
   },
   computed: {
@@ -149,31 +152,31 @@ export default {
     },
   },
   methods: {
+    ...mapActions(useUserStore, {
+      createUser: 'register',
+    }),
     closeModal() {
       this.showModal = false;
-      this.$router.push({name: 'home'});
+      this.$router.push({name: 'userHomePage'});
     },
-    registration(value) {
+    async registration(value) {
       this.regInSubmission = true;
       this.showModal = true;
-      let user;
       if (this.advancedOptions) {
         value.fat = parseInt(this.fat);
         value.carbohydrates = parseInt(this.carbohydrates);
         value.protein = parseInt(this.protein);
         value.kcal = parseInt(this.calory);
-        user = value;
-        console.log(user);
-        return;
+        await this.createUser(value);
+        this.message = 'Yeey welcome :)';
+        this.passData = false;
+        this.regInSubmission = false;
       } else {
-        user = conversion(value);
-        console.log(user);
-
-        setTimeout(() => {
-          this.message = 'Yeey welcome :)';
-          this.passData = false;
-          this.regInSubmission = false;
-        }, 3000);
+        let user = conversion(value);
+        await this.createUser(user);
+        this.message = 'Yeey welcome :)';
+        this.passData = false;
+        this.regInSubmission = false;
       }
     },
   },

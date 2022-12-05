@@ -40,6 +40,9 @@
 
 <script>
 import AppModal from '@/components/AppModal.vue';
+import {mapActions} from 'pinia';
+import useUserStore from '@/stores/user';
+
 export default {
   name: 'AppLogin',
   components: {AppModal},
@@ -58,17 +61,19 @@ export default {
   methods: {
     closeModal() {
       this.showModal = false;
-      this.$router.push({name: 'home'});
+      this.$router.push({name: 'userHomePage'});
     },
-    login(value) {
+    ...mapActions(useUserStore, {
+      loginUser: 'login',
+    }),
+    async login(value) {
       console.log(value);
       this.regInSubmission = true;
       this.showModal = true;
-      setTimeout(() => {
-        this.message = 'Yeey welcome :)';
-        this.passData = false;
-        this.regInSubmission = false;
-      }, 3000);
+      await this.loginUser(value);
+      this.message = 'Yeey welcome :)';
+      this.passData = false;
+      this.regInSubmission = false;
     },
   },
 };

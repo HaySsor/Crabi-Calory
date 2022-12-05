@@ -4,16 +4,23 @@ import { Icon } from '@iconify/vue';
 import App from './App.vue'
 import router from './router'
 import VeeValidatePlugin from './includes/validation'
+import { auth } from './includes/firebase'
 
 import '@/assets/base.css'
 
+let app
 
-const app = createApp(App)
+auth.onAuthStateChanged(() => {
+    if (!app) {
+        app = createApp(App)
 
-app.use(createPinia())
-app.use(router)
-app.use(VeeValidatePlugin)
-app.component('App-icon', Icon)
+        app.use(createPinia())
+        app.use(router)
+        app.use(VeeValidatePlugin)
+        app.component('App-icon', Icon)
 
 
-app.mount('#app')
+        app.mount('#app')
+    }
+
+})
