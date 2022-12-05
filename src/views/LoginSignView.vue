@@ -43,6 +43,8 @@ export default {
 
 <style lang="scss" scoped>
 .login {
+  position: relative;
+  min-height: 100vh;
   .flex-box {
     display: flex;
     justify-content: center;
