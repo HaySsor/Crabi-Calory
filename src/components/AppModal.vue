@@ -76,7 +76,6 @@ export default {
   }
   .button:disabled {
     background-color: gray;
-    border: 1px solid black;
   }
 }
 
