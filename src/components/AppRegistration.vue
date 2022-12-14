@@ -110,76 +110,155 @@
 <script>
 import {conversion} from '@/helper/demandConversion';
 import AppModal from '@/components/AppModal.vue';
-import {mapActions} from 'pinia';
 import useUserStore from '@/stores/user';
+import {ref, computed} from 'vue';
+import {useRouter} from 'vue-router';
 
 export default {
   name: 'AppRegistration',
   components: {AppModal},
-  data() {
-    return {
-      advancedOptions: false,
-      fat: 0,
-      carbohydrates: 0,
-      protein: 0,
-      schema: {
-        name: 'required|min:3|max:100|alphaSpaces',
-        email: 'required|email',
-        password: 'required|min:6|max:100|excluded:password',
-        confirmPassword: 'passwordMismatch:@password',
-        age: 'required|minVal:16|maxVal:120',
-        height: 'required|minVal:30|maxVal:300',
-        weight: 'required|minVal:30|maxVal:300',
-      },
-      userData: {
-        sex: 'M',
-        goal: 'L',
-      },
-      message: 'Wait',
-      showModal: false,
-      regInSubmission: false,
-      passData: true,
-      newUser: {},
+  setup() {
+    const userStore = useUserStore();
+    const router = useRouter();
+
+    const schema = {
+      name: 'required|min:3|max:100|alphaSpaces',
+      email: 'required|email',
+      password: 'required|min:6|max:100|excluded:password',
+      confirmPassword: 'passwordMismatch:@password',
+      age: 'required|minVal:16|maxVal:120',
+      height: 'required|minVal:30|maxVal:300',
+      weight: 'required|minVal:30|maxVal:300',
     };
-  },
-  computed: {
-    calory() {
-      let calory =
-        parseFloat(this.fat) * 9 +
-        parseFloat(this.carbohydrates) * 4 +
-        parseFloat(this.protein * 4);
-      return calory;
-    },
-  },
-  methods: {
-    ...mapActions(useUserStore, {
-      createUser: 'register',
-    }),
-    closeModal() {
-      this.showModal = false;
-      this.$router.push({name: 'userHomePage'});
-    },
-    async registration(value) {
-      this.regInSubmission = true;
-      this.showModal = true;
-      if (this.advancedOptions) {
-        value.fat = parseInt(this.fat);
-        value.carbohydrates = parseInt(this.carbohydrates);
-        value.protein = parseInt(this.protein);
-        value.kcal = parseInt(this.calory);
-        await this.createUser(value);
-        this.message = 'Yeey welcome :)';
-        this.passData = false;
-        this.regInSubmission = false;
+    const userData = {
+      sex: 'M',
+      goal: 'L',
+    };
+
+    const advancedOptions = ref(false);
+    const fat = ref(0);
+    const carbohydrates = ref(0);
+    const protein = ref(0);
+
+    const message = ref('Wait');
+    const showModal = ref(false);
+    const regInSubmission = ref(false);
+    const passData = ref(true);
+
+    const calory = computed(() => {
+      let c =
+        parseFloat(fat.value) * 9 +
+        parseFloat(carbohydrates.value) * 4 +
+        parseFloat(protein.value * 4);
+      return c;
+    });
+
+    function closeModal() {
+      showModal.value = false;
+      router.push({name: 'userHomePage'});
+    }
+
+    async function registration(value) {
+      regInSubmission.value = true;
+      showModal.value = true;
+      if (advancedOptions.value) {
+        value.fat = parseInt(fat.value);
+        value.carbohydrates = parseInt(carbohydrates.value);
+        value.protein = parseInt(protein.value);
+        value.kcal = parseInt(calory.value);
+        await userStore.register(value);
+        message.value = 'Yeey welcome :)';
+        passData.value = false;
+        regInSubmission.value = false;
       } else {
         let user = conversion(value);
-        await this.createUser(user);
-        this.message = 'Yeey welcome :)';
-        this.passData = false;
-        this.regInSubmission = false;
+        await userStore.register(user);
+        message.value = 'Yeey welcome :)';
+        passData.value = false;
+        regInSubmission.value = false;
       }
-    },
+    }
+
+    return {
+      schema,
+      userData,
+      advancedOptions,
+      fat,
+      carbohydrates,
+      protein,
+      calory,
+      closeModal,
+      registration,
+      message,
+      showModal,
+      passData,
+      regInSubmission,
+    };
   },
+  //   data() {
+  //     return {
+  //       advancedOptions: false,
+  //       fat: 0,
+  //       carbohydrates: 0,
+  //       protein: 0,
+  //       schema: {
+  //         name: 'required|min:3|max:100|alphaSpaces',
+  //         email: 'required|email',
+  //         password: 'required|min:6|max:100|excluded:password',
+  //         confirmPassword: 'passwordMismatch:@password',
+  //         age: 'required|minVal:16|maxVal:120',
+  //         height: 'required|minVal:30|maxVal:300',
+  //         weight: 'required|minVal:30|maxVal:300',
+  //       },
+  //       userData: {
+  //         sex: 'M',
+  //         goal: 'L',
+  //       },
+  //       message: 'Wait',
+  //       showModal: false,
+  //       regInSubmission: false,
+  //       passData: true,
+  //       newUser: {},
+  //     };
+  //   },
+  //   computed: {
+  //     calory() {
+  //       let calory =
+  //         parseFloat(this.fat) * 9 +
+  //         parseFloat(this.carbohydrates) * 4 +
+  //         parseFloat(this.protein * 4);
+  //       return calory;
+  //     },
+  //   },
+  //   methods: {
+  //     ...mapActions(useUserStore, {
+  //       createUser: 'register',
+  //     }),
+  //     closeModal() {
+  //       this.showModal = false;
+  //       this.$router.push({name: 'userHomePage'});
+  //     },
+  //     async registration(value) {
+  //       this.regInSubmission = true;
+  //       this.showModal = true;
+  //       if (this.advancedOptions) {
+  //         value.fat = parseInt(this.fat);
+  //         value.carbohydrates = parseInt(this.carbohydrates);
+  //         value.protein = parseInt(this.protein);
+  //         value.kcal = parseInt(this.calory);
+  //         await this.createUser(value);
+  //         this.message = 'Yeey welcome :)';
+  //         this.passData = false;
+  //         this.regInSubmission = false;
+  //       } else {
+  //         let user = conversion(value);
+  //         await this.createUser(user);
+  //         this.message = 'Yeey welcome :)';
+  //         this.passData = false;
+  //         this.regInSubmission = false;
+  //       }
+  //     },
+  //   },
 };
 </script>
 

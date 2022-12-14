@@ -40,41 +40,51 @@
 
 <script>
 import AppModal from '@/components/AppModal.vue';
-import {mapActions} from 'pinia';
+import {ref} from 'vue';
 import useUserStore from '@/stores/user';
+import {useRouter} from 'vue-router';
 
 export default {
   name: 'AppLogin',
   components: {AppModal},
-  data() {
-    return {
-      loginSchema: {
-        email: 'required|email',
-        password: 'required|min:6|max:100',
-      },
-      message: 'Wait',
-      showModal: false,
-      regInSubmission: false,
-      passData: true,
+  setup() {
+    const userStore = useUserStore();
+    const router = useRouter();
+
+    const loginSchema = {
+      email: 'required|email',
+      password: 'required|min:6|max:100',
     };
-  },
-  methods: {
-    closeModal() {
-      this.showModal = false;
-      this.$router.push({name: 'userHomePage'});
-    },
-    ...mapActions(useUserStore, {
-      loginUser: 'login',
-    }),
-    async login(value) {
+
+    const message = ref('Wait');
+    const showModal = ref(false);
+    const regInSubmission = ref(false);
+    const passData = ref(true);
+
+    async function login(value) {
       console.log(value);
-      this.regInSubmission = true;
-      this.showModal = true;
-      await this.loginUser(value);
-      this.message = 'Yeey welcome :)';
-      this.passData = false;
-      this.regInSubmission = false;
-    },
+      regInSubmission.value = true;
+      showModal.value = true;
+      await userStore.login(value);
+      message.value = 'Yeey welcome :)';
+      passData.value = false;
+      regInSubmission.value = false;
+    }
+
+    function closeModal() {
+      showModal.value = false;
+      router.push({name: 'userHomePage'});
+    }
+
+    return {
+      loginSchema,
+      login,
+      message,
+      showModal,
+      regInSubmission,
+      passData,
+      closeModal,
+    };
   },
 };
 </script>

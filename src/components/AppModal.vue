@@ -2,7 +2,7 @@
   <div class="modal">
     <div class="window">
       <h3>{{ message }}</h3>
-      <img src="/public/icons/frankenstein.png" alt="" />
+      <img src="/icons/frankenstein.png" alt="" />
       <button :disabled="passData" class="button" @click.prevent="closeModal">
         OK
       </button>
@@ -31,7 +31,6 @@ export default {
       type: Function,
     },
   },
-  methods: {},
 };
 </script>
 

@@ -25,18 +25,18 @@
 <script>
 import AppRegistration from '@/components/AppRegistration.vue';
 import AppLogin from '@/components/AppLogin.vue';
+import {ref, computed} from 'vue';
 export default {
   name: 'LoginSingView',
   components: {AppRegistration, AppLogin},
-  data() {
-    return {
-      login: false,
-    };
-  },
-  computed: {
-    loginButtonText() {
-      return this.login ? 'Registration' : 'Login';
-    },
+  setup() {
+    const login = ref(false);
+
+    const loginButtonText = computed(() => {
+      return login.value ? 'Registration' : 'Login';
+    });
+
+    return {login, loginButtonText};
   },
 };
 </script>

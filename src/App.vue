@@ -9,17 +9,15 @@
 </template>
 
 <script>
-import {mapWritableState} from 'pinia';
 import useUserStore from '@/stores/user';
 import {auth} from '@/includes/firebase';
 export default {
   name: 'MainApp',
-  computed: {
-    ...mapWritableState(useUserStore, ['userLoggedIn']),
-  },
-  created() {
+  setup() {
+    const userStore = useUserStore();
+
     if (auth.currentUser) {
-      this.userLoggedIn = true;
+      userStore.userLoggedIn = true;
     }
   },
 };

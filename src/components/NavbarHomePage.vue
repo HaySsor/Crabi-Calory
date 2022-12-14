@@ -26,12 +26,13 @@
 </template>
 
 <script>
-import {mapStores} from 'pinia';
 import useUserStore from '@/stores/user';
 export default {
   name: 'NavbarHomePage',
-  computed: {
-    ...mapStores(useUserStore),
+  setup() {
+    const userStore = useUserStore();
+
+    return {userStore};
   },
 };
 </script>
@@ -64,10 +65,10 @@ export default {
     }
     &-login {
       padding: 0px 15px;
-      .icon {
-        color: #e2882f;
-      }
     }
   }
+}
+.icon {
+  color: #e2882f;
 }
 </style>
