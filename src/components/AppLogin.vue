@@ -73,7 +73,7 @@ export default {
 
     function closeModal() {
       showModal.value = false;
-      router.push({name: 'userHomePage'});
+      router.push({name: 'profile'});
     }
 
     return {

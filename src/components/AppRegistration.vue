@@ -155,7 +155,7 @@ export default {
 
     function closeModal() {
       showModal.value = false;
-      router.push({name: 'userHomePage'});
+      router.push({name: 'profile'});
     }
 
     async function registration(value) {
@@ -195,70 +195,6 @@ export default {
       regInSubmission,
     };
   },
-  //   data() {
-  //     return {
-  //       advancedOptions: false,
-  //       fat: 0,
-  //       carbohydrates: 0,
-  //       protein: 0,
-  //       schema: {
-  //         name: 'required|min:3|max:100|alphaSpaces',
-  //         email: 'required|email',
-  //         password: 'required|min:6|max:100|excluded:password',
-  //         confirmPassword: 'passwordMismatch:@password',
-  //         age: 'required|minVal:16|maxVal:120',
-  //         height: 'required|minVal:30|maxVal:300',
-  //         weight: 'required|minVal:30|maxVal:300',
-  //       },
-  //       userData: {
-  //         sex: 'M',
-  //         goal: 'L',
-  //       },
-  //       message: 'Wait',
-  //       showModal: false,
-  //       regInSubmission: false,
-  //       passData: true,
-  //       newUser: {},
-  //     };
-  //   },
-  //   computed: {
-  //     calory() {
-  //       let calory =
-  //         parseFloat(this.fat) * 9 +
-  //         parseFloat(this.carbohydrates) * 4 +
-  //         parseFloat(this.protein * 4);
-  //       return calory;
-  //     },
-  //   },
-  //   methods: {
-  //     ...mapActions(useUserStore, {
-  //       createUser: 'register',
-  //     }),
-  //     closeModal() {
-  //       this.showModal = false;
-  //       this.$router.push({name: 'userHomePage'});
-  //     },
-  //     async registration(value) {
-  //       this.regInSubmission = true;
-  //       this.showModal = true;
-  //       if (this.advancedOptions) {
-  //         value.fat = parseInt(this.fat);
-  //         value.carbohydrates = parseInt(this.carbohydrates);
-  //         value.protein = parseInt(this.protein);
-  //         value.kcal = parseInt(this.calory);
-  //         await this.createUser(value);
-  //         this.message = 'Yeey welcome :)';
-  //         this.passData = false;
-  //         this.regInSubmission = false;
-  //       } else {
-  //         let user = conversion(value);
-  //         await this.createUser(user);
-  //         this.message = 'Yeey welcome :)';
-  //         this.passData = false;
-  //         this.regInSubmission = false;
-  //       }
-  //     },
-  //   },
 };
 </script>
 

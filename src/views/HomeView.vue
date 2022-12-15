@@ -40,9 +40,14 @@
 
         <div class="flor"></div>
       </div>
-      <div class="info__box">
-        <RouterLink :to="{name:'login'}">
+      <div class="info__box" v-if="!userStore.userLoggedIn">
+        <RouterLink :to="{name: 'login'}">
           <button class="info__box-button">Sign in / Login</button>
+        </RouterLink>
+      </div>
+      <div class="info__box" v-else>
+        <RouterLink :to="{name: 'profile'}">
+          <button class="info__box-button">Enter</button>
         </RouterLink>
       </div>
     </article>
@@ -51,9 +56,15 @@
 
 <script>
 import NavbarHomePage from '@/components/NavbarHomePage.vue';
+import useUserStore from '@/stores/user';
 export default {
   name: 'HomeView',
   components: {NavbarHomePage},
+  setup() {
+    const userStore = useUserStore();
+
+    return {userStore};
+  },
 };
 </script>
 

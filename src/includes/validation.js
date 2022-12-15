@@ -41,7 +41,7 @@ export default {
                 return message
             },
             validateOnBlur: true,
-            validateOnChange:true, 
+            validateOnChange: true,
 
         })
     }

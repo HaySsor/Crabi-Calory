@@ -31,6 +31,7 @@ export default defineStore("user", {
                 carbohydrates: values.carbohydrates,
                 protein: values.protein,
                 kcal: values.kcal,
+                uid: userCred.user.uid,
             });
             updateProfile(userCred.user, {
                 displayName: values.name

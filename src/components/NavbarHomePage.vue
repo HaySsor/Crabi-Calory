@@ -8,7 +8,7 @@
         >
       </li>
       <li v-if="userStore.userLoggedIn">
-        <RouterLink :to="{name: 'userHomePage'}">
+        <RouterLink :to="{name: 'profile'}">
           <App-icon
             icon="material-symbols:home"
             class="icon"

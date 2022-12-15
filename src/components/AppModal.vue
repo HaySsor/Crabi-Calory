@@ -61,7 +61,7 @@ export default {
     img {
       width: 100px;
       height: 100px;
-      animation: rotate 10s infinite;
+      animation: rotate 5s infinite;
       margin-bottom: 10px;
     }
   }

@@ -18,11 +18,34 @@ const router = createRouter({
       // component: () => import('../views/AboutView.vue')
     },
     {
-      path : '/userHomePage',
-      name : 'userHomePage',
-      component:() => import('@/views/UserHomePage.vue')
+      path: '/userHomePage',
+      name: 'userHomePage',
+      component: () => import('@/views/UserHomePage.vue'),
+      children: [
+        {
+          path: '/addMeal',
+          name: 'addMeal',
+          component: () => import('@/views/childrenView/AddMealView.vue')
+        },
+        {
+          path: '/weightHistory',
+          name: 'weightHistory',
+          component: () => import('@/views/childrenView/WeightHistoryView.vue')
+        },
+        {
+          path: '/mealList',
+          name: 'mealList',
+          component: () => import('@/views/childrenView/MealListView.vue')
+        },
+        {
+          path:'/profile',
+          name:'profile',
+          component: () => import('../views/childrenView/ProfileView.vue')
+        }
+      ],
     }
-  ]
+  ],
+  linkExactActiveClass: 'active'
 })
 
 export default router

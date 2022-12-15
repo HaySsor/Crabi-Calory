@@ -1,27 +1,27 @@
 <template>
-  <div>
-    <h1>UserHomePage</h1>
-
-    <button @click.prevent="singOut">logOut</button>
-  </div>
+  <section>
+    <div class="home">
+      <router-view v-slot="{Component}">
+        <transition name="fade" mode="out-in">
+          <component :is="Component"></component>
+        </transition>
+      </router-view>
+    </div>
+    <AppHomePageNavbarVue />
+  </section>
 </template>
 
 <script>
-import {mapStores} from 'pinia';
-import useUserStore from '@/stores/user';
+import AppHomePageNavbarVue from '../components/AppHomePageNavbar.vue';
 
 export default {
   name: 'UserHomePage',
-  computed: {
-    ...mapStores(useUserStore),
-  },
-  methods: {
-    singOut() {
-      this.userStore.singOutUser();
-      this.$router.push({name: 'home'});
-    },
-  },
+  components: {AppHomePageNavbarVue},
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.home-view {
+  padding: 10px;
+}
+</style>
