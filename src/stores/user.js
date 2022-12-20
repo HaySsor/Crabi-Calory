@@ -8,7 +8,7 @@ const db = getFirestore()
 
 export default defineStore("user", {
     state: () => ({
-        userLoggedIn: false
+        userLoggedIn: false,
     }),
     actions: {
         async register(values) {
@@ -38,6 +38,8 @@ export default defineStore("user", {
             })
 
             this.userLoggedIn = true
+            this.calory = values.kcal
+
         },
         async login(values) {
             await signInWithEmailAndPassword(auth,
