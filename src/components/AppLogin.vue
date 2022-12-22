@@ -90,8 +90,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.box {
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .login {
   &__form {
+    width: 90%;
     margin-top: 20px;
     padding: 15px;
     background-color: #f4f4f4;

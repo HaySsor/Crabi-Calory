@@ -5,7 +5,7 @@
       @submit="registration"
       :initial-values="userData"
       class="login__form">
-      <h3 class="family-Nerko">Registration</h3>
+      <h3 class="family-Nerko title">Registration</h3>
       <!-- name Input -->
       <div class="login__form-box">
         <label class="login__form-box-label">Name</label>
@@ -86,7 +86,7 @@
         <input type="number" v-model="protein" />
         <div class="calory-box">
           <h3 class="family-Nerko">Your Calory</h3>
-          <span class="calory">{{ calory }} kcals</span>
+          <span class="calory">{{ calory }} calories</span>
         </div>
       </div>
       <div class="login__form-btn">
@@ -229,7 +229,7 @@ export default {
       }
     }
 
-    h3 {
+    .title {
       font-size: 2.5rem;
       margin-bottom: 10px;
       width: 100%;
@@ -288,8 +288,11 @@ export default {
     }
     .calory-box {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       width: 80%;
+      h3{
+        font-size: 1.8rem;
+      }
     }
     .calory {
       font-size: 2rem;

@@ -1,15 +1,16 @@
 <template>
-    <div>
-        <h2>Meal list</h2>
-    </div>
+  <div>
+    <h2>Meal list</h2>
+    <AppFirebaseMealListVue />
+  </div>
 </template>
 
 <script>
-    export default {
-        name:'MealList'
-    }
+import AppFirebaseMealListVue from '../../components/AppFirebaseMealList.vue';
+export default {
+  name: 'MealList',
+  components: {AppFirebaseMealListVue},
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 .profile{
-    width: 45%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -28,7 +28,7 @@ export default {
     border-radius: 30px;
     padding: 10px;
     img{
-        width: 40%;
+        width: 30%;
     }
     &__name{
         font-size: 1.8rem;
