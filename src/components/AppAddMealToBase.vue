@@ -48,6 +48,7 @@ export default {
       protein: 0,
       fat: 0,
       carbohydrates: 0,
+      id: Math.floor(Math.random()*200),
     };
     const message = ref('Wait');
     const showModal = ref(false);

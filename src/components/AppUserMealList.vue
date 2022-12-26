@@ -1,12 +1,20 @@
 <template>
   <div class="list">
-
+    <ul v-for="meal in useMeal.useDailyMeals" :key="meal.id">
+      <li>{{ meal }}</li>
+    </ul>
   </div>
 </template>
 
 <script>
+import useMealsStore from '../stores/meals';
 export default {
   name: 'UserMealList',
+  setup() {
+    const useMeal = useMealsStore();
+
+    return {useMeal};
+  },
 };
 </script>
 

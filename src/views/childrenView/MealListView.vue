@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="meal-list">
     <h2>Meal list</h2>
     <AppFirebaseMealListVue />
   </div>
@@ -13,4 +13,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.meal-list{
+  h2{
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+</style>
