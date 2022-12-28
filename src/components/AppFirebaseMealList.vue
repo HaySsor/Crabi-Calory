@@ -1,26 +1,28 @@
 <template>
-  <div class="list">
-    <div class="info">
-      <span class="name">N</span>
-      <span class="kcal">K</span>
-      <span class="carb">C</span>
-      <span class="protein">P</span>
-      <span class="fat">F</span>
-      <span class="add">Add</span>
-    </div>
-    <ul class="meal-list" v-for="meal in list" :key="meal.name">
-      <AppMealItemVue :meal="meal" />
+  <div class="box">
+    <ul class="box__list">
+      <AppMealItemVue
+        v-for="meal in list"
+        :key="meal.name"
+        :meal="meal"
+        :openModal="openModal" />
     </ul>
+
+    <AppModalAddMealVue
+      v-if="modal"
+      :picketMeal="picketMeal"
+      :closeModal="closeModal" />
   </div>
 </template>
 
 <script>
 import {ListMealFormFirebase} from '@/composables/getMeal';
+import AppModalAddMealVue from './AppModalAddMeal.vue';
 import AppMealItemVue from './AppMealItem.vue';
-import {ref, onMounted} from 'vue';
+import {ref, onMounted, reactive} from 'vue';
 export default {
   name: 'FirebaseMealList',
-  components: {AppMealItemVue},
+  components: {AppMealItemVue, AppModalAddMealVue},
   setup() {
     const list = ref([]);
     async function getData() {
@@ -31,34 +33,33 @@ export default {
       getData();
     });
 
-    return {list};
+    const modal = ref(false);
+    const picketMeal = ref('');
+
+    function openModal(item) {
+      picketMeal.value = Object.assign(item);
+      modal.value = true;
+    }
+    function closeModal() {
+      modal.value = false;
+      picketMeal.value = '';
+    }
+
+    return {list, openModal, modal, picketMeal, closeModal};
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.meal-list {
-  width: 100%;
-  padding: 10px;
-}
-.info {
-  display: flex;
-  padding: 10px;
-  .kcal,
-  .carb,
-  .protein,
-  .name,
-  .add,
-  .fat {
-    width: 20%;
-    flex: 1;
-    font-size: 1.4rem;
-    text-align: right;
-    transform: translateX(-8px);
+.box {
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    list-style: none;
+    gap: 10px;
+    height: 410px;
+    overflow: scroll;
   }
-}
-.list{
-  background-color: white;
-  border-radius: 20px;
 }
 </style>

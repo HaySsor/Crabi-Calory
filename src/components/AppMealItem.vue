@@ -1,70 +1,53 @@
 <template>
   <li class="item">
     <h3>{{ meal.name }}</h3>
-    <span class="kcal">{{ meal.kcal }}</span>
-    <span class="carb">{{ meal.carbohydrates }}</span>
-    <span class="protein">{{ meal.protein }}</span>
-    <span class="fat">{{ meal.fat }}</span>
-    <App-icon
-      class="icon"
-      icon="material-symbols:add-circle-outline"
-      width="40"
-      height="30"
-      @click="useMeal.addDailyMeal(meal)" />
+    <button @click="openModal(meal)">Add meal</button>
   </li>
 </template>
 
 <script>
-import useMealsStore from '../stores/meals';
 export default {
   name: 'MealItem',
   props: {
     meal: {
       required: true,
     },
+    openModal: {
+      required: true,
+    },
   },
-  setup() {
-    const useMeal = useMealsStore();
-
-    return {useMeal};
-  },
+  setup() {},
 };
 </script>
 
 <style lang="scss" scoped>
 .item {
   display: flex;
-  gap: 10px;
-  width: 100%;
-  justify-content: space-around;
-  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 30px;
+  background-color: #f9faf7ff;
+  transition: background 0.3s;
 
   h3 {
     font-size: 1.6rem;
+    width: 65%;
+    overflow: hidden;
     white-space: nowrap;
-    overflow: scroll;
-    width: 20%;
+    text-overflow: ellipsis;
   }
-  .kcal,
-  .carb,
-  .protein,
-  .fat {
-    width: 20%;
-    flex: 1;
-    font-size: 1.4rem;
-    text-align: center;
+  button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #e2882f;
+    color: white;
+    border-radius: 20px;
+    transition: background 0.3s;
   }
-  .kcal {
-    color: rgb(110, 132, 116);
-  }
-  .carb {
-    color: #e2882f;
-  }
-  .protein {
-    color: rgb(65, 151, 194);
-  }
-  .fat {
-    color: rgb(190, 89, 71);
+  button:hover {
+    background-color: #573819;
+    color: white;
   }
 }
 </style>
