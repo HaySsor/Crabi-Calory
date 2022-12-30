@@ -12,7 +12,6 @@ export default defineStore("user", {
     }),
     actions: {
         async register(values) {
-            console.log(values)
             const userCred = await createUserWithEmailAndPassword(
                 auth,
                 values.email,

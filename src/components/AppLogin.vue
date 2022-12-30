@@ -62,7 +62,6 @@ export default {
     const passData = ref(true);
 
     async function login(value) {
-      console.log(value);
       regInSubmission.value = true;
       showModal.value = true;
       await userStore.login(value);

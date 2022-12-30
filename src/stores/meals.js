@@ -9,13 +9,25 @@ if (meals) {
 export default defineStore("meals", {
 
     state: () => ({
-        useDailyMeals: dailyMeal
+        useDailyMeals: dailyMeal,
+        flag: true,
     }),
     actions: {
         addDailyMeal(meal) {
             console.log('added')
             this.useDailyMeals.push(meal)
 
+            localStorage.setItem("meal", JSON.stringify(this.useDailyMeals));
+        },
+        removeMealFromDaily(meal) {
+            console.log('remove')
+            this.useDailyMeals.forEach(item => {
+                if (item.idD === meal) {
+                    let idx = this.useDailyMeals.indexOf(item)
+                    this.useDailyMeals.splice(idx, 1)
+                }
+            })
+            this.flag = !this.flag
             localStorage.setItem("meal", JSON.stringify(this.useDailyMeals));
         }
     }

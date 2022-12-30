@@ -2,6 +2,7 @@
   <div class="modal">
     <div class="shadow" @click="closeModal"></div>
     <div class="form">
+      <i @click="closeModal" class="fas fa-times-circle form__exit"></i>
       <h3 class="form__name">{{ picketMeal.name }}</h3>
       <div class="form__box">
         <span class="form__box-name">Calories</span>
@@ -22,8 +23,13 @@
 
       <label class="form__label"> How many gram ?</label>
       <input class="form__input" type="text" v-model="times" />
+      <div class="form__alert" v-if="message">
+        <span>Meal added <i class="fas fa-check-circle"></i></span>
+      </div>
 
-      <button class="form__add" @click="addToDailyList">Add</button>
+      <button class="form__add" @click="addToDailyList" :disabled="message">
+        Add
+      </button>
     </div>
   </div>
 </template>
@@ -31,9 +37,11 @@
 <script>
 import {ref, computed} from 'vue';
 import useMealStore from '@/stores/meals';
+import AppModal from '@/components/AppModal.vue';
 
 export default {
   name: 'ModalAddMeal',
+  components: {AppModal},
   props: {
     picketMeal: {
       required: true,
@@ -43,6 +51,7 @@ export default {
     },
   },
   setup(props) {
+    const message = ref(false);
     const times = ref(100);
     const useMeal = useMealStore();
 
@@ -75,11 +84,26 @@ export default {
         protein: protein,
         fat: fat,
         id: props.picketMeal.id,
+        idD: Math.floor(Math.random() * 200),
       };
 
+      message.value = true;
       useMeal.addDailyMeal(meal);
+
+      setTimeout(()=>{
+        props.closeModal()
+      },500)
     }
-    return {times, kcal, carb, protein, fat, addToDailyList};
+
+    return {
+      times,
+      kcal,
+      carb,
+      protein,
+      fat,
+      message,
+      addToDailyList,
+    };
   },
 };
 </script>
@@ -97,7 +121,7 @@ export default {
   align-items: center;
   .form {
     width: 80%;
-    height: 300px;
+    height: 350px;
     background-color: #f9faf7ff;
     border-radius: 30px;
     display: flex;
@@ -106,6 +130,7 @@ export default {
     padding: 10px;
     z-index: 10;
     gap: 10px;
+    position: relative;
     &__name {
       font-size: 2rem;
       margin-bottom: 10px;
@@ -146,6 +171,42 @@ export default {
       padding: 10px;
       text-align: center;
       font-size: 1.4rem;
+    }
+    &__add {
+      padding: 15px 40px;
+      margin-top: 10px;
+      background-color: #e2882f;
+      border: none;
+      color: white;
+      border-radius: 25px;
+      transition: background 0.3s;
+
+      &:hover {
+        background-color: #785532;
+      }
+
+      &:disabled {
+        background-color: grey;
+      }
+    }
+    &__alert {
+      position: absolute;
+      bottom: -15px;
+      padding: 10px 20px;
+      font-size: 1.6rem;
+      background-color: lightgreen;
+      color: grey;
+      border-radius: 25px;
+    }
+    &__exit {
+      position: absolute;
+      right: 20px;
+      font-size: 2rem;
+      color: tomato;
+      transition: transform 0.3s;
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
   .shadow {

@@ -70,20 +70,47 @@
 </template>
 
 <script>
-import {ref, computed, reactive} from 'vue';
+import {ref, computed, reactive, watch} from 'vue';
 export default {
   name: 'CaloryChart',
   props: {
     personalData: {
       required: true,
     },
+    useMeal: {
+      required: true,
+    },
   },
   setup(props) {
-    const used = reactive({
-      kcal: 1000,
-      protein: 40,
-      carbohydrates: 50,
-      fat: 70,
+    let used = reactive({
+      kcal: 0,
+      protein: 0,
+      carbohydrates: 0,
+      fat: 0,
+    });
+    function usedCalculate() {
+      used.kcal = 0;
+      used.protein = 0;
+      used.carbohydrates = 0;
+      used.fat = 0;
+
+      props.useMeal.useDailyMeals.forEach((item) => {
+        for (const key1 in item) {
+          for (const key2 in used) {
+            if (key1 === key2) {
+              used[key2] += item[key1];
+            }
+          }
+        }
+      });
+    }
+    usedCalculate();
+
+    const flag = computed(() => {
+      return props.useMeal.flag;
+    });
+    watch(flag, () => {
+      usedCalculate();
     });
 
     const countedProtein = computed(() => {
@@ -121,7 +148,7 @@ export default {
 <style lang="scss" scoped>
 .chart {
   width: 90vw;
-  height: 400px;
+  height: 420px;
   background-color: #f9faf79f;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.193);
   border-radius: 30px;
@@ -132,6 +159,9 @@ export default {
     text-align: center;
     &-title {
       font-size: 1.9rem;
+      padding: 10px;
+      border-bottom: 1px solid #e2882f;
+      border-radius: 15px;
     }
   }
   &__middle {

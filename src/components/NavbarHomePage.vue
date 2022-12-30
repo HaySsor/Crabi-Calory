@@ -9,16 +9,12 @@
       </li>
       <li v-if="userStore.userLoggedIn">
         <RouterLink :to="{name: 'profile'}">
-          <App-icon
-            icon="material-symbols:home"
-            class="icon"
-            width="40"
-            height="30" />
+          <i class="fas fa-home color-orange icon"></i>
         </RouterLink>
       </li>
       <li class="nav__logo-login" v-else>
         <RouterLink :to="{name: 'login'}">
-          <App-icon class="icon" icon="mdi:user" width="40" height="30" />
+          <i class="fas fa-user color-orange icon"></i>
         </RouterLink>
       </li>
     </ul>
@@ -69,6 +65,9 @@ export default {
   }
 }
 .icon {
-  color: #e2882f;
+  font-size: 2.3rem;
+  margin-right: 10px;
+  padding: 10px;
+  
 }
 </style>
