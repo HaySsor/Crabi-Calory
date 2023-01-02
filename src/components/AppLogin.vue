@@ -4,7 +4,7 @@
       :validation-schema="loginSchema"
       @submit="login"
       class="login__form">
-      <h3 class="family-Nerko">Login</h3>
+      <h3 class="family-Nerko login__form-title">Login</h3>
       <!-- email input -->
       <div class="login__form-box">
         <label class="login__form-box-label">Email</label>
@@ -125,7 +125,7 @@ export default {
         border: 1px solid #e2882f;
       }
     }
-    h3 {
+    &-title {
       font-size: 2.5rem;
       margin-bottom: 10px;
       width: 100%;
@@ -141,6 +141,63 @@ export default {
         background-color: #e2882f;
         color: white;
         font-size: 1.7rem;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .box {
+    width: 100%;
+  }
+  .login {
+    &__form {
+      width: 40%;
+      margin-top: 20px;
+      padding: 15px;
+      background: #f4f4f4ac;
+      border-radius: 25px;
+      &-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 5px;
+
+        &-label {
+          color: black;
+          font-size: 1.6rem;
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+        &-input {
+          padding: 8px;
+          width: 60%;
+          border-radius: 25px;
+          border: 1px solid rgba(51, 51, 51, 0.636);
+        }
+        &-input:focus {
+          border: 1px solid #e2882f;
+        }
+      }
+      &-title {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: center;
+      }
+      &-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        &-button {
+          padding: 15px 50px;
+          border: none;
+          border-radius: 20px;
+          background-color: #e2882f;
+          color: white;
+          font-size: 1.7rem;
+        }
       }
     }
   }

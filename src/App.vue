@@ -1,10 +1,12 @@
 <template>
   <main>
-    <router-view v-slot="{Component}">
-      <transition name="fade" mode="out-in">
-        <component :is="Component"></component>
-      </transition>
-    </router-view>
+    <div class="wrapper">
+      <router-view v-slot="{Component}">
+        <transition name="fade" mode="out-in">
+          <component :is="Component"></component>
+        </transition>
+      </router-view>
+    </div>
   </main>
 </template>
 
@@ -22,3 +24,29 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-to {
+  opacity: 1;
+}
+.fade-enter-active {
+  transition: all 0.3s ease-in;
+}
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-leave-active {
+  transition: all 0.3s ease-in;
+}
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+</style>

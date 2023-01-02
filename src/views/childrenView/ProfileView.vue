@@ -33,6 +33,7 @@ export default {
 .profile-view {
   padding: 10px;
   margin-bottom: 150px;
+  position: relative;
   &__top {
     display: flex;
   }

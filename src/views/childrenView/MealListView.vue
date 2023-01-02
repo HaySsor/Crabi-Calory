@@ -81,7 +81,7 @@ export default {
     margin-top: 50px;
     width: 100%;
     border-radius: 25px;
-    background-color: rgba(213, 214, 211, 0.791);
+    background-color: rgba(0, 0, 0, 0.21);
     padding: 20px;
   }
 }

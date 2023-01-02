@@ -1,56 +1,58 @@
 <template>
   <section class="home">
-    <NavbarHomePage />
-    <div class="hero">
-      <h1 class="hero__title">
-        Crabi <span class="color-orange">Calory</span>
-      </h1>
-      <div class="hero__img">
-        <img src="/icons/crab.png" alt="Logo" class="hero__img-photo" />
-        <div class="shadow"></div>
+    <div class="wrapper">
+      <NavbarHomePage />
+      <div class="hero">
+        <h1 class="hero__title">
+          Crabi <span class="color-orange">Calory</span>
+        </h1>
+        <div class="hero__img">
+          <img src="/icons/crab.png" alt="Logo" class="hero__img-photo" />
+          <div class="shadow"></div>
+        </div>
       </div>
-    </div>
-    <article class="info">
-      <p class="info__text">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum
-        accusamus veritatis et incidunt. Harum, cumque. Fugiat exercitationem
-        architecto sit quae voluptate pariatur, iure eligendi? Expedita
-        blanditiis aliquid animi! Expedita repudiandae ipsam deserunt tempore
-        reprehenderit quaerat accusantium molestiae nam ea dolor.
-      </p>
-      <!-- Dancing Crab section -->
-      <h3 class="info__title">Join our Crab family</h3>
-      <div class="info__family">
-        <img
-          src="/icons/crab.png"
-          alt="Logo"
-          class="info__family-crab info__family-crab-crab1" />
-        <img
-          src="/icons/crab.png"
-          alt="Logo"
-          class="info__family-crab info__family-crab-crab2" />
-        <img
-          src="/icons/crab.png"
-          alt="Logo"
-          class="info__family-crab info__family-crab-crab3" />
-        <img
-          src="/icons/crab.png"
-          alt="Logo"
-          class="info__family-crab info__family-crab-crab4" />
+      <article class="info">
+        <p class="info__text">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum
+          accusamus veritatis et incidunt. Harum, cumque. Fugiat exercitationem
+          architecto sit quae voluptate pariatur, iure eligendi? Expedita
+          blanditiis aliquid animi! Expedita repudiandae ipsam deserunt tempore
+          reprehenderit quaerat accusantium molestiae nam ea dolor.
+        </p>
+        <!-- Dancing Crab section -->
+        <h3 class="info__title">Join our Crab family</h3>
+        <div class="info__family">
+          <img
+            src="/icons/crab.png"
+            alt="Logo"
+            class="info__family-crab info__family-crab-crab1" />
+          <img
+            src="/icons/crab.png"
+            alt="Logo"
+            class="info__family-crab info__family-crab-crab2" />
+          <img
+            src="/icons/crab.png"
+            alt="Logo"
+            class="info__family-crab info__family-crab-crab3" />
+          <img
+            src="/icons/crab.png"
+            alt="Logo"
+            class="info__family-crab info__family-crab-crab4" />
 
-        <div class="flor"></div>
-      </div>
-      <div class="info__box" v-if="!userStore.userLoggedIn">
-        <RouterLink :to="{name: 'login'}">
-          <button class="info__box-button">Sign in / Login</button>
-        </RouterLink>
-      </div>
-      <div class="info__box" v-else>
-        <RouterLink :to="{name: 'profile'}">
-          <button class="info__box-button">Enter</button>
-        </RouterLink>
-      </div>
-    </article>
+          <div class="flor"></div>
+        </div>
+        <div class="info__box" v-if="!userStore.userLoggedIn">
+          <RouterLink :to="{name: 'login'}">
+            <button class="info__box-button">Sign in / Login</button>
+          </RouterLink>
+        </div>
+        <div class="info__box" v-else>
+          <RouterLink :to="{name: 'profile'}">
+            <button class="info__box-button">Enter</button>
+          </RouterLink>
+        </div>
+      </article>
+    </div>
   </section>
 </template>
 
@@ -69,11 +71,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home {
-  overflow: hidden;
-  height: 100vh;
-}
-
 .hero {
   display: flex;
   justify-content: center;
@@ -233,6 +230,154 @@ export default {
     .color-orange {
       display: flex;
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero {
+    &__title {
+      top: -20px;
+      font-size: 5rem;
+      width: 40%;
+    }
+    &__img {
+      width: 300px;
+      top: 30px;
+      &-photo {
+        width: 100%;
+      }
+      .shadow {
+        bottom: 2px;
+        left: -10px;
+        bottom: -10px;
+        z-index: -1;
+        width: 320px;
+        height: 40px;
+      }
+    }
+  }
+  .info {
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px;
+    justify-content: center;
+    width: 800px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.614);
+
+    &::after,
+    &::before {
+      position: absolute;
+      content: '';
+      width: 400px;
+      height: 400px;
+      background-color: #121111;
+      top: 0px;
+      border-radius: 35px;
+    }
+
+    &::before {
+      left: -100px;
+      animation: entry-left 10s forwards;
+    }
+    &::after {
+      right: -100px;
+      transform: rotate(0deg);
+      animation: entry-right 10s forwards;
+    }
+    &__text {
+      width: 100%;
+    }
+    &__title {
+      text-align: center;
+      margin-top: 10px;
+      font-family: 'Nerko One', cursive;
+      font-size: 1.8rem;
+      margin-top: 30px;
+      width: 100%;
+    }
+    &__family {
+      width: 100%;
+      &-crab {
+        width: 70px;
+        &-crab1 {
+          left: 390px;
+        }
+        &-crab2 {
+          left: 440px;
+        }
+        &-crab3 {
+          right: 440px;
+        }
+        &-crab4 {
+          right: 390px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes entry-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+    z-index: 5;
+  }
+  20% {
+    transform: translateX(25%);
+    opacity: 1;
+    z-index: 5;
+  }
+  40% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(20%);
+    opacity: 1;
+    z-index: -1;
+  }
+  80% {
+    transform: translateX(0) rotate(-30deg);
+    opacity: 1;
+    z-index: -1;
+  }
+  100% {
+    transform: translateX(0) rotate(-30deg);
+    opacity: 0.3;
+    z-index: -1;
+  }
+}
+@keyframes entry-right{
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 5;
+  }
+  20% {
+    transform: translateX(-25%);
+    opacity: 1;
+    z-index: 5;
+  }
+  40% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-20%);
+    opacity: 1;
+    z-index: -1;
+  }
+  80% {
+    transform: translateX(0) rotate(30deg);
+    opacity: 1;
+    z-index: -1;
+  }
+  100% {
+    transform: translateX(0) rotate(30deg);
+    opacity: 0.3;
+    z-index: -1;
   }
 }
 </style>

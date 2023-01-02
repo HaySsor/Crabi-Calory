@@ -1,13 +1,7 @@
 <template>
   <div class="login">
     <router-link :to="{name: 'home'}">
-      <App-icon
-        icon="tabler:triangle"
-        color="#e2882f"
-        width="30"
-        height="30"
-        :rotate="3"
-        class="login__back" />
+      <i class="fas fa-arrow-alt-circle-left login__back"></i>
     </router-link>
     <div class="flex-box">
       <h2 class="login__title family-Nerko">Craby Family</h2>
@@ -17,8 +11,10 @@
     </div>
 
     <!-- Form  -->
-    <AppRegistration v-if="!login" />
-    <AppLogin v-else />
+    <Transition name="fade" mode="out-in">
+      <AppRegistration v-if="!login" />
+      <AppLogin v-else />
+    </Transition>
   </div>
 </template>
 
@@ -42,6 +38,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-to {
+  opacity: 1;
+}
+.fade-enter-active {
+  transition: all 0.3s ease-in;
+}
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-leave-active {
+  transition: all 0.3s ease-in;
+}
 .login {
   position: relative;
   min-height: 100vh;
@@ -55,10 +69,11 @@ export default {
     font-size: 30px;
   }
   &__back {
-    border: 1px solid white;
     border-radius: 50%;
-    padding: 5px;
+    padding: 10px;
     margin-left: 10px;
+    font-size: 2.7rem;
+    color: tomato;
   }
   &__switch {
     padding: 5px 20px;
@@ -68,6 +83,11 @@ export default {
     color: white;
     font-size: 1.7rem;
     margin-left: 30px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .login {
+    padding: 10px;
   }
 }
 </style>

@@ -68,6 +68,27 @@ export default {
   font-size: 2.3rem;
   margin-right: 10px;
   padding: 10px;
-  
+}
+@media screen and (min-width: 1200px) {
+  .nav {
+    &__logo {
+      &-box {
+        margin-left: 20px;
+        &-img {
+          height: 70px;
+          width: 70px;
+        }
+        &-name {
+          font-size: 2.5rem;
+        }
+      }
+      &-login {
+        padding: 0px 15px;
+      }
+    }
+  }
+  .icon {
+    font-size: 3.5rem;
+  }
 }
 </style>

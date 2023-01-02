@@ -23,11 +23,17 @@
 
       <label class="form__label"> How many gram ?</label>
       <input class="form__input" type="text" v-model="times" />
-      <div class="form__alert" v-if="message">
+      <div class="form__alert" v-if="message === 1">
         <span>Meal added <i class="fas fa-check-circle"></i></span>
       </div>
+      <div class="form__alert form__alert-error" v-if="message === 2">
+        <span>Please add gram  <i class="far fa-times-circle"></i></span>
+      </div>
 
-      <button class="form__add" @click="addToDailyList" :disabled="message">
+      <button
+        class="form__add"
+        @click="addToDailyList"
+        :disabled="message == 1">
         Add
       </button>
     </div>
@@ -37,11 +43,10 @@
 <script>
 import {ref, computed} from 'vue';
 import useMealStore from '@/stores/meals';
-import AppModal from '@/components/AppModal.vue';
 
 export default {
   name: 'ModalAddMeal',
-  components: {AppModal},
+
   props: {
     picketMeal: {
       required: true,
@@ -51,7 +56,7 @@ export default {
     },
   },
   setup(props) {
-    const message = ref(false);
+    const message = ref(0);
     const times = ref(100);
     const useMeal = useMealStore();
 
@@ -77,22 +82,26 @@ export default {
     });
 
     function addToDailyList() {
-      const meal = {
-        name: props.picketMeal.name,
-        kcal: kcal,
-        carbohydrates: carb,
-        protein: protein,
-        fat: fat,
-        id: props.picketMeal.id,
-        idD: Math.floor(Math.random() * 200),
-      };
+      if (times.value > 0) {
+        const meal = {
+          name: props.picketMeal.name,
+          kcal: kcal,
+          carbohydrates: carb,
+          protein: protein,
+          fat: fat,
+          id: props.picketMeal.id,
+          idD: Math.floor(Math.random() * 200),
+        };
 
-      message.value = true;
-      useMeal.addDailyMeal(meal);
+        message.value = 1;
+        useMeal.addDailyMeal(meal);
 
-      setTimeout(()=>{
-        props.closeModal()
-      },500)
+        setTimeout(() => {
+          props.closeModal();
+        }, 500);
+      } else {
+        message.value = 2;
+      }
     }
 
     return {
@@ -197,6 +206,11 @@ export default {
       background-color: lightgreen;
       color: grey;
       border-radius: 25px;
+
+      &-error {
+        background-color: tomato;
+        color: white;
+      }
     }
     &__exit {
       position: absolute;

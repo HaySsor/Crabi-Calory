@@ -290,7 +290,7 @@ export default {
       display: flex;
       justify-content: space-evenly;
       width: 80%;
-      h3{
+      h3 {
         font-size: 1.8rem;
       }
     }
@@ -308,6 +308,54 @@ export default {
         background-color: #e2882f;
         color: white;
         font-size: 1.7rem;
+      }
+    }
+  }
+}
+/* Media PC */
+
+@media screen and (min-width: 1200px) {
+  .login {
+    &__form {
+      padding: 15px;
+      background: #f4f4f4ac;
+      width: 50%;
+      margin: 0 auto;
+      margin-top: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      &-box {
+        width: 50%;
+        gap: 5px;
+
+        &-label {
+          color: black;
+          font-weight: bold;
+        }
+        &-input {
+          padding: 8px;
+        }
+      }
+
+      .input-select {
+        width: 50%;
+        label {
+          color: black;
+          font-weight: bold;
+        }
+        select {
+          width: 50%;
+          padding: 10px;
+          border: none;
+        }
+      }
+      .advanced-options {
+        label {
+          color: black;
+        }
       }
     }
   }
