@@ -3,27 +3,32 @@
     <header class="box__top">
       <h2 class="box__top-title family-Nerko">Your Daily Meal</h2>
     </header>
-    <ul class="box__list">
-      <AppUserMealListItemVue
-        v-for="meal in useMeal.useDailyMeals"
-        :key="meal.id"
-        :meal="meal"
-        :useMeal="useMeal" />
-    </ul>
+    <div class="box__list">
+      <Transition name="fade" mode="out-in">
+        <ul class="box__list-ul" v-if="useMeal.useDailyMeals.length > 0">
+          <AppUserMealListItemVue
+            v-for="meal in useMeal.useDailyMeals"
+            :key="meal.id"
+            :meal="meal"
+            :useMeal="useMeal" />
+        </ul>
+        <AppUserMealListEmptyVue v-else />
+      </Transition>
+    </div>
   </div>
 </template>
 
 <script>
 import AppUserMealListItemVue from './AppUserMealListItem.vue';
+import AppUserMealListEmptyVue from './AppUserMealListEmpty.vue';
 export default {
   name: 'UserMealList',
-  components: {AppUserMealListItemVue},
+  components: {AppUserMealListItemVue, AppUserMealListEmptyVue},
   props: {
     useMeal: {
       required: true,
     },
   },
-  setup() {},
 };
 </script>
 
@@ -37,8 +42,10 @@ export default {
   margin: auto;
   margin-top: 40px;
   padding: 10px;
-  overflow: scroll;
-  z-index: 0;
+
+  .img {
+    display: none;
+  }
   &__top {
     display: flex;
     justify-content: center;
@@ -55,10 +62,39 @@ export default {
   }
 
   &__list {
-    list-style: none;
-    padding: 10px;
+    overflow: auto;
+    height: 325px;
 
-    
+    &-ul {
+      list-style: none;
+      padding: 10px;
+    }
+  }
+}
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-to {
+  opacity: 1;
+}
+.fade-enter-active {
+  transition: all 0.3s ease-in;
+}
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+@media screen and (min-width: 1200px) {
+  .box {
+    width: 40%;
+    height: 400px;
+    position: relative;
   }
 }
 </style>

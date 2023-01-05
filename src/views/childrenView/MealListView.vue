@@ -17,7 +17,7 @@
         src="/icons/salad.png"
         alt=""
         aria-hidden="true" />
-        <div class="meal-list__top-shadow"></div>
+      <div class="meal-list__top-shadow"></div>
     </div>
     <div class="meal-list__middle">
       <AppFirebaseMealListVue />
@@ -45,8 +45,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:5px;
-    &-title{
+    gap: 5px;
+    &-title {
       position: absolute;
       top: 90%;
       font-size: 2rem;
@@ -54,20 +54,20 @@ export default {
       padding: 10px 50px;
       border-radius: 30px;
     }
-    &-img{
+    &-img {
       width: 30%;
     }
-    .salta{
+    .salta {
       width: 20%;
       transform: translateY(15px);
       z-index: -1;
     }
-    .hamburger{
+    .hamburger {
       width: 25%;
       transform: translateY(20px);
       z-index: -1;
     }
-    &-shadow{
+    &-shadow {
       position: absolute;
       width: 80%;
       height: 30px;
@@ -77,12 +77,48 @@ export default {
       border-radius: 30px;
     }
   }
-  &__middle{
+  &__middle {
     margin-top: 50px;
     width: 100%;
     border-radius: 25px;
     background-color: rgba(0, 0, 0, 0.21);
     padding: 20px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .meal-list {
+    margin-bottom: 50px;
+    &__top {
+      &-title {
+        top: 90%;
+        font-size: 1.8rem;
+        padding: 8px 60px;
+      }
+      &-img {
+        width: 120px;
+      }
+      .salta {
+        width: 100px;
+        transform: translateY(5px);
+      }
+      .hamburger {
+        width: 100px;
+        transform: translateY(20px);
+      }
+      &-shadow {
+        width: 98%;
+        left: -3px;
+        height: 20px;
+        bottom: -5px;
+      }
+    }
+    &__middle {
+      margin-top: 50px;
+      width: 80%;
+      border-radius: 25px;
+      background-color: rgba(0, 0, 0, 0.21);
+      padding: 20px;
+    }
   }
 }
 </style>

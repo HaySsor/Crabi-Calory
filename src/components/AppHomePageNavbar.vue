@@ -28,11 +28,7 @@
         >
         <li class="nav__list-logout">
           <button @click.prevent="singOut">
-            <App-icon
-              icon="ant-design:logout-outlined"
-              width="30"
-              height="25"
-              class="icon"></App-icon>
+            <i class="fas fa-sign-out-alt icon"></i>
           </button>
           <span class="family-Nerko">LogOut</span>
         </li>
@@ -108,12 +104,14 @@ export default {
       button {
         border: none;
         border-radius: 50%;
-        width: 50px;
-        height: 50px;
         background-color: tomato;
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 15px 15px;
+        i {
+          font-size: 2.5rem;
+        }
       }
       span {
         font-size: 1.4rem;
@@ -130,5 +128,71 @@ export default {
   transform: scale(0.8);
   padding: 5px;
   border-radius: 40px;
+}
+
+@media screen and (min-width: 1200px) {
+  .nav {
+    position: fixed;
+    left: 50%;
+    width: 1100px;
+    transform: translate(-50%);
+    background: #e2882f9a;
+
+    backdrop-filter: blur(3px);
+    &__list {
+      display: flex;
+      list-style: none;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+
+      &-item {
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        width: 20%;
+        display: flex;
+        li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+        }
+
+        img {
+          width: 40px;
+          height: 50%;
+        }
+        span {
+          font-size: 1.6rem;
+        }
+      }
+      &-logout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        button {
+          border: none;
+          border-radius: 50%;
+          background-color: tomato;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+          i {
+            font-size: 2rem;
+          }
+        }
+        span {
+          font-size: 1.4rem;
+        }
+      }
+      &-item,
+      &-logout {
+        transition: transform 0.3s;
+      }
+    }
+  }
 }
 </style>

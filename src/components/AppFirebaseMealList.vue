@@ -19,7 +19,7 @@
 import {ListMealFormFirebase} from '@/composables/getMeal';
 import AppModalAddMealVue from './AppModalAddMeal.vue';
 import AppMealItemVue from './AppMealItem.vue';
-import {ref, onMounted, reactive} from 'vue';
+import {ref, onMounted} from 'vue';
 export default {
   name: 'FirebaseMealList',
   components: {AppMealItemVue, AppModalAddMealVue},
@@ -32,7 +32,6 @@ export default {
     onMounted(() => {
       getData();
     });
-
     const modal = ref(false);
     const picketMeal = ref('');
 
@@ -58,8 +57,11 @@ export default {
 
     list-style: none;
     gap: 10px;
-    height: 410px;
+    height: 100%;
+    max-height: 410px;
     overflow: scroll;
   }
+}
+@media screen and (min-width: 1200px) {
 }
 </style>

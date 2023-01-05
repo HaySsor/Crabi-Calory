@@ -46,7 +46,7 @@ export default {
   justify-content: center;
   align-items: center;
   .window {
-    width: 300px;
+    width: 320px;
     height: 250px;
     background-color: #e2882f;
     border-radius: 35px;
@@ -57,11 +57,13 @@ export default {
     gap: 15px;
     h3 {
       font-size: 1.8rem;
+      
+      text-align: center;
     }
     img {
-      width: 100px;
-      height: 100px;
-      animation: rotate 5s infinite;
+      width: 70px;
+      height: 70px;
+      animation: rotate 3s infinite;
       margin-bottom: 10px;
     }
   }
@@ -84,6 +86,13 @@ export default {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .modal {
+    position: fixed;
+    width: 100%; 
   }
 }
 </style>

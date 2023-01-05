@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 
+
 const meals = localStorage.getItem('meal')
 let dailyMeal = []
 if (meals) {
@@ -29,6 +30,12 @@ export default defineStore("meals", {
             })
             this.flag = !this.flag
             localStorage.setItem("meal", JSON.stringify(this.useDailyMeals));
+        },
+        newDay() {
+            this.useDailyMeals = [],
+                this.flag = !this.flag
+            localStorage.setItem("meal", JSON.stringify(this.useDailyMeals));
         }
+
     }
 })

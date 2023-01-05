@@ -50,6 +50,7 @@ export default {
   setup() {
     const userStore = useUserStore();
     const router = useRouter();
+    const failLogin = ref(false);
 
     const loginSchema = {
       email: 'required|email',
@@ -64,15 +65,28 @@ export default {
     async function login(value) {
       regInSubmission.value = true;
       showModal.value = true;
-      await userStore.login(value);
-      message.value = 'Yeey welcome :)';
+      failLogin.value = false;
+      message.value = 'Wait';
       passData.value = false;
       regInSubmission.value = false;
+      try {
+        await userStore.login(value);
+        message.value = 'Welcome Crab';
+        passData.value = false;
+        regInSubmission.value = false;
+      } catch (err) {
+        message.value = 'Email or password is incorrect';
+        passData.value = false;
+        regInSubmission.value = false;
+        failLogin.value = true;
+      }
     }
 
     function closeModal() {
       showModal.value = false;
-      router.push({name: 'profile'});
+      if (failLogin.value !== true) {
+        router.push({name: 'profile'});
+      }
     }
 
     return {

@@ -26,8 +26,3 @@ body {
   color: tomato;
 }
 
-@media screen and (min-width: 1200px) {
-  body {
-    background-color: #4eb1698c;
-  }
-}

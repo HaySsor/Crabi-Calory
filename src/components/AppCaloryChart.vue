@@ -38,7 +38,7 @@
 
 <script>
 import AppCaloryChartItem from '@/components/AppCaloryChartItem.vue';
-import {ref, computed, reactive, watch} from 'vue';
+import {computed, reactive, watch} from 'vue';
 export default {
   name: 'CaloryChart',
   components: {AppCaloryChartItem},
@@ -67,7 +67,7 @@ export default {
         for (const key1 in item) {
           for (const key2 in used) {
             if (key1 === key2) {
-              used[key2] += item[key1];
+              used[key2] += parseFloat(item[key1]);
             }
           }
         }
@@ -130,21 +130,21 @@ export default {
     position: absolute;
     z-index: -10;
   }
-  .img1{
+  .img1 {
     top: -22px;
     left: -10px;
     transform: rotate(-30deg);
   }
-  .img2{
+  .img2 {
     top: -22px;
     right: -10px;
     transform: rotate(30deg);
   }
-  .img3{
+  .img3 {
     top: -32px;
     left: 100px;
   }
-  .img4{
+  .img4 {
     top: -32px;
     right: 100px;
   }
@@ -167,6 +167,12 @@ export default {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .chart {
+    width: 40%;
+    height: 400px;
   }
 }
 </style>

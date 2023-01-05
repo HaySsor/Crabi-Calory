@@ -1,13 +1,15 @@
 <template>
   <section>
-    <div class="home">
-      <router-view v-slot="{Component}">
-        <transition name="fade" mode="out-in">
-          <component :is="Component"></component>
-        </transition>
-      </router-view>
+    <div class="wrapper2">
+      <div class="home">
+        <router-view v-slot="{Component}">
+          <transition name="fade" mode="out-in">
+            <component :is="Component"></component>
+          </transition>
+        </router-view>
+      </div>
+      <AppHomePageNavbarVue />
     </div>
-    <AppHomePageNavbarVue />
   </section>
 </template>
 
@@ -21,9 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home-view {
-  padding: 10px;
-}
+
 .fade-enter-from {
   opacity: 0;
 }
@@ -41,5 +41,12 @@ export default {
 }
 .fade-leave-active {
   transition: all 0.3s ease-in;
+}
+@media screen and (min-width: 1200px) {
+  .wrapper2 {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
 }
 </style>

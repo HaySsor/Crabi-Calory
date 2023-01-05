@@ -27,7 +27,7 @@
         <span>Meal added <i class="fas fa-check-circle"></i></span>
       </div>
       <div class="form__alert form__alert-error" v-if="message === 2">
-        <span>Please add gram  <i class="far fa-times-circle"></i></span>
+        <span>Please add gram <i class="far fa-times-circle"></i></span>
       </div>
 
       <button
@@ -62,23 +62,23 @@ export default {
 
     const kcal = computed(() => {
       let k = props.picketMeal.kcal;
-      let sum = parseInt(k) * (times.value / 100);
-      return Math.floor(sum);
+      let sum = parseFloat(k) * (times.value / 100);
+      return sum.toFixed(1);
     });
     const carb = computed(() => {
       let k = props.picketMeal.carbohydrates;
-      let sum = parseInt(k) * (times.value / 100);
-      return Math.floor(sum);
+      let sum = parseFloat(k) * (times.value / 100);
+      return sum.toFixed(1);
     });
     const protein = computed(() => {
       let k = props.picketMeal.protein;
-      let sum = parseInt(k) * (times.value / 100);
-      return Math.floor(sum);
+      let sum = parseFloat(k) * (times.value / 100);
+      return sum.toFixed(1);
     });
     const fat = computed(() => {
       let k = props.picketMeal.fat;
-      let sum = parseInt(k) * (times.value / 100);
-      return Math.floor(sum);
+      let sum = parseFloat(k) * (times.value / 100);
+      return sum.toFixed(1);
     });
 
     function addToDailyList() {
@@ -228,6 +228,45 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.567);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form {
+      width: 25%;
+      height: 350px;
+      background-color: #f9faf7ff;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      z-index: 10;
+      gap: 10px;
+      position: relative;
+
+      &__input {
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 10px 60px;
+        text-align: center;
+        font-size: 1.4rem;
+      }
+
+      &__add {
+        padding: 15px 80px;
+      }
+    }
   }
 }
 </style>

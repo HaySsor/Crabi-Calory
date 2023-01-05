@@ -25,6 +25,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.wrapper{
+  width: 100%;
+}
+
 .fade-enter-from {
   opacity: 0;
 }
@@ -47,6 +51,7 @@ export default {
   .wrapper {
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 100px;
   }
 }
 </style>
