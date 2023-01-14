@@ -85,14 +85,14 @@ export default {
       if (times.value > 0) {
         const meal = {
           name: props.picketMeal.name,
-          kcal: kcal,
-          carbohydrates: carb,
-          protein: protein,
-          fat: fat,
+          kcal: kcal.value,
+          carbohydrates: carb.value,
+          protein: protein.value,
+          fat: fat.value,
           id: props.picketMeal.id,
           idD: Math.floor(Math.random() * 200),
         };
-
+        console.log(meal);
         message.value = 1;
         useMeal.addDailyMeal(meal);
 

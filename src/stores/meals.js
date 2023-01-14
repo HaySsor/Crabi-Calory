@@ -1,40 +1,62 @@
 import { defineStore } from "pinia";
+import getUser from '@/composables/getUser';
+import { db, auth } from '@/includes/firebase';
+import { arrayUnion, doc, updateDoc, arrayRemove, } from "firebase/firestore";
+// const meals = localStorage.getItem('meal')
+// let dailyMeal = []
+// if (meals) {
+//     dailyMeal = JSON.parse(meals)
+// }
 
 
-const meals = localStorage.getItem('meal')
-let dailyMeal = []
-if (meals) {
-    dailyMeal = JSON.parse(meals)
-}
+const userDocRef = doc(db, 'users', auth.currentUser.uid)
+const { user, getUserData } = getUser();
+
 
 export default defineStore("meals", {
 
     state: () => ({
-        useDailyMeals: dailyMeal,
+        useDailyMeals: [],
         flag: true,
     }),
     actions: {
-        addDailyMeal(meal) {
-            console.log('added')
-            this.useDailyMeals.push(meal)
+        async getUserMeal() {
 
-            localStorage.setItem("meal", JSON.stringify(this.useDailyMeals));
-        },
-        removeMealFromDaily(meal) {
-            console.log('remove')
-            this.useDailyMeals.forEach(item => {
-                if (item.idD === meal) {
-                    let idx = this.useDailyMeals.indexOf(item)
-                    this.useDailyMeals.splice(idx, 1)
-                }
+            await getUserData()
+            const x = user.value.meals?.map(meal => {
+                return JSON.parse(meal)
             })
             this.flag = !this.flag
-            localStorage.setItem("meal", JSON.stringify(this.useDailyMeals));
+            this.useDailyMeals = x
         },
-        newDay() {
-            this.useDailyMeals = [],
-                this.flag = !this.flag
-            localStorage.setItem("meal", JSON.stringify(this.useDailyMeals));
+        async updateMealsList() {
+            await getUserData()
+            const x = user.value.meals?.map(meal => {
+                return JSON.parse(meal)
+            })
+            this.flag = !this.flag
+            this.useDailyMeals = x
+        },
+        async addDailyMeal(meal) {
+            const m = JSON.stringify(meal)
+            await updateDoc(userDocRef, {
+                "meals": arrayUnion(m)
+            })
+            this.updateMealsList()
+            // localStorage.setItem("meal", JSON.stringify(this.useDailyMeals));
+        },
+        async removeMealFromDaily(meal) {
+            const m = JSON.stringify(meal)
+            await updateDoc(userDocRef, {
+                "meals": arrayRemove(m)
+            })
+            this.updateMealsList()
+        },
+        async newDay() {
+            await updateDoc(userDocRef, {
+                "meals": []
+            })
+            this.updateMealsList()
         }
 
     }

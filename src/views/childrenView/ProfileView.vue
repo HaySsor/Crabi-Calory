@@ -18,6 +18,7 @@ import AppCaloryChartVue from '@/components/AppCaloryChart.vue';
 import AppUserMealListVue from '@/components/AppUserMealList.vue';
 import AppNewDayButtonVue from '../../components/AppNewDayButton.vue';
 import useMealsStore from '@/stores/meals';
+import {onBeforeMount, onMounted} from 'vue';
 
 export default {
   name: 'ProfileView',
@@ -30,8 +31,12 @@ export default {
   setup() {
     const {user, getUserData} = getUser();
     getUserData();
-
     const useMeal = useMealsStore();
+
+    onBeforeMount(() => {
+      getUserData();
+      useMeal.getUserMeal();
+    });
 
     return {user, useMeal};
   },

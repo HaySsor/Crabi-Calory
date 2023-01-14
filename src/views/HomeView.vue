@@ -243,6 +243,8 @@ export default {
     &__img {
       width: 300px;
       top: 30px;
+      transform: translateX(-10px);
+      z-index: 1;
       &-photo {
         width: 100%;
       }
@@ -275,6 +277,7 @@ export default {
       background-color: #121111;
       top: 0px;
       border-radius: 35px;
+      z-index: 10;
     }
 
     &::before {

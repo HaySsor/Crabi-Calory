@@ -4,7 +4,7 @@
     <div class="item-cont">
       <h3>{{ meal.name }}</h3>
       <i
-        @click="useMeal.removeMealFromDaily(meal.idD)"
+        @click="useMeal.removeMealFromDaily(meal)"
         class="fas fa-trash-alt"></i>
     </div>
   </li>
