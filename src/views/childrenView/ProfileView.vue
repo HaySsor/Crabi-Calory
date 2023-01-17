@@ -18,7 +18,7 @@ import AppCaloryChartVue from '@/components/AppCaloryChart.vue';
 import AppUserMealListVue from '@/components/AppUserMealList.vue';
 import AppNewDayButtonVue from '../../components/AppNewDayButton.vue';
 import useMealsStore from '@/stores/meals';
-import {onBeforeMount, onMounted} from 'vue';
+import {onBeforeMount} from 'vue';
 
 export default {
   name: 'ProfileView',
