@@ -210,17 +210,17 @@ export default {
     margin: 0 auto;
   }
 }
-
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 454px) {
   .form {
-    width: 50%;
+    width: 70%;
+    max-width: 600px;
     padding: 10px;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-content: center;
+    gap: 15px;
     flex-wrap: wrap;
-    height: 300px;
-
+    height: 100%;
     &__name,
     &__kcal,
     &__protein,
@@ -244,6 +244,12 @@ export default {
       justify-content: center;
       width: 80%;
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .form {
+    width: 50%;
   }
 }
 </style>

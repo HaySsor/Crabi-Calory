@@ -1,24 +1,35 @@
 <template>
   <div class="profile-view">
     <div class="profile-view__top">
-      <AppProfileSquerVue :personalData="user" />
+      <AppProfileSquerVue
+        :personalData="useUser.loggedUser"
+        :OpenModalUserEditProfile="openModalUserEditProfile" />
       <AppNewDayButtonVue />
     </div>
     <div class="box-pc">
-      <AppCaloryChartVue :personalData="user" :useMeal="useMeal" />
+      <AppCaloryChartVue
+        :personalData="useUser.loggedUser"
+        :useDailyMeals="useMeal.useDailyMeals"
+        :key="useUser.userChangeData" />
       <AppUserMealListVue :useMeal="useMeal" />
+
+      <AppModalChangeUserData
+        v-if="showModalUserEditProfile"
+        :personalData="useUser.loggedUser"
+        :closeModalUserEditProfile="closeModalUserEditProfile" />
     </div>
   </div>
 </template>
 
 <script>
-import getUser from '@/composables/getUser';
 import AppProfileSquerVue from '@/components/AppProfileSquer.vue';
 import AppCaloryChartVue from '@/components/AppCaloryChart.vue';
 import AppUserMealListVue from '@/components/AppUserMealList.vue';
 import AppNewDayButtonVue from '../../components/AppNewDayButton.vue';
 import useMealsStore from '@/stores/meals';
-import {onBeforeMount} from 'vue';
+import {onBeforeMount, ref} from 'vue';
+import useUserStore from '@/stores/user';
+import AppModalChangeUserData from '../../components/AppModalChangeUserData.vue';
 
 export default {
   name: 'ProfileView',
@@ -27,18 +38,33 @@ export default {
     AppCaloryChartVue,
     AppUserMealListVue,
     AppNewDayButtonVue,
+    AppModalChangeUserData,
   },
   setup() {
-    const {user, getUserData} = getUser();
-    getUserData();
+    const useUser = useUserStore();
     const useMeal = useMealsStore();
+    const showModalUserEditProfile = ref(false);
 
     onBeforeMount(() => {
-      getUserData();
+      useUser.downloadUserData();
       useMeal.getUserMeal();
     });
-
-    return {user, useMeal};
+    setTimeout(() => {
+      showModalUserEditProfile.value = true;
+    }, 500);
+    function closeModalUserEditProfile() {
+      showModalUserEditProfile.value = false;
+    }
+    function openModalUserEditProfile() {
+      showModalUserEditProfile.value = true;
+    }
+    return {
+      useUser,
+      useMeal,
+      closeModalUserEditProfile,
+      showModalUserEditProfile,
+      openModalUserEditProfile,
+    };
   },
 };
 </script>
@@ -47,11 +73,20 @@ export default {
 .profile-view {
   padding: 10px;
   margin-bottom: 150px;
-  position: relative;
+
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+}
+@media screen and (min-width: 454px) {
+  .profile-view {
+    &__top {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
 }
 @media screen and (min-width: 1200px) {

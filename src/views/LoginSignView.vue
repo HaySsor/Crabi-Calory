@@ -83,11 +83,19 @@ export default {
     color: white;
     font-size: 1.7rem;
     margin-left: 30px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 @media screen and (min-width: 1200px) {
   .login {
     padding: 10px;
+    &__back {
+      font-size: 3rem;
+    }
   }
 }
 </style>

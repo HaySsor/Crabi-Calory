@@ -96,7 +96,7 @@ export default {
       position: absolute;
       bottom: 2px;
       z-index: -1;
-      width: 150px;
+      width: 100%;
       height: 30px;
       background-color: rgba(0, 0, 0, 0.085);
       border-radius: 50%;
@@ -111,6 +111,8 @@ export default {
   padding: 20px;
   padding-top: 40px;
   font-size: 1.6rem;
+  width: 100%;
+  height: 500px;
   &__box {
     margin-top: 20px;
     display: flex;
@@ -122,6 +124,11 @@ export default {
       background-color: #e2882f;
       color: white;
       font-size: 1.7rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
   &__title {
@@ -135,11 +142,13 @@ export default {
     display: flex;
     margin-top: 10px;
     gap: 10px;
-    justify-content: center;
     position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     height: 70px;
+    max-width: 375px;
     .flor {
-      width: 300px;
+      width: 100%;
       height: 5px;
       position: absolute;
       bottom: -2px;
@@ -147,13 +156,13 @@ export default {
       border-radius: 20px;
     }
     &-crab {
-      width: 20%;
+      width: 70px;
       position: absolute;
       &-crab1 {
-        left: 20px;
+        left: 5%;
       }
       &-crab2 {
-        left: 70px;
+        left: 20%;
         z-index: 4;
       }
       &-crab1,
@@ -161,11 +170,11 @@ export default {
         animation: crab-move1 3s infinite;
       }
       &-crab3 {
-        right: 70px;
+        right: 20%;
         z-index: 4;
       }
       &-crab4 {
-        right: 20px;
+        right: 5%;
       }
       &-crab3,
       &-crab4 {
@@ -302,6 +311,18 @@ export default {
     }
     &__family {
       width: 100%;
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      .flor {
+        width: 45%;
+        height: 5px;
+        position: absolute;
+        bottom: -2px;
+        background-color: #e2882f79;
+        border-radius: 20px;
+      }
+
       &-crab {
         width: 70px;
         &-crab1 {
@@ -352,7 +373,7 @@ export default {
     z-index: -1;
   }
 }
-@keyframes entry-right{
+@keyframes entry-right {
   0% {
     transform: translateX(100%);
     opacity: 0;

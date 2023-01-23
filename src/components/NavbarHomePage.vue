@@ -61,6 +61,11 @@ export default {
     }
     &-login {
       padding: 0px 15px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -68,6 +73,29 @@ export default {
   font-size: 2.3rem;
   margin-right: 10px;
   padding: 10px;
+}
+@media screen and (min-width: 454px) {
+  .nav {
+    &__logo {
+      &-box {
+        &-img {
+          height: 50px;
+          width: 50px;
+        }
+        &-name {
+          font-weight: bold;
+          font-size: 2.5rem;
+          font-family: 'Nerko One', cursive;
+        }
+      }
+      &-login {
+        padding: 0px 15px;
+      }
+    }
+  }
+  .icon {
+    font-size: 3rem;
+  }
 }
 @media screen and (min-width: 1200px) {
   .nav {

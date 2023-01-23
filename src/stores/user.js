@@ -1,14 +1,17 @@
 import { defineStore } from "pinia";
 import { auth } from '../includes/firebase';
 import { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { doc, setDoc, getFirestore } from 'firebase/firestore';
+import { doc, setDoc, getFirestore, updateDoc } from 'firebase/firestore';
 
+import getUser from '@/composables/getUser';
 
 const db = getFirestore()
 
 export default defineStore("user", {
     state: () => ({
         userLoggedIn: false,
+        loggedUser: {},
+        userChangeData: 0,
     }),
     actions: {
         async register(values) {
@@ -31,7 +34,7 @@ export default defineStore("user", {
                 protein: values.protein,
                 kcal: values.kcal,
                 uid: userCred.user.uid,
-                meals:[]
+                meals: []
             });
             updateProfile(userCred.user, {
                 displayName: values.name
@@ -39,6 +42,23 @@ export default defineStore("user", {
 
             this.userLoggedIn = true
             this.calory = values.kcal
+
+        },
+        async downloadUserData() {
+            const { user, getUserData } = getUser();
+            getUserData();
+            this.loggedUser = user
+        },
+        async updateUserData(newData) {
+            const userDocRef = doc(db, 'users', auth.currentUser.uid)
+            await updateDoc(userDocRef, {
+                "fat": newData.fat,
+                "carbohydrates": newData.carbohydrates,
+                "protein": newData.protein,
+                "kcal": newData.kcal,
+            })
+            await this.downloadUserData()
+            this.userChangeData += 1
 
         },
         async login(values) {
@@ -50,6 +70,6 @@ export default defineStore("user", {
         async singOutUser() {
             await signOut(auth)
             this.userLoggedIn = false
-        }
+        },
     }
 })

@@ -155,6 +155,31 @@ export default {
         background-color: #e2882f;
         color: white;
         font-size: 1.7rem;
+        cursor: pointer;
+        transition: transform 0.3s;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 454px) {
+  .login {
+    &__form {
+      width: 60%;
+      max-width: 500px;
+      margin-top: 20px;
+      padding: 15px;
+      background: #f4f4f4ac;
+      border-radius: 25px;
+      &-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 5px;
       }
     }
   }

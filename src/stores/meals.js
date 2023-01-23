@@ -17,7 +17,6 @@ export default defineStore("meals", {
 
     state: () => ({
         useDailyMeals: [],
-        flag: true,
     }),
     actions: {
         async getUserMeal() {
@@ -26,7 +25,7 @@ export default defineStore("meals", {
             const x = user.value.meals?.map(meal => {
                 return JSON.parse(meal)
             })
-            this.flag = !this.flag
+
             this.useDailyMeals = x
         },
         async updateMealsList() {
@@ -34,7 +33,7 @@ export default defineStore("meals", {
             const x = user.value.meals?.map(meal => {
                 return JSON.parse(meal)
             })
-            this.flag = !this.flag
+
             this.useDailyMeals = x
         },
         async addDailyMeal(meal) {

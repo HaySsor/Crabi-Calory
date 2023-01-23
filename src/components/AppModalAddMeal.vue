@@ -188,10 +188,10 @@ export default {
       border: none;
       color: white;
       border-radius: 25px;
-      transition: background 0.3s;
-
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3;
       &:hover {
-        background-color: #785532;
+        transform: scale(1.1);
       }
 
       &:disabled {
@@ -230,37 +230,20 @@ export default {
     background-color: rgba(0, 0, 0, 0.567);
   }
 }
+@media screen and (min-width: 454px) {
+  .modal {
+    .form {
+      width: 40%;
+    }
+  }
+}
 
 @media screen and (min-width: 1200px) {
   .modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     .form {
       width: 25%;
-      height: 350px;
-      background-color: #f9faf7ff;
-      border-radius: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-      z-index: 10;
-      gap: 10px;
-      position: relative;
-
       &__input {
-        border: 1px solid black;
-        border-radius: 20px;
-        padding: 10px 60px;
-        text-align: center;
-        font-size: 1.4rem;
+        width: 50%;
       }
 
       &__add {

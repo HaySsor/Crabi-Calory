@@ -61,14 +61,11 @@ export default {
   position: fixed;
   bottom: 0;
   padding: 10px;
-  z-index: 999;
+  z-index: 49;
   width: 100%;
-  background: rgb(226, 136, 47);
-  background: linear-gradient(
-    90deg,
-    rgba(226, 136, 47, 0.65) 0%,
-    rgba(226, 136, 47, 0.3) 100%
-  );
+  height: 90px;
+  background: rgb(210, 141, 72);
+  background: linear-gradient(90deg, #cfcfcfe5 0%, #ffffff89 100%);
   backdrop-filter: blur(3px);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -89,11 +86,12 @@ export default {
       flex-direction: column;
 
       img {
-        width: 80%;
-        height: 100%;
+        width: 40px;
+        filter: saturate(0.1);
       }
       span {
         font-size: 1.4rem;
+        display: block;
       }
     }
     &-logout {
@@ -110,7 +108,7 @@ export default {
         align-items: center;
         padding: 15px 15px;
         i {
-          font-size: 2.5rem;
+          font-size: 1.5rem;
         }
       }
       span {
@@ -124,20 +122,19 @@ export default {
   }
 }
 .active {
-  background-color: rgba(0, 0, 0, 0.185);
-  transform: scale(0.8);
-  padding: 5px;
-  border-radius: 40px;
+  transform: scale(0.9);
+  img {
+    filter: saturate(1);
+  }
 }
-
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 454px) {
   .nav {
     position: fixed;
     left: 50%;
-    width: 1100px;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
     transform: translate(-50%);
-    background: #e2882f9a;
-
     backdrop-filter: blur(3px);
     &__list {
       display: flex;
@@ -168,31 +165,31 @@ export default {
         }
       }
       &-logout {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         button {
-          border: none;
-          border-radius: 50%;
-          background-color: tomato;
-          display: flex;
-          justify-content: center;
-          align-items: center;
           padding: 10px;
           i {
-            font-size: 2rem;
+            font-size: 2.5rem;
           }
         }
         span {
           font-size: 1.4rem;
         }
       }
+      &-logout:hover{
+        transform: scale(1.1);
+      }
       &-item,
       &-logout {
         transition: transform 0.3s;
       }
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .nav {
+    width: 800px;
+    height: 90px;
   }
 }
 </style>

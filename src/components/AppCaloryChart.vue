@@ -38,7 +38,7 @@
 
 <script>
 import AppCaloryChartItem from '@/components/AppCaloryChartItem.vue';
-import {computed, reactive, watch} from 'vue';
+import {computed, watch, ref} from 'vue';
 export default {
   name: 'CaloryChart',
   components: {AppCaloryChartItem},
@@ -46,40 +46,28 @@ export default {
     personalData: {
       required: true,
     },
-    useMeal: {
+    useDailyMeals: {
       required: true,
     },
   },
   setup(props) {
-    let used = reactive({
-      kcal: 0,
-      protein: 0,
-      carbohydrates: 0,
-      fat: 0,
-    });
-    function usedCalculate() {
-      used.kcal = 0;
-      used.protein = 0;
-      used.carbohydrates = 0;
-      used.fat = 0;
-
-      props.useMeal.useDailyMeals.forEach((item) => {
+    const used = computed(() => {
+      const userCaloryUsedInDay = {
+        kcal: 0,
+        protein: 0,
+        carbohydrates: 0,
+        fat: 0,
+      };
+      props.useDailyMeals.forEach((item) => {
         for (const key1 in item) {
-          for (const key2 in used) {
+          for (const key2 in userCaloryUsedInDay) {
             if (key1 === key2) {
-              used[key2] += parseFloat(item[key1]);
+              userCaloryUsedInDay[key2] += parseFloat(item[key1]);
             }
           }
         }
       });
-    }
-    usedCalculate();
-
-    const flag = computed(() => {
-      return props.useMeal.flag;
-    });
-    watch(flag, () => {
-      usedCalculate();
+      return userCaloryUsedInDay;
     });
 
     const countedProtein = computed(() => {
@@ -91,15 +79,16 @@ export default {
     const countedCarbohydrates = computed(() => {
       return calculate('carbohydrates');
     });
+
     const countedKcal = computed(() => {
       return calculate('kcal');
     });
 
     function calculate(uName) {
-      if (used[uName] > props.personalData[uName]) {
+      if (used.value[uName] > props.personalData[uName]) {
         return '100%';
       } else {
-        return (used[uName] / props.personalData[uName]) * 100 + '%';
+        return (used.value[uName] / props.personalData[uName]) * 100 + '%';
       }
     }
 

@@ -57,7 +57,7 @@ export default {
     gap: 15px;
     h3 {
       font-size: 1.8rem;
-      
+
       text-align: center;
     }
     img {
@@ -74,6 +74,11 @@ export default {
     background-color: white;
     color: #e2882f;
     font-size: 1.7rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   .button:disabled {
     background-color: gray;
@@ -92,7 +97,7 @@ export default {
 @media screen and (min-width: 1200px) {
   .modal {
     position: fixed;
-    width: 100%; 
+    width: 100%;
   }
 }
 </style>

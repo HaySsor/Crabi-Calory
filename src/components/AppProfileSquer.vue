@@ -37,6 +37,23 @@ export default {
     border-left: 1px solid black;
   }
 }
+@media screen and (min-width: 454px) {
+  .profile {
+    width: 60%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    background-color: #f9faf79f;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.193);
+    border-radius: 30px;
+    padding: 10px;
+    img {
+      width: 50px;
+    }
+  }
+}
 @media screen and (min-width: 1200px) {
   .profile {
     width: 25%;

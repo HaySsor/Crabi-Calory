@@ -43,11 +43,11 @@ export default {
     background-color: #e2882f;
     color: white;
     border-radius: 20px;
-    transition: background 0.3s;
-  }
-  button:hover {
-    background-color: #573819;
-    color: white;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }
 </style>

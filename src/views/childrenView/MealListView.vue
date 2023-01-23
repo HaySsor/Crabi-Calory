@@ -85,7 +85,7 @@ export default {
     padding: 20px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 454px) {
   .meal-list {
     margin-bottom: 50px;
     &__top {

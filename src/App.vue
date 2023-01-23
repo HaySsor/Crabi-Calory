@@ -51,7 +51,7 @@ export default {
   .wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
   }
 }
 </style>

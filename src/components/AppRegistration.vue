@@ -308,18 +308,21 @@ export default {
         background-color: #e2882f;
         color: white;
         font-size: 1.7rem;
+        cursor: pointer;
+        transition: transform 0.3s;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
   }
 }
-/* Media PC */
-
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 454px) {
   .login {
     &__form {
       padding: 15px;
       background: #f4f4f4ac;
-      width: 50%;
+      width: 80%;
       margin: 0 auto;
       margin-top: 50px;
       display: flex;
@@ -338,6 +341,19 @@ export default {
         &-input {
           padding: 8px;
         }
+      }
+    }
+  }
+}
+/* Media PC */
+
+@media screen and (min-width: 1200px) {
+  .login {
+    &__form {
+      width: 50%;
+      &-box {
+        width: 50%;
+        gap: 5px;
       }
 
       .input-select {
