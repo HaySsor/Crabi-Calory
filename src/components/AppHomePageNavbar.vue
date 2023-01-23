@@ -64,8 +64,7 @@ export default {
   z-index: 49;
   width: 100%;
   height: 90px;
-  background: rgb(210, 141, 72);
-  background: linear-gradient(90deg, #cfcfcfe5 0%, #ffffff89 100%);
+  background-color: #f9faf7;
   backdrop-filter: blur(3px);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

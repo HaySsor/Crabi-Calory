@@ -103,16 +103,15 @@ export default {
     }
   }
 }
-
 .info {
   background-color: #f4f4f4;
-  border-radius: 35px;
-  height: 100%;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
   padding: 20px;
   padding-top: 40px;
   font-size: 1.6rem;
   width: 100%;
-  height: 500px;
+  height: calc(100vh - 159px - 70px);
   &__box {
     margin-top: 20px;
     display: flex;
@@ -239,6 +238,11 @@ export default {
     .color-orange {
       display: flex;
     }
+  }
+}
+@media screen and (min-width: 454px) {
+  .info {
+    height: calc(100vh - 331px - 50px);
   }
 }
 

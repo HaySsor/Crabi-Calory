@@ -2,8 +2,6 @@
   <div class="chart">
     <img class="img img1" src="/icons/crab.png" alt="" aria-hidden="true" />
     <img class="img img2" src="/icons/crab.png" alt="" aria-hidden="true" />
-    <img class="img img3" src="/icons/crab.png" alt="" aria-hidden="true" />
-    <img class="img img4" src="/icons/crab.png" alt="" aria-hidden="true" />
     <header class="chart__top">
       <h2 class="chart__top-title family-Nerko">Your Calory</h2>
     </header>
@@ -38,7 +36,7 @@
 
 <script>
 import AppCaloryChartItem from '@/components/AppCaloryChartItem.vue';
-import {computed, watch, ref} from 'vue';
+import {computed} from 'vue';
 export default {
   name: 'CaloryChart',
   components: {AppCaloryChartItem},
@@ -106,36 +104,27 @@ export default {
 <style lang="scss" scoped>
 .chart {
   width: 90vw;
-  height: 420px;
-  background-color: #f9faf7;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.193);
+  height: 430px;
   border-radius: 30px;
+  border: 5px solid #ffff;
+  /* background: #ffffff; */
+  /* box-shadow: 23px 23px 46px #01010150, -23px -23px 46px #ffffff38; */
   margin: auto;
-  margin-top: 40px;
+  margin-top: 60px;
   padding: 10px;
   position: relative;
   .img {
-    width: 50px;
+    width: 40px;
     position: absolute;
-    z-index: -10;
+    z-index: 1;
   }
   .img1 {
-    top: -22px;
-    left: -10px;
-    transform: rotate(-30deg);
+    top: -36px;
+    left: 60px;
   }
   .img2 {
-    top: -22px;
-    right: -10px;
-    transform: rotate(30deg);
-  }
-  .img3 {
-    top: -32px;
-    left: 100px;
-  }
-  .img4 {
-    top: -32px;
-    right: 100px;
+    top: -36px;
+    right: 60px;
   }
   &__top {
     display: flex;
@@ -146,9 +135,12 @@ export default {
       text-align: center;
       font-size: 2.2rem;
       padding: 10px;
-      background-color: rgba(144, 238, 144, 0.416);
-      border-radius: 25px;
-      width: 60%;
+      background-color: #ffff;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      width: 80%;
+      margin-bottom: 10px;
+      transform: translateY(-11px);
     }
   }
   &__middle {
@@ -161,7 +153,8 @@ export default {
 @media screen and (min-width: 1200px) {
   .chart {
     width: 40%;
-    height: 400px;
+    height: 430px;
+    margin-top: 40px;
   }
 }
 </style>

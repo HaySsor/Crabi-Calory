@@ -3,20 +3,20 @@
     <div class="shadow" @click="closeModalUserEditProfile"></div>
     <form @submit.prevent="edit" class="form">
       <h3 class="family-Nerko title">Edit calorific requirement</h3>
-      <div class="advanced-options">
+      <div class="form__data">
         <label>Your Daily Fat in gram</label>
         <input type="number" v-model="fat" />
         <label>Your Carbohydrates in gram</label>
         <input type="number" v-model="carbohydrates" />
         <label>Your Protein in gram</label>
         <input type="number" v-model="protein" />
-        <div class="calory-box">
+        <div class="form__data-calory-box">
           <h3 class="family-Nerko">Your Calory</h3>
           <span class="calory">{{ calory }} calories</span>
         </div>
       </div>
-      <div class="login__form-btn">
-        <button class="login__form-btn-button" type="submit">Save</button>
+      <div class="form__buttons">
+        <button class="form__buttons-save" type="submit">Save</button>
       </div>
     </form>
   </div>
@@ -67,7 +67,7 @@ export default {
 
 <style lang="scss" scoped>
 .modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -79,7 +79,8 @@ export default {
   z-index: 50;
   .form {
     width: 80%;
-    height: 350px;
+    max-width: 300px;
+    height: 380px;
     background-color: #f9faf7ff;
     border-radius: 30px;
     display: flex;
@@ -89,6 +90,53 @@ export default {
     z-index: 10;
     gap: 10px;
     position: relative;
+
+    h3 {
+      font-size: 2rem;
+      margin-top: 10px;
+    }
+
+    &__data {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap:5px;
+
+      label {
+        font-size: 1.6rem;
+      }
+      input {
+        border: 1px solid gray;
+        padding: 5px;
+        border-radius: 25px;
+        text-align: center;
+      }
+      &-calory-box {
+        h3 {
+          font-size: 2.2rem;
+        }
+        .calory {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    &__buttons {
+      
+      &-save {
+        padding: 15px 40px;
+        background-color: #e2882f;
+        border: none;
+        color: white;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: transform 0.3s, background 0.3;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
   }
   .shadow {
     position: absolute;

@@ -36,12 +36,12 @@ export default {
 .box {
   width: 90vw;
   height: 400px;
-  background-color: #f9faf7;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.193);
   border-radius: 30px;
   margin: auto;
   margin-top: 40px;
   padding: 10px;
+  background-color: transparent;
+  border: 5px solid #ffff;
 
   .img {
     display: none;
@@ -55,9 +55,11 @@ export default {
       text-align: center;
       font-size: 2.2rem;
       padding: 10px;
-      background-color: rgba(144, 238, 144, 0.416);
-      border-radius: 25px;
-      width: 60%;
+      background-color: #ffff;
+      transform: translateY(-11px);
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      width: 80%;
     }
   }
 
@@ -93,8 +95,17 @@ export default {
 @media screen and (min-width: 1200px) {
   .box {
     width: 40%;
-    height: 400px;
+    height: 430px;
     position: relative;
+    &__list {
+      margin-top: 10px;
+      &-ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 }
 </style>

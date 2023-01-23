@@ -27,7 +27,7 @@ export default {
 <style lang="scss" scoped>
 .item {
   margin-bottom: 10px;
-  border: 2px solid rgba(144, 238, 144, 0.416);
+  background-color: #fff;
   width: 100%;
   padding: 10px 15px;
   border-radius: 25px;
@@ -62,5 +62,7 @@ export default {
       }
     }
   }
+}
+@media screen and (min-width: 1200px) {
 }
 </style>

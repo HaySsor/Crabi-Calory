@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <h3 class="item__title">{{ name }}</h3>
+    <h3 class="item__title family-Nerko">{{ name }}</h3>
     <div class="item__bar">
       <div
         class="item__bar-fill"
@@ -11,9 +11,15 @@
       <div
         class="item__bar-circle"
         :style="{
-          backgroundColor: counted === '100%' ? 'lightgreen' : '#f9faf7',
+          background: counted === '100%' ? 'lightgreen' : 'rgb(157,212,172)',
         }">
         <i v-if="counted === '100%'" class="fas fa-check"></i>
+        <img
+          v-if="counted === '100%'"
+          class="img"
+          src="/icons/crab.png"
+          alt=""
+          aria-hidden="true" />
       </div>
     </div>
     <p class="item__info">
@@ -46,20 +52,20 @@ export default {
 
 <style lang="scss" scoped>
 .item {
-  margin: 10px;
   width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
   &__title {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
+    margin-bottom: 0;
   }
   &__bar {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 4px solid rgba(144, 238, 144, 0.416);
+    border: 2px solid #ffff;
     overflow: hidden;
     position: relative;
 
@@ -76,9 +82,8 @@ export default {
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 10;
-      height: 80px;
-      width: 80px;
-      background-color: #f9faf7;
+      height: 70px;
+      width: 70px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -87,11 +92,71 @@ export default {
       i {
         font-size: 2.5rem;
         color: rgb(4, 120, 4);
+        position: absolute;
+        animation: added-ok 2s forwards;
+      }
+      img {
+        width: 30px;
+        position: absolute;
+        bottom: 0px;
+        left: 18px;
+        animation: crab-bring-ok 2s forwards;
       }
     }
   }
   &__info {
     font-size: 1.3rem;
+    background-color: #ffff;
+    padding: 5px 15px;
+    border-radius: 25px;
+    margin-bottom: 5px;
+  }
+}
+
+@keyframes crab-bring-ok {
+  0% {
+    transform: translateY(100px);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  60% {
+    transform: translateY(0px) rotate(-20deg);
+  }
+  70% {
+    transform: translateY(0px) rotate(20deg);
+  }
+  80% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}
+@keyframes added-ok {
+  0% {
+    transform: translateY(100px);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-20px);
+  }
+  70% {
+    transform: translateY(-20px);
+  }
+  80% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }
 </style>

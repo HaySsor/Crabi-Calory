@@ -49,9 +49,6 @@ export default {
       useUser.downloadUserData();
       useMeal.getUserMeal();
     });
-    setTimeout(() => {
-      showModalUserEditProfile.value = true;
-    }, 500);
     function closeModalUserEditProfile() {
       showModalUserEditProfile.value = false;
     }
