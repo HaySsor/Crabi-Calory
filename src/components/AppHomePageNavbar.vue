@@ -131,8 +131,9 @@ export default {
     position: fixed;
     left: 50%;
     width: 100%;
-    height: 100px;
+    height: 90px;
     bottom: 0;
+    max-width: 800px;
     transform: translate(-50%);
     backdrop-filter: blur(3px);
     &__list {
@@ -174,7 +175,7 @@ export default {
           font-size: 1.4rem;
         }
       }
-      &-logout:hover{
+      &-logout:hover {
         transform: scale(1.1);
       }
       &-item,

@@ -27,7 +27,7 @@ export default {
   align-items: center;
   padding: 10px 15px;
   border-radius: 30px;
-  background-color: #f9faf7ff;
+  background-color: #ffff;
   transition: background 0.3s;
 
   h3 {
@@ -48,6 +48,18 @@ export default {
     &:hover {
       transform: scale(1.2);
     }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: #ffff;
+    transition: background 0.3s;
+    width: 48%;
   }
 }
 </style>

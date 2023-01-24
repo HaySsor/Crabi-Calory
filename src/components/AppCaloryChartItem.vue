@@ -56,6 +56,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 35px;
   gap: 5px;
   &__title {
     font-size: 2.2rem;

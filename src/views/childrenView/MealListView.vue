@@ -40,12 +40,15 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   &__top {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
+
+    padding: 10px;
     &-title {
       position: absolute;
       top: 90%;
@@ -81,7 +84,6 @@ export default {
     margin-top: 50px;
     width: 100%;
     border-radius: 25px;
-    background-color: rgba(0, 0, 0, 0.21);
     padding: 20px;
   }
 }
@@ -116,9 +118,10 @@ export default {
       margin-top: 50px;
       width: 80%;
       border-radius: 25px;
-      background-color: rgba(0, 0, 0, 0.21);
       padding: 20px;
     }
   }
+}
+@media screen and (min-width: 1200px) {
 }
 </style>

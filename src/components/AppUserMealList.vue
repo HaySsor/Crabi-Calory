@@ -97,6 +97,7 @@ export default {
     width: 40%;
     height: 430px;
     position: relative;
+    margin-top: 25px;
     &__list {
       margin-top: 10px;
       &-ul {

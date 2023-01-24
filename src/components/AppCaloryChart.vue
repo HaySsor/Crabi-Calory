@@ -148,13 +148,14 @@ export default {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    gap: 10px;
   }
 }
 @media screen and (min-width: 1200px) {
   .chart {
     width: 40%;
     height: 430px;
-    margin-top: 40px;
+    margin-top: 25px;
   }
 }
 </style>

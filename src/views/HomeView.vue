@@ -280,6 +280,7 @@ export default {
     margin: 0 auto;
     position: relative;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.614);
+    border-radius: 35px;
 
     &::after,
     &::before {

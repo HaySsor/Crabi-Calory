@@ -128,6 +128,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
   .form {
     width: 80%;
     height: 350px;
