@@ -30,12 +30,12 @@
         <span>Please add gram <i class="far fa-times-circle"></i></span>
       </div>
 
-      <button
+      <AppButton
         class="form__add"
         @click="addToDailyList"
         :disabled="message == 1">
         Add
-      </button>
+      </AppButton>
     </div>
   </div>
 </template>
@@ -43,9 +43,11 @@
 <script>
 import {ref, computed} from 'vue';
 import useMealStore from '@/stores/meals';
+import AppButton from '../styleComponents/AppButton.vue';
 
 export default {
   name: 'ModalAddMeal',
+  components: {AppButton},
 
   props: {
     picketMeal: {
@@ -184,20 +186,6 @@ export default {
     }
     &__add {
       padding: 15px 40px;
-      margin-top: 10px;
-      background-color: #e2882f;
-      border: none;
-      color: white;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3;
-      &:hover {
-        transform: scale(1.1);
-      }
-
-      &:disabled {
-        background-color: grey;
-      }
     }
     &__alert {
       position: absolute;

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../pages/HomeView.vue'
 import useUserStore from '../stores/user'
 
 
@@ -14,34 +14,34 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/views/LoginSignView.vue')
+      component: () => import('@/pages/LoginSignView.vue')
 
-      // component: () => import('../views/AboutView.vue')
+      // component: () => import('../pages/AboutView.vue')
     },
     {
       path: '/userHomePage',
       name: 'userHomePage',
-      component: () => import('@/views/UserHomePage.vue'),
+      component: () => import('@/pages/UserHomePage.vue'),
       children: [
         {
-          path: '/addMeal',
+          path: 'addMeal',
           name: 'addMeal',
-          component: () => import('@/views/childrenView/AddMealView.vue')
+          component: () => import('@/layout/AddMealView.vue')
         },
         {
-          path: '/weightHistory',
+          path: 'weightHistory',
           name: 'weightHistory',
-          component: () => import('@/views/childrenView/WeightHistoryView.vue')
+          component: () => import('@/layout/WeightHistoryView.vue')
         },
         {
-          path: '/mealList',
+          path: 'mealList',
           name: 'mealList',
-          component: () => import('@/views/childrenView/MealListView.vue')
+          component: () => import('@/layout/MealListView.vue')
         },
         {
-          path: '/profile',
+          path: 'profile',
           name: 'profile',
-          component: () => import('../views/childrenView/ProfileView.vue')
+          component: () => import('@/layout/ProfileView.vue')
         }
       ],
       meta: {

@@ -24,7 +24,7 @@
 <script>
 import useUserStore from '@/stores/user';
 export default {
-  name: 'NavbarHomePage',
+  name: 'HomePageNavbar',
   setup() {
     const userStore = useUserStore();
 

@@ -6,24 +6,24 @@
     <div class="box__list">
       <Transition name="fade" mode="out-in">
         <ul class="box__list-ul" v-if="useMeal.useDailyMeals.length > 0">
-          <AppUserMealListItemVue
+          <UserMealListItem
             v-for="meal in useMeal.useDailyMeals"
             :key="meal.id"
             :meal="meal"
             :useMeal="useMeal" />
         </ul>
-        <AppUserMealListEmptyVue v-else />
+        <UserMealListEmpty v-else />
       </Transition>
     </div>
   </div>
 </template>
 
 <script>
-import AppUserMealListItemVue from './AppUserMealListItem.vue';
-import AppUserMealListEmptyVue from './AppUserMealListEmpty.vue';
+import UserMealListItem from './UserMealListItem.vue';
+import UserMealListEmpty from './UserMealListEmpty.vue';
 export default {
   name: 'UserMealList',
-  components: {AppUserMealListItemVue, AppUserMealListEmptyVue},
+  components: {UserMealListItem, UserMealListEmpty},
   props: {
     useMeal: {
       required: true,

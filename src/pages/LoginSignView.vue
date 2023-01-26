@@ -5,11 +5,12 @@
     </router-link>
     <div class="flex-box">
       <h2 class="login__title family-Nerko">Craby Family</h2>
-      <button class="login__switch" @click="login = !login">
+      <AppButton
+        @click="login = !login"
+        className="login__switch">
         {{ loginButtonText }}
-      </button>
+      </AppButton>
     </div>
-
     <!-- Form  -->
     <Transition name="fade" mode="out-in">
       <AppRegistration v-if="!login" />
@@ -19,12 +20,13 @@
 </template>
 
 <script>
-import AppRegistration from '@/components/AppRegistration.vue';
-import AppLogin from '@/components/AppLogin.vue';
+import AppRegistration from '../components/LoginPageComponents/AppRegistration.vue';
+import AppLogin from '../components/LoginPageComponents/AppLogin.vue';
+import AppButton from '../components/styleComponents/AppButton.vue';
 import {ref, computed} from 'vue';
 export default {
   name: 'LoginSingView',
-  components: {AppRegistration, AppLogin},
+  components: {AppRegistration, AppLogin, AppButton},
   setup() {
     const login = ref(false);
 
@@ -77,17 +79,7 @@ export default {
   }
   &__switch {
     padding: 5px 20px;
-    border: none;
-    border-radius: 20px;
-    background-color: #e2882f;
-    color: white;
-    font-size: 1.7rem;
     margin-left: 30px;
-    cursor: pointer;
-    transition: transform 0.3s;
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 }
 @media screen and (min-width: 1200px) {

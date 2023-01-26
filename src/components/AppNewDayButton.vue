@@ -1,13 +1,15 @@
 <template>
-  <button class="btn" @click="useMeal.newDay">
+  <AppButton className="btn" @click="useMeal.newDay">
     <i class="fas fa-plus-square"></i> <span>New day</span>
-  </button>
+  </AppButton>
 </template>
 
 <script>
 import useMealStore from '../stores/meals';
+import AppButton from './styleComponents/AppButton.vue';
 export default {
   name: 'NewDayButton',
+  components: {AppButton},
   setup() {
     const useMeal = useMealStore();
 
@@ -19,15 +21,5 @@ export default {
 <style lang="scss" scoped>
 .btn {
   padding: 15px 20px;
-  border: none;
-  background-color: #e2882f;
-  border-radius: 25px;
-  color: white;
-  transition: transform 0.3s;
-}
-.btn:hover {
-  transform: scale(1.1);
-  background-color: #f7b902;
-  color: black;
 }
 </style>

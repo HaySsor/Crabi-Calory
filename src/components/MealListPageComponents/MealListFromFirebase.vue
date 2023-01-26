@@ -2,7 +2,7 @@
   <div>
     <div class="box">
       <ul class="box__list">
-        <AppMealItemVue
+        <MealListFromFirebaseItem
           v-for="meal in filterList"
           :key="meal.name"
           :meal="meal"
@@ -33,7 +33,7 @@
       <i class="fas fa-search icon"></i>
       <input type="search" placeholder="Search Meal" v-model="searchMeal" />
     </div>
-    <AppModalAddMealVue
+    <ModalAddMeal
       v-if="modal"
       :picketMeal="picketMeal"
       :closeModal="closeModal" />
@@ -42,13 +42,13 @@
 
 <script>
 import {ListMealFormFirebase} from '@/composables/getMeal';
-import AppModalAddMealVue from './AppModalAddMeal.vue';
-import AppMealItemVue from './AppMealItem.vue';
+import ModalAddMeal from './ModalAddMeal.vue';
+import MealListFromFirebaseItem from './MealListFromFirebaseItem.vue';
 import {ref, onMounted} from 'vue';
 import {computed} from 'vue';
 export default {
-  name: 'FirebaseMealList',
-  components: {AppMealItemVue, AppModalAddMealVue},
+  name: 'MealListFromFirebase',
+  components: {MealListFromFirebaseItem, ModalAddMeal},
   setup() {
     // get Meals from firebase
     const list = ref([]);

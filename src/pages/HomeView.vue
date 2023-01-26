@@ -1,7 +1,7 @@
 <template>
   <section class="home">
     <div class="wrapper">
-      <NavbarHomePage />
+      <HomePageNavbar />
       <div class="hero">
         <h1 class="hero__title">
           Crabi <span class="color-orange">Calory</span>
@@ -43,12 +43,12 @@
         </div>
         <div class="info__box" v-if="!userStore.userLoggedIn">
           <RouterLink :to="{name: 'login'}">
-            <button class="info__box-button">Sign in / Login</button>
+            <AppButton>Sign in / Login</AppButton>
           </RouterLink>
         </div>
         <div class="info__box" v-else>
           <RouterLink :to="{name: 'profile'}">
-            <button class="info__box-button">Enter</button>
+            <AppButton>Enter</AppButton>
           </RouterLink>
         </div>
       </article>
@@ -57,11 +57,12 @@
 </template>
 
 <script>
-import NavbarHomePage from '@/components/NavbarHomePage.vue';
+import HomePageNavbar from '@/components/HomePageNavbar.vue';
 import useUserStore from '@/stores/user';
+import AppButton from '../components/styleComponents/AppButton.vue';
 export default {
   name: 'HomeView',
-  components: {NavbarHomePage},
+  components: {HomePageNavbar, AppButton},
   setup() {
     const userStore = useUserStore();
 
@@ -116,19 +117,6 @@ export default {
     margin-top: 20px;
     display: flex;
     justify-content: flex-end;
-    &-button {
-      padding: 15px 50px;
-      border: none;
-      border-radius: 20px;
-      background-color: #e2882f;
-      color: white;
-      font-size: 1.7rem;
-      cursor: pointer;
-      transition: transform 0.3s;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
   }
   &__title {
     text-align: center;

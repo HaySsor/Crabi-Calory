@@ -90,12 +90,7 @@
         </div>
       </div>
       <div class="login__form-btn">
-        <button
-          class="login__form-btn-button"
-          type="submit"
-          :disabled="regInSubmission">
-          Submit
-        </button>
+        <AppButton :disabled="regInSubmission"> Submit </AppButton>
       </div>
     </VeeForm>
     <AppModal
@@ -109,14 +104,15 @@
 
 <script>
 import {conversion} from '@/helper/demandConversion';
-import AppModal from '@/components/AppModal.vue';
+import AppModal from '../AppModal.vue';
 import useUserStore from '@/stores/user';
 import {ref, computed} from 'vue';
 import {useRouter} from 'vue-router';
+import AppButton from '../styleComponents/AppButton.vue';
 
 export default {
   name: 'AppRegistration',
-  components: {AppModal},
+  components: {AppModal, AppButton},
   setup() {
     const userStore = useUserStore();
     const router = useRouter();
@@ -301,19 +297,6 @@ export default {
     &-btn {
       display: flex;
       justify-content: flex-end;
-      &-button {
-        padding: 15px 50px;
-        border: none;
-        border-radius: 20px;
-        background-color: #e2882f;
-        color: white;
-        font-size: 1.7rem;
-        cursor: pointer;
-        transition: transform 0.3s;
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
     }
   }
 }

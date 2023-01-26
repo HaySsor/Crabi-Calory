@@ -2,7 +2,7 @@
   <div class="modal">
     <div class="window">
       <h3>{{ message }}</h3>
-      <img src="/icons/frankenstein.png" alt="" />
+      <img src="/icons/crab.png" alt="" />
       <button :disabled="passData" class="button" @click.prevent="closeModal">
         OK
       </button>

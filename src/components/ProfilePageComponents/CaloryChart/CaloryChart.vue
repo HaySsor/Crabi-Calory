@@ -6,25 +6,25 @@
       <h2 class="chart__top-title family-Nerko">Your Calory</h2>
     </header>
     <div class="chart__middle">
-      <AppCaloryChartItem
+      <CaloryChartItem
         name="Protein"
         :counted="countedProtein"
         :used="used"
         :personalData="personalData"
         parameter="protein" />
-      <AppCaloryChartItem
+      <CaloryChartItem
         name="Fat"
         :counted="countedFat"
         :used="used"
         :personalData="personalData"
         parameter="fat" />
-      <AppCaloryChartItem
+      <CaloryChartItem
         name="Carbohydrates"
         :counted="countedCarbohydrates"
         :used="used"
         :personalData="personalData"
         parameter="carbohydrates" />
-      <AppCaloryChartItem
+      <CaloryChartItem
         name="Calory"
         :counted="countedKcal"
         :used="used"
@@ -35,11 +35,11 @@
 </template>
 
 <script>
-import AppCaloryChartItem from '@/components/AppCaloryChartItem.vue';
+import CaloryChartItem from './CaloryChartItem.vue';
 import {computed} from 'vue';
 export default {
   name: 'CaloryChart',
-  components: {AppCaloryChartItem},
+  components: {CaloryChartItem},
   props: {
     personalData: {
       required: true,

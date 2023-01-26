@@ -20,16 +20,16 @@
       <div class="meal-list__top-shadow"></div>
     </div>
     <div class="meal-list__middle">
-      <AppFirebaseMealListVue />
+      <MealListFromFirebase />
     </div>
   </div>
 </template>
 
 <script>
-import AppFirebaseMealListVue from '../../components/AppFirebaseMealList.vue';
+import MealListFromFirebase from '../components/MealListPageComponents/MealListFromFirebase.vue';
 export default {
   name: 'MealList',
-  components: {AppFirebaseMealListVue},
+  components: {MealListFromFirebase},
 };
 </script>
 

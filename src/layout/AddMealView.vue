@@ -4,15 +4,15 @@
       <h2 class="add-meal__header-title family-Nerko">Add meal</h2>
       <span class="add-meal__header-info"> * add food per 100g</span>
     </header>
-    <AppAddMealToBaseVue />
+    <AddMealToBaseForm />
   </div>
 </template>
 
 <script>
-import AppAddMealToBaseVue from '../../components/AppAddMealToBase.vue';
+import AddMealToBaseForm from '../components/AddMealToBasePageComponents/AddMealToBaseForm.vue';
 export default {
   name: 'AddMealView',
-  components: {AppAddMealToBaseVue},
+  components: {AddMealToBaseForm},
 };
 </script>
 
@@ -32,8 +32,8 @@ export default {
       text-align: center;
       font-size: 2.5rem;
     }
-    &-info{
-      color:tomato;
+    &-info {
+      color: tomato;
       font-size: 1.5rem;
     }
   }

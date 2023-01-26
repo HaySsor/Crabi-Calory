@@ -1,13 +1,15 @@
 <template>
   <li class="item">
     <h3>{{ meal.name }}</h3>
-    <button @click="openModal(meal)">Add meal</button>
+    <AppButton @click="openModal(meal)" className="btn">Add meal</AppButton>
   </li>
 </template>
 
 <script>
+import AppButton from '../styleComponents/AppButton.vue';
 export default {
-  name: 'MealItem',
+  name: 'MealListFromFirebaseItem',
+  components: {AppButton},
   props: {
     meal: {
       required: true,
@@ -24,11 +26,12 @@ export default {
 .item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   padding: 10px 15px;
   border-radius: 30px;
   background-color: #ffff;
   transition: background 0.3s;
+
 
   h3 {
     font-size: 1.6rem;
@@ -37,17 +40,9 @@ export default {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  button {
+  .btn {
     padding: 10px 15px;
-    border: none;
-    background-color: #e2882f;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: transform 0.3s, background 0.3;
-    &:hover {
-      transform: scale(1.2);
-    }
+    font-size: 1.4rem;
   }
 }
 @media screen and (min-width: 1200px) {

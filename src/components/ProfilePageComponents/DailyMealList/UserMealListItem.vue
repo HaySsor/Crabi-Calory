@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'AppUserMealListItem',
+  name: 'UserMealListItem',
   props: {
     useMeal: {
       required: true,

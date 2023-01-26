@@ -8,22 +8,21 @@
           </transition>
         </router-view>
       </div>
-      <AppHomePageNavbarVue />
+      <UserHomePageNavbar />
     </div>
   </section>
 </template>
 
 <script>
-import AppHomePageNavbarVue from '../components/AppHomePageNavbar.vue';
+import UserHomePageNavbar from '../components/UserHomePageNavbar.vue';
 
 export default {
   name: 'UserHomePage',
-  components: {AppHomePageNavbarVue},
+  components: {UserHomePageNavbar},
 };
 </script>
 
 <style lang="scss" scoped>
-
 .fade-enter-from {
   opacity: 0;
 }

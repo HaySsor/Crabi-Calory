@@ -21,12 +21,10 @@
         <ErrorMessage class="error" name="password" />
       </div>
       <div class="login__form-btn">
-        <button
-          class="login__form-btn-button"
-          type="submit"
+        <AppButton
           :disabled="regInSubmission">
           Submit
-        </button>
+        </AppButton>
       </div>
     </VeeForm>
     <AppModal
@@ -43,10 +41,11 @@ import AppModal from '@/components/AppModal.vue';
 import {ref} from 'vue';
 import useUserStore from '@/stores/user';
 import {useRouter} from 'vue-router';
+import AppButton from '../styleComponents/AppButton.vue';
 
 export default {
   name: 'AppLogin',
-  components: {AppModal},
+  components: {AppModal, AppButton},
   setup() {
     const userStore = useUserStore();
     const router = useRouter();
@@ -68,7 +67,6 @@ export default {
       failLogin.value = false;
       message.value = 'Wait';
       passData.value = false;
-      regInSubmission.value = false;
       try {
         await userStore.login(value);
         message.value = 'Welcome Crab';
@@ -148,19 +146,6 @@ export default {
     &-btn {
       display: flex;
       justify-content: center;
-      &-button {
-        padding: 15px 50px;
-        border: none;
-        border-radius: 20px;
-        background-color: #e2882f;
-        color: white;
-        font-size: 1.7rem;
-        cursor: pointer;
-        transition: transform 0.3s;
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
     }
   }
 }

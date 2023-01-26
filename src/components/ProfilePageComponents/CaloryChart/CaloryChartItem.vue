@@ -30,6 +30,7 @@
 </template>
 <script>
 export default {
+  name: 'CaloryChartItem',
   props: {
     name: {
       required: true,

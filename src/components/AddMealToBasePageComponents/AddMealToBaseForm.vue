@@ -43,7 +43,7 @@
       </p>
     </div>
     <div class="form__button">
-      <button>Add meal</button>
+      <AppButton>Add meal</AppButton>
     </div>
   </form>
   <AppModal
@@ -56,12 +56,13 @@
 
 <script>
 import {reactive, ref} from 'vue';
-import {addMealToFireBase} from '../composables/addMeal';
+import {addMealToFireBase} from '../../composables/addMeal';
 import AppModal from '@/components/AppModal.vue';
+import AppButton from '../styleComponents/AppButton.vue';
 
 export default {
-  name: 'AddMealToBase',
-  components: {AppModal},
+  name: 'AddMealToBaseForm',
+  components: {AppModal, AppButton},
 
   setup() {
     const addedMeal = reactive({
@@ -197,14 +198,6 @@ export default {
     display: flex;
     justify-content: flex-end;
     margin-right: 10px;
-    button {
-      padding: 15px 50px;
-      border: none;
-      border-radius: 20px;
-      background-color: #e2882f;
-      color: white;
-      font-size: 1.7rem;
-    }
   }
   .error {
     margin: 0 auto;

@@ -1,7 +1,7 @@
 <template>
   <div class="profile-view">
     <div class="profile-view__top">
-      <AppProfileSquerVue
+      <UserProfileBox
         :personalData="useUser.loggedUser"
         :OpenModalUserEditProfile="openModalUserEditProfile" />
       <AppNewDayButtonVue />
@@ -11,9 +11,9 @@
         :personalData="useUser.loggedUser"
         :useDailyMeals="useMeal.useDailyMeals"
         :key="useUser.userChangeData" />
-      <AppUserMealListVue :useMeal="useMeal" />
+      <UserMealList :useMeal="useMeal" />
 
-      <AppModalChangeUserData
+      <ModalChangeUserData
         v-if="showModalUserEditProfile"
         :personalData="useUser.loggedUser"
         :closeModalUserEditProfile="closeModalUserEditProfile" />
@@ -22,23 +22,23 @@
 </template>
 
 <script>
-import AppProfileSquerVue from '@/components/AppProfileSquer.vue';
-import AppCaloryChartVue from '@/components/AppCaloryChart.vue';
-import AppUserMealListVue from '@/components/AppUserMealList.vue';
-import AppNewDayButtonVue from '../../components/AppNewDayButton.vue';
+import UserProfileBox from '../components/ProfilePageComponents/UserProfileBox/UserProfileBox.vue';
+import AppCaloryChartVue from '../components/ProfilePageComponents/CaloryChart/CaloryChart.vue';
+import UserMealList from '../components/ProfilePageComponents/DailyMealList/UserMealList.vue';
+import AppNewDayButtonVue from '@/components/AppNewDayButton.vue';
 import useMealsStore from '@/stores/meals';
 import {onBeforeMount, ref} from 'vue';
 import useUserStore from '@/stores/user';
-import AppModalChangeUserData from '../../components/AppModalChangeUserData.vue';
+import ModalChangeUserData from '../components/ProfilePageComponents/UserProfileBox/ModalChangeUserData.vue';
 
 export default {
   name: 'ProfileView',
   components: {
-    AppProfileSquerVue,
+    UserProfileBox,
     AppCaloryChartVue,
-    AppUserMealListVue,
+    UserMealList,
     AppNewDayButtonVue,
-    AppModalChangeUserData,
+    ModalChangeUserData,
   },
   setup() {
     const useUser = useUserStore();

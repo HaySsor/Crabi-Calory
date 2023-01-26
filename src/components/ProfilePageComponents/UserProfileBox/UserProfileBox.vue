@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'ProfileSquare',
+  name: 'UserProfileBox',
   props: {
     personalData: {
       required: true,
