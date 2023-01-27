@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import useMealStore from '../stores/meals';
-import AppButton from './styleComponents/AppButton.vue';
+import useMealStore from '@/stores/meals';
+import AppButton from '../../styleComponents/AppButton.vue';
 export default {
   name: 'NewDayButton',
   components: {AppButton},

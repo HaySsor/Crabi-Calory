@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <WindowComponent class="box">
     <header class="box__top">
       <h2 class="box__top-title family-Nerko">Your Daily Meal</h2>
     </header>
@@ -15,15 +15,16 @@
         <UserMealListEmpty v-else />
       </Transition>
     </div>
-  </div>
+  </WindowComponent>
 </template>
 
 <script>
 import UserMealListItem from './UserMealListItem.vue';
 import UserMealListEmpty from './UserMealListEmpty.vue';
+import WindowComponent from '../../styleComponents/WindowComponent.vue';
 export default {
   name: 'UserMealList',
-  components: {UserMealListItem, UserMealListEmpty},
+  components: {UserMealListItem, UserMealListEmpty, WindowComponent},
   props: {
     useMeal: {
       required: true,
@@ -34,15 +35,6 @@ export default {
 
 <style lang="scss" scoped>
 .box {
-  width: 90vw;
-  height: 400px;
-  border-radius: 30px;
-  margin: auto;
-  margin-top: 40px;
-  padding: 10px;
-  background-color: transparent;
-  border: 5px solid #ffff;
-
   .img {
     display: none;
   }
@@ -62,7 +54,6 @@ export default {
       width: 80%;
     }
   }
-
   &__list {
     overflow: auto;
     height: 325px;
@@ -90,23 +81,5 @@ export default {
 }
 .fade-leave-active {
   transition: all 0.3s ease-in;
-}
-
-@media screen and (min-width: 1200px) {
-  .box {
-    width: 40%;
-    height: 430px;
-    position: relative;
-    margin-top: 25px;
-    &__list {
-      margin-top: 10px;
-      &-ul {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-  }
 }
 </style>

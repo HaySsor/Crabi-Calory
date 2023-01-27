@@ -21,13 +21,10 @@
         <ErrorMessage class="error" name="password" />
       </div>
       <div class="login__form-btn">
-        <AppButton
-          :disabled="regInSubmission">
-          Submit
-        </AppButton>
+        <AppButton :disabled="regInSubmission"> Submit </AppButton>
       </div>
     </VeeForm>
-    <AppModal
+    <LoadingModal
       :message="message"
       v-if="showModal"
       :passData="passData"
@@ -37,7 +34,7 @@
 </template>
 
 <script>
-import AppModal from '@/components/AppModal.vue';
+import LoadingModal from '../LoadingModal.vue';
 import {ref} from 'vue';
 import useUserStore from '@/stores/user';
 import {useRouter} from 'vue-router';
@@ -45,7 +42,7 @@ import AppButton from '../styleComponents/AppButton.vue';
 
 export default {
   name: 'AppLogin',
-  components: {AppModal, AppButton},
+  components: {LoadingModal, AppButton},
   setup() {
     const userStore = useUserStore();
     const router = useRouter();
@@ -130,7 +127,7 @@ export default {
       &-input {
         padding: 5px;
         width: 80%;
-        border-radius: 25px;
+        border-radius: 10px;
         border: 1px solid rgba(51, 51, 51, 0.636);
       }
       &-input:focus {
@@ -156,15 +153,41 @@ export default {
       max-width: 500px;
       margin-top: 20px;
       padding: 15px;
-      background: #f4f4f4ac;
+      background-color: transparent;
+      border: 4px solid #ffff;
       border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      &-title {
+        background-color: #ffff;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        transform: translateY(-15px);
+        width: 80%;
+      }
       &-box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
         gap: 5px;
+        &-label {
+          color: black;
+          font-size: 1.5rem;
+          margin-bottom: 5px;
+        }
+        &-input {
+          padding: 5px;
+          width: 100%;
+          border: 1px solid rgba(51, 51, 51, 0.636);
+        }
+        &-input:focus {
+          border: 1px solid #e2882f;
+        }
+      }
+      &-btn {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
       }
     }
   }
@@ -173,57 +196,6 @@ export default {
   .box {
     width: 100%;
   }
-  .login {
-    &__form {
-      width: 40%;
-      margin-top: 20px;
-      padding: 15px;
-      background: #f4f4f4ac;
-      border-radius: 25px;
-      &-box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
-        gap: 5px;
 
-        &-label {
-          color: black;
-          font-size: 1.6rem;
-          margin-bottom: 5px;
-          font-weight: bold;
-        }
-        &-input {
-          padding: 8px;
-          width: 60%;
-          border-radius: 25px;
-          border: 1px solid rgba(51, 51, 51, 0.636);
-        }
-        &-input:focus {
-          border: 1px solid #e2882f;
-        }
-      }
-      &-title {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        width: 100%;
-        text-align: center;
-      }
-      &-btn {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        &-button {
-          padding: 15px 50px;
-          border: none;
-          border-radius: 20px;
-          background-color: #e2882f;
-          color: white;
-          font-size: 1.7rem;
-        }
-      }
-    }
-  }
 }
 </style>

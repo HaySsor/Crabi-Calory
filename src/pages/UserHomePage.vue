@@ -41,6 +41,11 @@ export default {
 .fade-leave-active {
   transition: all 0.3s ease-in;
 }
+.home {
+  display: grid;
+  min-height: 100dvh;
+  min-height: 100vh;
+}
 @media screen and (min-width: 1200px) {
   .wrapper2 {
     max-width: 1200px;

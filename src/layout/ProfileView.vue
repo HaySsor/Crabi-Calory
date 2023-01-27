@@ -25,7 +25,7 @@
 import UserProfileBox from '../components/ProfilePageComponents/UserProfileBox/UserProfileBox.vue';
 import AppCaloryChartVue from '../components/ProfilePageComponents/CaloryChart/CaloryChart.vue';
 import UserMealList from '../components/ProfilePageComponents/DailyMealList/UserMealList.vue';
-import AppNewDayButtonVue from '@/components/AppNewDayButton.vue';
+import AppNewDayButtonVue from '../components/ProfilePageComponents/UserProfileBox/AppNewDayButton.vue';
 import useMealsStore from '@/stores/meals';
 import {onBeforeMount, ref} from 'vue';
 import useUserStore from '@/stores/user';
@@ -84,14 +84,22 @@ export default {
       justify-content: space-around;
       align-items: center;
     }
+    .box-pc{
+      display: grid;
+      grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+    }
   }
 }
 @media screen and (min-width: 1200px) {
   .profile-view {
     .box-pc {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 100%;
+      gap: 10px;
+      justify-items: center;
+      grid-template-areas: 
+      "char . list"
+      ;
+      
     }
     &__top {
       display: flex;

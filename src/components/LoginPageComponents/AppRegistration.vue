@@ -104,7 +104,7 @@
 
 <script>
 import {conversion} from '@/helper/demandConversion';
-import AppModal from '../AppModal.vue';
+import AppModal from '../LoadingModal.vue';
 import useUserStore from '@/stores/user';
 import {ref, computed} from 'vue';
 import {useRouter} from 'vue-router';
@@ -217,7 +217,7 @@ export default {
       &-input {
         padding: 5px;
         width: 80%;
-        border-radius: 25px;
+        border-radius: 10px;
         border: 1px solid rgba(51, 51, 51, 0.636);
       }
       &-input:focus {
@@ -304,7 +304,8 @@ export default {
   .login {
     &__form {
       padding: 15px;
-      background: #f4f4f4ac;
+      background-color: transparent;
+      border: 4px solid #ffff;
       width: 80%;
       margin: 0 auto;
       margin-top: 50px;
@@ -312,6 +313,13 @@ export default {
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
+      .title {
+        background-color: #ffff;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        transform: translateY(-15px);
+        width: 80%;
+      }
 
       &-box {
         width: 50%;

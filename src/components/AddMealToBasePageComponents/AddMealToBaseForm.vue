@@ -46,7 +46,7 @@
       <AppButton>Add meal</AppButton>
     </div>
   </form>
-  <AppModal
+  <LoadingModal
     :message="message"
     v-if="showModal"
     :passData="passData"
@@ -57,12 +57,12 @@
 <script>
 import {reactive, ref} from 'vue';
 import {addMealToFireBase} from '../../composables/addMeal';
-import AppModal from '@/components/AppModal.vue';
+import LoadingModal from '../LoadingModal.vue';
 import AppButton from '../styleComponents/AppButton.vue';
 
 export default {
   name: 'AddMealToBaseForm',
-  components: {AppModal, AppButton},
+  components: {LoadingModal, AppButton},
 
   setup() {
     const addedMeal = reactive({

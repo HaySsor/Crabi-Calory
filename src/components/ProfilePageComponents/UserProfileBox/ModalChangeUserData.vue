@@ -66,104 +66,80 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+.form {
+  width: 80%;
+  max-width: 300px;
+  height: 380px;
+  background-color: #f9faf7ff;
+  border-radius: 30px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  z-index: 50;
-  .form {
-    width: 80%;
-    max-width: 300px;
-    height: 380px;
-    background-color: #f9faf7ff;
-    border-radius: 30px;
+  padding: 10px;
+  z-index: 10;
+  gap: 10px;
+  position: relative;
+
+  h3 {
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+
+  &__data {
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 10px;
-    z-index: 10;
-    gap: 10px;
-    position: relative;
+    gap: 5px;
 
-    h3 {
-      font-size: 2rem;
-      margin-top: 10px;
+    label {
+      font-size: 1.6rem;
     }
-
-    &__data {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap:5px;
-
-      label {
-        font-size: 1.6rem;
-      }
-      input {
-        border: 1px solid gray;
-        padding: 5px;
-        border-radius: 25px;
-        text-align: center;
-      }
-      &-calory-box {
-        h3 {
-          font-size: 2.2rem;
-        }
-        .calory {
-          font-size: 1.5rem;
-        }
-      }
+    input {
+      border: 1px solid gray;
+      padding: 5px;
+      border-radius: 25px;
+      text-align: center;
     }
-    &__buttons {
-      
-      &-save {
-        padding: 15px 40px;
-        background-color: #e2882f;
-        border: none;
-        color: white;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: transform 0.3s, background 0.3;
-        &:hover {
-          transform: scale(1.1);
-        }
+    &-calory-box {
+      h3 {
+        font-size: 2.2rem;
+      }
+      .calory {
+        font-size: 1.5rem;
       }
     }
   }
-  .shadow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.567);
+  &__buttons {
+    &-save {
+      padding: 15px 40px;
+      background-color: #e2882f;
+      border: none;
+      color: white;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 }
 @media screen and (min-width: 454px) {
-  .modal {
-    .form {
-      width: 40%;
-    }
+  .form {
+    width: 40%;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .modal {
-    .form {
-      width: 25%;
-      &__input {
-        width: 50%;
-      }
-
-      &__add {
-        padding: 15px 80px;
-      }
+  .form {
+    width: 25%;
+    &__input {
+      width: 50%;
+    }
+    &__add {
+      padding: 15px 80px;
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="chart">
+  <WindowComponent class="chart">
     <img class="img img1" src="/icons/crab.png" alt="" aria-hidden="true" />
     <img class="img img2" src="/icons/crab.png" alt="" aria-hidden="true" />
     <header class="chart__top">
@@ -7,39 +7,24 @@
     </header>
     <div class="chart__middle">
       <CaloryChartItem
-        name="Protein"
-        :counted="countedProtein"
+        v-for="component in ComponentRenderArray"
+        :key="component.name"
+        :name="component.name"
+        :counted="component.counted"
         :used="used"
         :personalData="personalData"
-        parameter="protein" />
-      <CaloryChartItem
-        name="Fat"
-        :counted="countedFat"
-        :used="used"
-        :personalData="personalData"
-        parameter="fat" />
-      <CaloryChartItem
-        name="Carbohydrates"
-        :counted="countedCarbohydrates"
-        :used="used"
-        :personalData="personalData"
-        parameter="carbohydrates" />
-      <CaloryChartItem
-        name="Calory"
-        :counted="countedKcal"
-        :used="used"
-        :personalData="personalData"
-        parameter="kcal" />
+        :parameter="component.parameter" />
     </div>
-  </div>
+  </WindowComponent>
 </template>
 
 <script>
 import CaloryChartItem from './CaloryChartItem.vue';
+import WindowComponent from '../../styleComponents/WindowComponent.vue';
 import {computed} from 'vue';
 export default {
   name: 'CaloryChart',
-  components: {CaloryChartItem},
+  components: {CaloryChartItem, WindowComponent},
   props: {
     personalData: {
       required: true,
@@ -90,12 +75,32 @@ export default {
       }
     }
 
+    const ComponentRenderArray = [
+      {
+        name: 'Protein',
+        counted: countedProtein,
+        parameter: 'protein',
+      },
+      {
+        name: 'Fat',
+        counted: countedFat,
+        parameter: 'fat',
+      },
+      {
+        name: 'Carbohydrates',
+        counted: countedCarbohydrates,
+        parameter: 'carbohydrates',
+      },
+      {
+        name: 'Calory',
+        counted: countedKcal,
+        parameter: 'fat',
+      },
+    ];
+
     return {
-      countedProtein,
-      countedFat,
-      countedCarbohydrates,
-      countedKcal,
       used,
+      ComponentRenderArray,
     };
   },
 };
@@ -103,16 +108,6 @@ export default {
 
 <style lang="scss" scoped>
 .chart {
-  width: 90vw;
-  height: 430px;
-  border-radius: 30px;
-  border: 5px solid #ffff;
-  /* background: #ffffff; */
-  /* box-shadow: 23px 23px 46px #01010150, -23px -23px 46px #ffffff38; */
-  margin: auto;
-  margin-top: 60px;
-  padding: 10px;
-  position: relative;
   .img {
     width: 40px;
     position: absolute;
@@ -149,13 +144,6 @@ export default {
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .chart {
-    width: 40%;
-    height: 430px;
-    margin-top: 25px;
   }
 }
 </style>

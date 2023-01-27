@@ -120,124 +120,102 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+.form {
+  width: 80%;
+  height: 350px;
+  background-color: #f9faf7ff;
+  border-radius: 30px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  z-index: 999;
-  .form {
-    width: 80%;
-    height: 350px;
-    background-color: #f9faf7ff;
-    border-radius: 30px;
+  padding: 10px;
+  z-index: 10;
+  gap: 10px;
+  position: relative;
+  &__name {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  &__box {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    z-index: 10;
-    gap: 10px;
-    position: relative;
-    &__name {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    &__box {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding: 0 10px;
-      &-name {
-        font-size: 1.6rem;
-        flex: 1;
-      }
-      &-info {
-        flex: 0.5;
-        font-size: 1.8rem;
-        text-align: center;
-      }
-      .green {
-        color: rgb(12, 214, 133);
-      }
-      .orange {
-        color: orange;
-      }
-      .blue {
-        color: rgb(54, 174, 213);
-      }
-      .red {
-        color: tomato;
-      }
-    }
-    &__label {
-      font-size: 1.5rem;
-    }
-    &__input {
-      border: 1px solid black;
-      border-radius: 20px;
-      padding: 10px;
-      text-align: center;
-      font-size: 1.4rem;
-    }
-    &__add {
-      padding: 15px 40px;
-    }
-    &__alert {
-      position: absolute;
-      bottom: -15px;
-      padding: 10px 20px;
+    justify-content: center;
+    padding: 0 10px;
+    &-name {
       font-size: 1.6rem;
-      background-color: lightgreen;
-      color: grey;
-      border-radius: 25px;
-
-      &-error {
-        background-color: tomato;
-        color: white;
-      }
+      flex: 1;
     }
-    &__exit {
-      position: absolute;
-      right: 20px;
-      font-size: 2rem;
+    &-info {
+      flex: 0.5;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+    .green {
+      color: rgb(12, 214, 133);
+    }
+    .orange {
+      color: orange;
+    }
+    .blue {
+      color: rgb(54, 174, 213);
+    }
+    .red {
       color: tomato;
-      transition: transform 0.3s;
-      &:hover {
-        transform: scale(1.2);
-      }
     }
   }
-  .shadow {
+  &__label {
+    font-size: 1.5rem;
+  }
+  &__input {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.4rem;
+  }
+  &__add {
+    padding: 15px 40px;
+  }
+  &__alert {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.567);
+    bottom: -15px;
+    padding: 10px 20px;
+    font-size: 1.6rem;
+    background-color: lightgreen;
+    color: grey;
+    border-radius: 25px;
+
+    &-error {
+      background-color: tomato;
+      color: white;
+    }
+  }
+  &__exit {
+    position: absolute;
+    right: 20px;
+    font-size: 2rem;
+    color: tomato;
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }
 @media screen and (min-width: 454px) {
-  .modal {
-    .form {
-      width: 40%;
-    }
+  .form {
+    width: 40%;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .modal {
-    .form {
-      width: 25%;
-      &__input {
-        width: 50%;
-      }
+  .form {
+    width: 25%;
+    &__input {
+      width: 50%;
+    }
 
-      &__add {
-        padding: 15px 80px;
-      }
+    &__add {
+      padding: 15px 80px;
     }
   }
 }

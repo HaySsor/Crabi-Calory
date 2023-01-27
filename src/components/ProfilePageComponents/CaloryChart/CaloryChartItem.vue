@@ -5,17 +5,17 @@
       <div
         class="item__bar-fill"
         :style="{
-          height: counted,
-          backgroundColor: counted === '100%' ? 'tomato' : '#e2882f',
+          height: counted.value,
+          backgroundColor: counted.value === '100%' ? 'lightgreen' : '#e2882f',
         }"></div>
       <div
         class="item__bar-circle"
         :style="{
-          background: counted === '100%' ? 'lightgreen' : 'rgb(157,212,172)',
+          background: counted.value === '100%' ? 'lightgreen' : 'rgb(157,212,172)',
         }">
-        <i v-if="counted === '100%'" class="fas fa-check"></i>
+        <i v-if="counted.value === '100%'" class="fas fa-check"></i>
         <img
-          v-if="counted === '100%'"
+          v-if="counted.value === '100%'"
           class="img"
           src="/icons/crab.png"
           alt=""
@@ -112,53 +112,6 @@ export default {
     padding: 5px 15px;
     border-radius: 25px;
     margin-bottom: 5px;
-  }
-}
-
-@keyframes crab-bring-ok {
-  0% {
-    transform: translateY(100px);
-  }
-  25% {
-    transform: translateY(-10px);
-  }
-  50% {
-    transform: translateY(0px);
-  }
-  60% {
-    transform: translateY(0px) rotate(-20deg);
-  }
-  70% {
-    transform: translateY(0px) rotate(20deg);
-  }
-  80% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  100% {
-    transform: translateY(100px);
-  }
-}
-@keyframes added-ok {
-  0% {
-    transform: translateY(100px);
-  }
-  25% {
-    transform: translateY(-10px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  60% {
-    transform: translateY(-20px);
-  }
-  70% {
-    transform: translateY(-20px);
-  }
-  80% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
   }
 }
 </style>

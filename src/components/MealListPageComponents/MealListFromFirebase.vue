@@ -9,22 +9,22 @@
           :openModal="openModal" />
       </ul>
       <img
-        src="../../public/icons/crab.png"
+        src="/icons/crab.png"
         alt=""
         aria-hidden="true"
         class="img img1" />
       <img
-        src="../../public/icons/crab.png"
+        src="/icons/crab.png"
         alt=""
         aria-hidden="true"
         class="img img2" />
       <img
-        src="../../public/icons/crab.png"
+        src="/icons/crab.png"
         alt=""
         aria-hidden="true"
         class="img img3" />
       <img
-        src="../../public/icons/crab.png"
+        src="/icons/crab.png"
         alt=""
         aria-hidden="true"
         class="img img4" />
@@ -172,40 +172,6 @@ export default {
     bottom: -5px;
     right: -20px;
     transform: rotate(145deg);
-  }
-}
-@keyframes move-crab-top-right {
-  0% {
-    transform: translateY(20px);
-  }
-  25% {
-    transform: translateY(-20px);
-  }
-  50% {
-    transform: translateY(-20px) rotate(-180deg);
-  }
-  75% {
-    transform: translateY(30px) rotate(-180deg);
-  }
-  100% {
-    transform: translateY(0) rotate(25deg);
-  }
-}
-@keyframes move-crab-top-left {
-  0% {
-    transform: translateY(0px);
-  }
-  25% {
-    transform: translateY(-53px);
-  }
-  50% {
-    transform: translateY(-53px) rotate(180deg);
-  }
-  75% {
-    transform: translateY(0px) rotate(180deg);
-  }
-  100% {
-    transform: translateY(-33px) rotate(-25deg);
   }
 }
 @media screen and (min-width: 454px) {

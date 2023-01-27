@@ -61,14 +61,14 @@ export default {
 .login {
   position: relative;
   min-height: 100vh;
+  padding: 5px 0;
   .flex-box {
     display: flex;
     justify-content: center;
   }
-  padding: 5px 0;
   &__title {
     text-align: center;
-    font-size: 30px;
+    font-size: 30px;  
   }
   &__back {
     border-radius: 50%;

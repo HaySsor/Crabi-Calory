@@ -35,16 +35,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.modal {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(41, 40, 40, 0.506);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   .window {
     width: 320px;
     height: 250px;
@@ -83,16 +73,7 @@ export default {
   .button:disabled {
     background-color: gray;
   }
-}
 
-@keyframes rotate {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 @media screen and (min-width: 1200px) {
   .modal {
