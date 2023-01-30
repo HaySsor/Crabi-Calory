@@ -45,10 +45,11 @@ export default {
     const useMeal = useMealsStore();
     const showModalUserEditProfile = ref(false);
 
-    onBeforeMount(() => {
-      useUser.downloadUserData();
-      useMeal.getUserMeal();
+    onBeforeMount(async () => {
+     await useUser.downloadUserData();
+     await useMeal.getUserMeal();
     });
+
     function closeModalUserEditProfile() {
       showModalUserEditProfile.value = false;
     }
@@ -84,9 +85,9 @@ export default {
       justify-content: space-around;
       align-items: center;
     }
-    .box-pc{
+    .box-pc {
       display: grid;
-      grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     }
   }
 }
@@ -96,10 +97,7 @@ export default {
       width: 100%;
       gap: 10px;
       justify-items: center;
-      grid-template-areas: 
-      "char . list"
-      ;
-      
+      grid-template-areas: 'char . list';
     }
     &__top {
       display: flex;

@@ -94,7 +94,6 @@ export default {
           id: props.picketMeal.id,
           idD: Math.floor(Math.random() * 200),
         };
-        console.log(meal);
         message.value = 1;
         useMeal.addDailyMeal(meal);
 

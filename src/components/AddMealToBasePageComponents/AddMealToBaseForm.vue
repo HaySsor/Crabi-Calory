@@ -163,38 +163,46 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-  width: 100%;
-  height: 450px;
-  background-color: #f9faf79f;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.193);
-  border-radius: 30px;
-  margin: auto;
-  padding: 20px;
+  border: 4px solid #fff;
+  border-radius: 20px;
+  padding: 10px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  gap: 15px;
   &__name,
   &__kcal,
   &__protein,
   &__protein,
   &__carbohydrates,
   &__fat {
-    width: 100%;
+    width: 45%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #ffff; */
     label {
+      font-size: 3rem;
+      width: 100%;
       text-align: center;
-      font-size: 1.9rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     input {
-      padding: 5px;
-      border-radius: 30px;
-      border: none;
-      text-align: center;
+      width: 50%;
+      border-radius: 25px;
+      padding: 9px;
     }
   }
+  &__name {
+    width: 100%;
+  }
   &__button {
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     margin-right: 10px;
@@ -204,45 +212,8 @@ export default {
   }
 }
 @media screen and (min-width: 454px) {
-  .form {
-    width: 70%;
-    max-width: 600px;
-    padding: 10px;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    height: 100%;
-    &__name,
-    &__kcal,
-    &__protein,
-    &__protein,
-    &__carbohydrates,
-    &__fat {
-      width: 40%;
-      align-items: center;
-      input {
-        width: 100%;
-      }
-    }
-    &__name {
-      width: 100%;
-      input {
-        width: 90%;
-      }
-    }
-    &__button {
-      display: flex;
-      justify-content: center;
-      width: 80%;
-    }
-  }
 }
 
 @media screen and (min-width: 1200px) {
-  .form {
-    width: 50%;
-  }
 }
 </style>

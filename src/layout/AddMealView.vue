@@ -19,8 +19,11 @@ export default {
 <style lang="scss" scoped>
 .add-meal {
   padding: 20px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr 1fr;
+  justify-items: center;
+  width: 100%;
 
   &__header {
     display: flex;

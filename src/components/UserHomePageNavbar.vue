@@ -48,6 +48,7 @@ export default {
 
     function singOut() {
       userStore.singOutUser();
+      location.reload();
       router.push({name: 'home'});
     }
 
@@ -188,7 +189,6 @@ export default {
 
 @media screen and (min-width: 1200px) {
   .nav {
-    width: 800px;
     height: 90px;
   }
 }

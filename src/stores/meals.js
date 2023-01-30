@@ -20,20 +20,10 @@ export default defineStore("meals", {
     }),
     actions: {
         async getUserMeal() {
-
             await getUserData()
             const x = user.value.meals?.map(meal => {
                 return JSON.parse(meal)
             })
-
-            this.useDailyMeals = x
-        },
-        async updateMealsList() {
-            await getUserData()
-            const x = user.value.meals?.map(meal => {
-                return JSON.parse(meal)
-            })
-
             this.useDailyMeals = x
         },
         async addDailyMeal(meal) {
@@ -41,21 +31,20 @@ export default defineStore("meals", {
             await updateDoc(userDocRef, {
                 "meals": arrayUnion(m)
             })
-            this.updateMealsList()
-            // localStorage.setItem("meal", JSON.stringify(this.useDailyMeals));
+            this.getUserMeal()
         },
         async removeMealFromDaily(meal) {
             const m = JSON.stringify(meal)
             await updateDoc(userDocRef, {
                 "meals": arrayRemove(m)
             })
-            this.updateMealsList()
+            this.getUserMeal()
         },
         async newDay() {
             await updateDoc(userDocRef, {
                 "meals": []
             })
-            this.updateMealsList()
+            this.getUserMeal()
         }
 
     }

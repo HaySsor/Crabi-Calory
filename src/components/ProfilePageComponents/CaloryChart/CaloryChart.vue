@@ -94,7 +94,7 @@ export default {
       {
         name: 'Calory',
         counted: countedKcal,
-        parameter: 'fat',
+        parameter: 'kcal',
       },
     ];
 

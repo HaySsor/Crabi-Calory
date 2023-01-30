@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { auth } from '../includes/firebase';
-import { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, setDoc, getFirestore, updateDoc } from 'firebase/firestore';
 
 import getUser from '@/composables/getUser';
@@ -20,6 +20,7 @@ export default defineStore("user", {
                 values.email,
                 values.password
             );
+            console.log(userCred.user.uid)
             const x = doc(db, 'users', userCred.user.uid)
             await setDoc(x, {
                 name: values.name,
@@ -36,17 +37,13 @@ export default defineStore("user", {
                 uid: userCred.user.uid,
                 meals: []
             });
-            updateProfile(userCred.user, {
-                displayName: values.name
-            })
-
             this.userLoggedIn = true
             this.calory = values.kcal
 
         },
         async downloadUserData() {
             const { user, getUserData } = getUser();
-            getUserData();
+           await getUserData();
             this.loggedUser = user
         },
         async updateUserData(newData) {

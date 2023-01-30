@@ -43,7 +43,7 @@ function conversion(value) {
         value.carbohydrates = parseInt(carbohydrates);
         value.protein = parseInt(protein);
         value.kcal = parseInt(kcal);
-
+        console.log(value)
         return value
     }
 }

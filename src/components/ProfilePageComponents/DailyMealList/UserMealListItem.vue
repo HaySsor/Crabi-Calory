@@ -3,9 +3,7 @@
     <img class="img" src="/icons/crab.png" alt="" aria-hidden="true" />
     <div class="item-cont">
       <h3>{{ meal.name }}</h3>
-      <i
-        @click="useMeal.removeMealFromDaily(meal)"
-        class="fas fa-trash-alt"></i>
+      <i @click="removeMeal(meal)" class="fas fa-trash-alt"></i>
     </div>
   </li>
 </template>
@@ -20,6 +18,13 @@ export default {
     meal: {
       required: true,
     },
+  },
+  setup(props) {
+    async function removeMeal(value) {
+      await props.useMeal.removeMealFromDaily(value);
+    }
+
+    return {removeMeal};
   },
 };
 </script>
