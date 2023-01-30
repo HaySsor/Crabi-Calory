@@ -107,26 +107,32 @@ export default {
 }
 .login {
   &__form {
-    width: 90%;
+    width: 80%;
+    max-width: 500px;
     margin-top: 20px;
     padding: 15px;
-    background-color: #f4f4f4;
+    background-color: transparent;
+    border: 4px solid #ffff;
     border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     &-box {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-bottom: 10px;
+      width: 80%;
 
       &-label {
-        color: #e2882f;
         font-size: 1.5rem;
         margin-bottom: 5px;
       }
       &-input {
         padding: 5px;
-        width: 80%;
+        width: 100%;
         border-radius: 10px;
         border: 1px solid rgba(51, 51, 51, 0.636);
       }
@@ -135,9 +141,12 @@ export default {
       }
     }
     &-title {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      width: 100%;
+      background-color: #ffff;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      transform: translateY(-15px);
+      width: 80%;
+      font-size: 2rem;
       text-align: center;
     }
     &-btn {
@@ -150,25 +159,8 @@ export default {
   .login {
     &__form {
       width: 60%;
-      max-width: 500px;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: transparent;
-      border: 4px solid #ffff;
-      border-radius: 25px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-
-      &-title {
-        background-color: #ffff;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-        transform: translateY(-15px);
-        width: 80%;
-      }
       &-box {
+        max-width: 300px;
         gap: 5px;
         &-label {
           color: black;
@@ -196,6 +188,5 @@ export default {
   .box {
     width: 100%;
   }
-
 }
 </style>

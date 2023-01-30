@@ -7,86 +7,88 @@
       class="login__form">
       <h3 class="family-Nerko title">Registration</h3>
       <!-- name Input -->
-      <div class="login__form-box">
-        <label class="login__form-box-label">Name</label>
-        <VeeField class="login__form-box-input" name="name" type="text" />
-        <ErrorMessage class="error" name="name" />
-      </div>
-      <!-- email input -->
-      <div class="login__form-box">
-        <label class="login__form-box-label">Email</label>
-        <VeeField class="login__form-box-input" name="email" type="email" />
-        <ErrorMessage class="error" name="email" />
-      </div>
-      <!-- password input -->
-      <div class="login__form-box">
-        <label class="login__form-box-label">Password</label>
-        <VeeField
-          class="login__form-box-input"
-          name="password"
-          type="password" />
-        <ErrorMessage class="error" name="password" />
-      </div>
-      <!-- confirm password -->
-      <div class="login__form-box">
-        <label class="login__form-box-label">Confirm Password</label>
-        <VeeField
-          class="login__form-box-input"
-          name="confirmPassword"
-          type="password" />
-        <ErrorMessage class="error" name="confirmPassword" />
-      </div>
+      <div class="form-container">
+        <div class="login__form-box">
+          <label class="login__form-box-label">Name</label>
+          <VeeField class="login__form-box-input" name="name" type="text" />
+          <ErrorMessage class="error" name="name" />
+        </div>
+        <!-- email input -->
+        <div class="login__form-box">
+          <label class="login__form-box-label">Email</label>
+          <VeeField class="login__form-box-input" name="email" type="email" />
+          <ErrorMessage class="error" name="email" />
+        </div>
+        <!-- password input -->
+        <div class="login__form-box">
+          <label class="login__form-box-label">Password</label>
+          <VeeField
+            class="login__form-box-input"
+            name="password"
+            type="password" />
+          <ErrorMessage class="error" name="password" />
+        </div>
+        <!-- confirm password -->
+        <div class="login__form-box">
+          <label class="login__form-box-label">Confirm Password</label>
+          <VeeField
+            class="login__form-box-input"
+            name="confirmPassword"
+            type="password" />
+          <ErrorMessage class="error" name="confirmPassword" />
+        </div>
 
-      <div class="input-select">
-        <label>Sex</label>
-        <VeeField as="select" name="sex">
-          <option value="M">Male</option>
-          <option value="F">Female</option>
-        </VeeField>
-        <ErrorMessage class="error" name="sex" />
-      </div>
-      <!-- age input -->
-      <div class="login__form-box">
-        <label class="login__form-box-label">Age</label>
-        <VeeField class="login__form-box-input" name="age" type="number" />
-        <ErrorMessage class="error" name="age" />
-      </div>
+        <div class="input-select">
+          <label>Sex</label>
+          <VeeField as="select" name="sex">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </VeeField>
+          <ErrorMessage class="error" name="sex" />
+        </div>
+        <!-- age input -->
+        <div class="login__form-box">
+          <label class="login__form-box-label">Age</label>
+          <VeeField class="login__form-box-input" name="age" type="number" />
+          <ErrorMessage class="error" name="age" />
+        </div>
 
-      <!-- height input -->
-      <div class="login__form-box">
-        <label class="login__form-box-label">Height</label>
-        <VeeField class="login__form-box-input" name="height" type="number" />
-        <ErrorMessage class="error" name="height" />
-      </div>
-      <!-- weight input -->
-      <div class="login__form-box">
-        <label class="login__form-box-label">Weight</label>
-        <VeeField class="login__form-box-input" name="weight" type="number" />
-        <ErrorMessage class="error" name="weight" />
-      </div>
-      <div class="input-select">
-        <label>Your Goal</label>
-        <VeeField as="select" name="goal">
-          <option value="L">lost weight</option>
-          <option value="M">weight maintenance</option>
-          <option value="G">gain weight</option>
-        </VeeField>
-        <ErrorMessage class="error" name="goal" />
-      </div>
-      <div class="input-check">
-        <input type="checkbox" v-model="advancedOptions" />
-        <label>Advanced options</label>
-      </div>
-      <div v-if="advancedOptions" class="advanced-options">
-        <label>Your Daily Fat in gram</label>
-        <input type="number" v-model="fat" />
-        <label>Your Carbohydrates in gram</label>
-        <input type="number" v-model="carbohydrates" />
-        <label>Your Protein in gram</label>
-        <input type="number" v-model="protein" />
-        <div class="calory-box">
-          <h3 class="family-Nerko">Your Calory</h3>
-          <span class="calory">{{ calory }} calories</span>
+        <!-- height input -->
+        <div class="login__form-box">
+          <label class="login__form-box-label">Height</label>
+          <VeeField class="login__form-box-input" name="height" type="number" />
+          <ErrorMessage class="error" name="height" />
+        </div>
+        <!-- weight input -->
+        <div class="login__form-box">
+          <label class="login__form-box-label">Weight</label>
+          <VeeField class="login__form-box-input" name="weight" type="number" />
+          <ErrorMessage class="error" name="weight" />
+        </div>
+        <div class="input-select">
+          <label>Your Goal</label>
+          <VeeField as="select" name="goal">
+            <option value="L">lost weight</option>
+            <option value="M">weight maintenance</option>
+            <option value="G">gain weight</option>
+          </VeeField>
+          <ErrorMessage class="error" name="goal" />
+        </div>
+        <div class="input-check">
+          <input type="checkbox" v-model="advancedOptions" />
+          <label>Advanced options</label>
+        </div>
+        <div v-if="advancedOptions" class="advanced-options">
+          <label>Your Daily Fat in gram</label>
+          <input type="number" v-model="fat" />
+          <label>Your Carbohydrates in gram</label>
+          <input type="number" v-model="carbohydrates" />
+          <label>Your Protein in gram</label>
+          <input type="number" v-model="protein" />
+          <div class="calory-box">
+            <h3 class="family-Nerko">Your Calory</h3>
+            <span class="calory">{{ calory }} calories</span>
+          </div>
         </div>
       </div>
       <div class="login__form-btn">
@@ -199,19 +201,30 @@ export default {
   &__form {
     margin-top: 20px;
     padding: 15px;
-    background-color: #f4f4f4;
+    border: 4px solid #ffff;
     border-radius: 25px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .form-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
     &-box {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-bottom: 10px;
+      width: 100%;
 
       &-label {
-        color: #e2882f;
-        font-size: 1.5rem;
+        font-family: 'Nerko One', cursive;
+        font-size: 1.7rem;
         margin-bottom: 5px;
       }
       &-input {
@@ -228,8 +241,12 @@ export default {
     .title {
       font-size: 2.5rem;
       margin-bottom: 10px;
-      width: 100%;
+      width: 80%;
       text-align: center;
+      background-color: #ffff;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      transform: translateY(-15px);
     }
 
     .input-select {
@@ -238,27 +255,58 @@ export default {
       justify-content: center;
       align-items: center;
       margin-bottom: 10px;
+      width: 100%;
       label {
-        color: #e2882f;
         font-size: 1.5rem;
         margin-bottom: 5px;
+        font-family: 'Nerko One', cursive;
+        font-size: 1.7rem;
       }
       select {
         margin-left: 10px;
         width: 60%;
         padding: 5px;
-        border: 2px solid #e2882f;
         border-radius: 25px;
       }
     }
     .input-check {
       margin: 20px 0;
       width: 80%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
       label {
         font-size: 1.3rem;
       }
-      input {
-        margin-right: 10px;
+
+      input[type='checkbox'] {
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: #fff;
+        margin: 0;
+        font: inherit;
+        color: orange;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.15em;
+        transform: translateY(-0.075em);
+        display: grid;
+        place-content: center;
+      }
+      input[type='checkbox']::before {
+        content: '';
+        width: 2rem;
+        height: 2rem;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 2rem 2rem orange;
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      }
+
+      input[type='checkbox']:checked::before {
+        transform: scale(1);
       }
     }
     .advanced-options {
@@ -267,11 +315,11 @@ export default {
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+
       label {
         width: 80%;
         font-size: 1.6rem;
         margin-bottom: 5px;
-        color: #e2882f;
       }
       input {
         width: 80%;
@@ -313,16 +361,19 @@ export default {
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
+
+      .form-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+        justify-items: center;
+      }
       .title {
-        background-color: #ffff;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
         transform: translateY(-15px);
-        width: 80%;
       }
 
       &-box {
-        width: 50%;
+        width: 100%;
         gap: 5px;
 
         &-label {
@@ -333,38 +384,50 @@ export default {
           padding: 8px;
         }
       }
+      .advanced-options {
+        width: 100%;
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1/ -1;
+
+        label {
+          font-size: 1.6rem;
+          margin-bottom: 5px;
+        }
+        input {
+          padding: 5px;
+          border-radius: 25px;
+          border: none;
+          background-color: white;
+          margin-bottom: 15px;
+        }
+      }
+      &-btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .login {
+    &__form {
+      max-width: 800px;
+      .form-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+      }
     }
   }
 }
 /* Media PC */
 
 @media screen and (min-width: 1200px) {
-  .login {
-    &__form {
-      width: 50%;
-      &-box {
-        width: 50%;
-        gap: 5px;
-      }
-
-      .input-select {
-        width: 50%;
-        label {
-          color: black;
-          font-weight: bold;
-        }
-        select {
-          width: 50%;
-          padding: 10px;
-          border: none;
-        }
-      }
-      .advanced-options {
-        label {
-          color: black;
-        }
-      }
-    }
-  }
 }
 </style>

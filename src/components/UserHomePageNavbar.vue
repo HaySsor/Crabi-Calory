@@ -84,6 +84,7 @@ export default {
       width: 20%;
       display: flex;
       flex-direction: column;
+      transform: scale(0.8);
 
       img {
         width: 40px;
@@ -122,7 +123,7 @@ export default {
   }
 }
 .active {
-  transform: scale(0.9);
+  transform: scale(1.1);
   img {
     filter: saturate(1);
   }

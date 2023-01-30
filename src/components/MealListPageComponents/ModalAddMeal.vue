@@ -22,7 +22,7 @@
       </div>
 
       <label class="form__label"> How many gram ?</label>
-      <input class="form__input" type="text" v-model="times" />
+      <input class="form__input" type="text" v-model="times" @keyup.enter="addToDailyList"/>
       <div class="form__alert" v-if="message === 1">
         <span>Meal added <i class="fas fa-check-circle"></i></span>
       </div>
