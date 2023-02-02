@@ -20,4 +20,5 @@ const getUser = () => {
 
     return { user, getUserData }
 }
+
 export default getUser

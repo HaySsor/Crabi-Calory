@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .item {
   margin-bottom: 10px;
-  background-color: $secColor;
+  border: 1px solid $secColor;
   width: 100%;
   padding: 10px 15px;
   border-radius: 25px;
@@ -60,14 +60,12 @@ export default {
     }
     i {
       font-size: 1.6rem;
-      color: $primeColor;
+      color: $textDecorate;
       transition: transform 0.3s;
       &:hover {
         transform: scale(1.2);
       }
     }
   }
-}
-@media screen and (min-width: 1200px) {
 }
 </style>

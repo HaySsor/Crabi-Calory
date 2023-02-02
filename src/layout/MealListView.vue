@@ -89,7 +89,7 @@ export default {
 }
 @media screen and (min-width: 454px) {
   .meal-list {
-    margin-bottom: 50px;
+    margin-bottom: 80px;
     &__top {
       &-title {
         top: 90%;
@@ -105,7 +105,6 @@ export default {
       }
       .hamburger {
         width: 100px;
-        transform: translateY(20px);
       }
       &-shadow {
         width: 98%;
@@ -115,13 +114,8 @@ export default {
       }
     }
     &__middle {
-      margin-top: 50px;
       width: 80%;
-      border-radius: 25px;
-      padding: 20px;
     }
   }
-}
-@media screen and (min-width: 1200px) {
 }
 </style>

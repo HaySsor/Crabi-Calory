@@ -128,7 +128,7 @@ export default {
     flex-wrap: wrap;
     height: 400px;
     justify-content: center;
-    width: 800px;
+    max-width: 800px;
     margin: 0 auto;
     position: relative;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.614);
@@ -160,11 +160,6 @@ export default {
       width: 100%;
     }
     &__title {
-      text-align: center;
-      margin-top: 10px;
-      font-family: 'Nerko One', cursive;
-      font-size: 1.8rem;
-      margin-top: 30px;
       width: 100%;
     }
     &__family {
@@ -174,11 +169,6 @@ export default {
       justify-content: center;
       .flor {
         width: 45%;
-        height: 5px;
-        position: absolute;
-        bottom: -2px;
-        background-color: #e2882f79;
-        border-radius: 20px;
       }
 
       &-crab {

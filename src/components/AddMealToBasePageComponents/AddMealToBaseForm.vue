@@ -6,9 +6,9 @@
         type="text"
         v-model="form.name"
         :style="{
-          borderColor: flag.name ? 'tomato' : 'rgb(115, 184, 152) ',
+          borderColor: addMealValidationForm.name ? 'tomato' : 'rgb(115, 184, 152) ',
         }" />
-      <p v-if="flag.name" class="error">Name can't be empty</p>
+      <p v-if="addMealValidationForm.name" class="error">Name can't be empty</p>
     </div>
     <div class="form__kcal">
       <label class="family-Nerko">Calory</label>
@@ -16,9 +16,9 @@
         type="text"
         v-model="form.kcal"
         :style="{
-          borderColor: flag.kcal ? 'tomato' : 'rgb(115, 184, 152) ',
+          borderColor: addMealValidationForm.kcal ? 'tomato' : 'rgb(115, 184, 152) ',
         }" />
-      <p v-if="flag.kcal" class="error">Calorie must be on 1 to 1000</p>
+      <p v-if="addMealValidationForm.kcal" class="error">Calorie must be on 1 to 1000</p>
     </div>
     <div class="form__protein">
       <label class="family-Nerko">Protein</label>
@@ -26,9 +26,9 @@
         type="text"
         v-model="form.protein"
         :style="{
-          borderColor: flag.protein ? 'tomato' : 'rgb(115, 184, 152)',
+          borderColor: addMealValidationForm.protein ? 'tomato' : 'rgb(115, 184, 152)',
         }" />
-      <p v-if="flag.protein" class="error">Protein must be below 200</p>
+      <p v-if="addMealValidationForm.protein" class="error">Protein must be below 200</p>
     </div>
     <div class="form__fat">
       <label class="family-Nerko">Fat</label>
@@ -36,9 +36,9 @@
         type="text"
         v-model="form.fat"
         :style="{
-          borderColor: flag.fat ? 'tomato' : 'rgb(115, 184, 152) ',
+          borderColor: addMealValidationForm.fat ? 'tomato' : 'rgb(115, 184, 152) ',
         }" />
-      <p v-if="flag.fat" class="error">Fat must be below 200</p>
+      <p v-if="addMealValidationForm.fat" class="error">Fat must be below 200</p>
     </div>
     <div class="form__carbohydrates">
       <label class="family-Nerko">Carbohydrates</label>
@@ -46,9 +46,9 @@
         type="text"
         v-model="form.carbohydrates"
         :style="{
-          borderColor: flag.carbohydrates ? 'tomato' : 'gb(115, 184, 152)',
+          borderColor: addMealValidationForm.carbohydrates ? 'tomato' : 'gb(115, 184, 152)',
         }" />
-      <p v-if="flag.carbohydrates" class="error">
+      <p v-if="addMealValidationForm.carbohydrates" class="error">
         Carbohydrates must be below 600
       </p>
     </div>
@@ -82,7 +82,7 @@ export default {
       fat: 0,
       carbohydrates: 0,
     });
-    const flag = reactive({
+    const addMealValidationForm = reactive({
       name: false,
       kcal: false,
       protein: false,
@@ -105,31 +105,31 @@ export default {
 
     async function verification() {
       if (!form.name.match(/^[A-Za-z]+$/)) {
-        flag.name = true;
+        addMealValidationForm.name = true;
         return;
       }
-      flag.name = false;
+      addMealValidationForm.name = false;
       if (form.kcal <= 0 && form.kcal < 1000) {
-        flag.kcal = true;
+        addMealValidationForm.kcal = true;
         return;
       }
-      flag.kcal = false;
+      addMealValidationForm.kcal = false;
 
       if (parseFloat(form.protein) > 200) {
-        flag.protein = true;
+        addMealValidationForm.protein = true;
         return;
       }
-      flag.protein = false;
+      addMealValidationForm.protein = false;
       if (parseFloat(form.fat) > 200) {
-        flag.fat = true;
+        addMealValidationForm.fat = true;
         return;
       }
-      flag.fat = false;
+      addMealValidationForm.fat = false;
       if (parseFloat(form.carbohydrates) > 600) {
-        flag.carbohydrates = true;
+        addMealValidationForm.carbohydrates = true;
         return;
       }
-      flag.carbohydrates = false;
+      addMealValidationForm.carbohydrates = false;
       const f = {
         name: form.name,
         kcal: parseFloat(form.kcal),
@@ -163,7 +163,7 @@ export default {
       showModal,
       regInSubmission,
       passData,
-      flag,
+      addMealValidationForm,
       verification,
       n,
     };

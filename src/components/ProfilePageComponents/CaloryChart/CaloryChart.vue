@@ -3,7 +3,7 @@
     <img class="img img1" src="/icons/crab.png" alt="" aria-hidden="true" />
     <img class="img img2" src="/icons/crab.png" alt="" aria-hidden="true" />
     <header class="chart__top">
-      <h2 class="chart__top-title family-Nerko">Your Calory</h2>
+      <ComponentTitle>Your Calory</ComponentTitle>
     </header>
     <div class="chart__middle">
       <CaloryChartItem
@@ -22,9 +22,10 @@
 import CaloryChartItem from './CaloryChartItem.vue';
 import WindowComponent from '../../styleComponents/WindowComponent.vue';
 import {computed} from 'vue';
+import ComponentTitle from '../../styleComponents/ComponentTitle.vue';
 export default {
   name: 'CaloryChart',
-  components: {CaloryChartItem, WindowComponent},
+  components: {CaloryChartItem, WindowComponent, ComponentTitle},
   props: {
     personalData: {
       required: true,
@@ -125,19 +126,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &-title {
-      text-align: center;
-      font-size: 2.2rem;
-      padding: 10px;
-      background-color: $secColor;
-      border-bottom-left-radius: 25px;
-      border-bottom-right-radius: 25px;
-      width: 80%;
-      margin-bottom: 10px;
-      transform: translateY(-11px);
-      color: $textColor;
-    }
   }
   &__middle {
     display: flex;

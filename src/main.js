@@ -5,9 +5,17 @@ import App from './App.vue'
 import router from './router/router'
 import VeeValidatePlugin from './includes/validation'
 import { auth } from './includes/firebase'
+import { registerSW } from 'virtual:pwa-register';
+import progressBar from './includes/progress-bar';
 
+// import style
 import '@/assets/base.scss'
 import '@/assets/animation.scss'
+import 'nprogress/nprogress.css'
+// PWA
+registerSW({ immediate: true })
+
+progressBar(router)
 
 let app
 

@@ -33,11 +33,11 @@ export default {
     margin-bottom: 10px;
     &-title {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 3.5rem;
     }
     &-info {
       color: tomato;
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
 }

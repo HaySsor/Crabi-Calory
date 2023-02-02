@@ -6,5 +6,4 @@ async function addMealToFireBase(v) {
     await addDoc(MealCollection, v);
 }
 
-
 export { addMealToFireBase }

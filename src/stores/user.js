@@ -42,7 +42,7 @@ export default defineStore("user", {
         },
         async downloadUserData() {
             const { user, getUserData } = getUser();
-           await getUserData();
+            await getUserData();
             this.loggedUser = user
         },
         async updateUserData(newData) {
@@ -58,9 +58,7 @@ export default defineStore("user", {
 
         },
         async login(values) {
-            await signInWithEmailAndPassword(auth,
-                values.email,
-                values.password)
+            await signInWithEmailAndPassword(auth, values.email, values.password)
             this.userLoggedIn = true
         },
         async singOutUser() {

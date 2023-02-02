@@ -351,17 +351,12 @@ export default {
 @media screen and (min-width: 454px) {
   .login {
     &__form {
-      padding: 15px;
       width: 80%;
       margin: 0 auto;
       margin-top: 50px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-
       .form-container {
-        width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
         justify-items: center;
@@ -384,22 +379,10 @@ export default {
       }
       .advanced-options {
         width: 100%;
-        margin: 20px 0;
         display: flex;
         justify-content: center;
         align-items: center;
         grid-column: 1/ -1;
-
-        label {
-          font-size: 1.6rem;
-          margin-bottom: 5px;
-        }
-        input {
-          padding: 5px;
-          border-radius: 25px;
-          background-color: white;
-          margin-bottom: 15px;
-        }
       }
       &-btn {
         width: 100%;
@@ -422,9 +405,5 @@ export default {
       }
     }
   }
-}
-/* Media PC */
-
-@media screen and (min-width: 1200px) {
 }
 </style>

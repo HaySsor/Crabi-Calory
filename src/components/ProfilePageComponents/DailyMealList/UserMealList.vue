@@ -1,7 +1,7 @@
 <template>
   <WindowComponent class="box">
     <header class="box__top">
-      <h2 class="box__top-title family-Nerko">Your Daily Meal</h2>
+      <ComponentTitle>Your Daily Meal</ComponentTitle>
     </header>
     <div class="box__list">
       <Transition name="face" mode="out-in">
@@ -27,9 +27,15 @@ import UserMealListItem from './UserMealListItem.vue';
 import UserMealListEmpty from './UserMealListEmpty.vue';
 import WindowComponent from '../../styleComponents/WindowComponent.vue';
 import {computed} from 'vue';
+import ComponentTitle from '../../styleComponents/ComponentTitle.vue';
 export default {
   name: 'UserMealList',
-  components: {UserMealListItem, UserMealListEmpty, WindowComponent},
+  components: {
+    UserMealListItem,
+    UserMealListEmpty,
+    WindowComponent,
+    ComponentTitle,
+  },
   props: {
     useMeal: {
       required: true,
@@ -54,18 +60,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &-title {
-      text-align: center;
-      font-size: 2.2rem;
-      padding: 10px;
-      background-color: $secColor;
-      transform: translateY(-11px);
-      border-bottom-left-radius: 25px;
-      border-bottom-right-radius: 25px;
-      width: 80%;
-      color: $textColor;
-    }
   }
   &__list {
     overflow: auto;

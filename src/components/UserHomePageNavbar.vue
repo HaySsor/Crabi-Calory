@@ -2,28 +2,14 @@
   <nav class="nav">
     <div class="blur">
       <ul class="nav__list">
-        <router-link :to="{name: 'addMeal'}" class="nav__list-item">
+        <router-link
+          v-for="navbarLink in navbarLinkList"
+          :key="navbarLink.id"
+          :to="{name: navbarLink.link}"
+          class="nav__list-item">
           <li>
-            <img src="/icons/salad.png" alt="" />
-            <span class="family-Nerko">Add Meal</span>
-          </li></router-link
-        >
-        <router-link :to="{name: 'weightHistory'}" class="nav__list-item"
-          ><li>
-            <img src="/icons/bars.png" alt="" />
-            <span class="family-Nerko">Weight</span>
-          </li></router-link
-        >
-        <router-link :to="{name: 'mealList'}" class="nav__list-item"
-          ><li>
-            <img src="/icons/book-2.png" alt="" />
-            <span class="family-Nerko"> Meal list</span>
-          </li></router-link
-        >
-        <router-link :to="{name: 'profile'}" class="nav__list-item"
-          ><li>
-            <img src="/icons/user.png" alt="" />
-            <span class="family-Nerko">Profile</span>
+            <img :src="navbarLink.imgSrc" aria-hidden="true" />
+            <span class="family-Nerko">{{ navbarLink.name }}</span>
           </li></router-link
         >
         <li class="nav__list-logout">
@@ -43,6 +29,32 @@ import {useRouter} from 'vue-router';
 export default {
   name: 'UserHomePageNavbar',
   setup() {
+    const navbarLinkList = [
+      {
+        id: 1,
+        name: 'Add Meal',
+        link: 'addMeal',
+        imgSrc: '/icons/salad.png',
+      },
+      {
+        id: 2,
+        name: 'Weight',
+        link: 'weightHistory',
+        imgSrc: '/icons/bars.png',
+      },
+      {
+        id: 3,
+        name: 'Meal list',
+        link: 'mealList',
+        imgSrc: '/icons/book-2.png',
+      },
+      {
+        id: 4,
+        name: 'Profile',
+        link: 'profile',
+        imgSrc: '/icons/user.png',
+      },
+    ];
     const userStore = useUserStore();
     const router = useRouter();
 
@@ -52,7 +64,7 @@ export default {
       router.push({name: 'home'});
     }
 
-    return {singOut};
+    return {singOut, navbarLinkList};
   },
 };
 </script>
@@ -130,27 +142,12 @@ export default {
 }
 @media screen and (min-width: 454px) {
   .nav {
-    position: fixed;
     left: 50%;
-    width: 100%;
-    height: 90px;
-    bottom: 0;
     max-width: 800px;
     transform: translate(-50%);
     backdrop-filter: blur(3px);
     &__list {
-      display: flex;
-      list-style: none;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px;
-
       &-item {
-        text-align: center;
-        text-decoration: none;
-        color: black;
-        width: 20%;
-        display: flex;
         li {
           display: flex;
           justify-content: center;
@@ -185,12 +182,6 @@ export default {
         transition: transform 0.3s;
       }
     }
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .nav {
-    height: 90px;
   }
 }
 </style>

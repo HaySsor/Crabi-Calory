@@ -2,16 +2,9 @@ import { defineStore } from "pinia";
 import getUser from '@/composables/getUser';
 import { db, auth } from '@/includes/firebase';
 import { arrayUnion, doc, updateDoc, arrayRemove, } from "firebase/firestore";
-// const meals = localStorage.getItem('meal')
-// let dailyMeal = []
-// if (meals) {
-//     dailyMeal = JSON.parse(meals)
-// }
-
 
 const userDocRef = doc(db, 'users', auth.currentUser.uid)
 const { user, getUserData } = getUser();
-
 
 export default defineStore("meals", {
 
@@ -25,27 +18,19 @@ export default defineStore("meals", {
                 return JSON.parse(meal)
             })
             this.useDailyMeals = x
-
-            
         },
         async addDailyMeal(meal) {
-            const m = JSON.stringify(meal)
-            await updateDoc(userDocRef, {
-                "meals": arrayUnion(m)
-            })
+            const mealJson = JSON.stringify(meal)
+            await updateDoc(userDocRef, { "meals": arrayUnion(mealJson) })
             this.getUserMeal()
         },
         async removeMealFromDaily(meal) {
-            const m = JSON.stringify(meal)
-            await updateDoc(userDocRef, {
-                "meals": arrayRemove(m)
-            })
+            const mealJson = JSON.stringify(meal)
+            await updateDoc(userDocRef, { "meals": arrayRemove(mealJson) })
             this.getUserMeal()
         },
         async newDay() {
-            await updateDoc(userDocRef, {
-                "meals": []
-            })
+            await updateDoc(userDocRef, { "meals": [] })
             this.getUserMeal()
         }
 
