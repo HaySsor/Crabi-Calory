@@ -20,7 +20,6 @@ export default defineStore("user", {
                 values.email,
                 values.password
             );
-            console.log(userCred.user.uid)
             const x = doc(db, 'users', userCred.user.uid)
             await setDoc(x, {
                 name: values.name,

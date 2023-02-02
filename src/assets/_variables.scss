@@ -1,0 +1,27 @@
+// Button
+$buttonRadius: 15px;
+$buttonBgc: radial-gradient(
+  circle at 10% 20%,
+  rgb(253, 193, 104) 0%,
+  rgb(251, 128, 128) 90%
+);
+
+// Window
+$windowsBorderRadius: 30px;
+$windowsBorderSize: 5px solid;
+$borderColor: #ffff;
+
+// body
+$bodyColor: linear-gradient(
+  109.6deg,
+  rgb(148, 233, 194) 11.2%,
+  rgb(224, 235, 186) 91.1%
+);
+$textColor: #313131;
+
+// navbar UI
+
+$primeColor: #ffff;
+$secColor: rgb(115, 184, 152) ;
+$textDecorate: rgb(251, 128, 128);
+$borderMealList: 4px solid $primeColor;

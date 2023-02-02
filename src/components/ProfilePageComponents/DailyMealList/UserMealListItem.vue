@@ -2,8 +2,8 @@
   <li class="item">
     <img class="img" src="/icons/crab.png" alt="" aria-hidden="true" />
     <div class="item-cont">
-      <h3>{{ meal.name }}</h3>
-      <i @click="removeMeal(meal)" class="fas fa-trash-alt"></i>
+      <h3>{{ product.meal.name }}</h3>
+      <i @click="removeMeal(product)" class="fas fa-trash-alt"></i>
     </div>
   </li>
 </template>
@@ -15,7 +15,7 @@ export default {
     useMeal: {
       required: true,
     },
-    meal: {
+    product: {
       required: true,
     },
   },
@@ -23,7 +23,6 @@ export default {
     async function removeMeal(value) {
       await props.useMeal.removeMealFromDaily(value);
     }
-
     return {removeMeal};
   },
 };
@@ -32,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .item {
   margin-bottom: 10px;
-  background-color: #fff;
+  background-color: $secColor;
   width: 100%;
   padding: 10px 15px;
   border-radius: 25px;
@@ -57,10 +56,11 @@ export default {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      color: #353535;
     }
     i {
       font-size: 1.6rem;
-      color: tomato;
+      color: $primeColor;
       transition: transform 0.3s;
       &:hover {
         transform: scale(1.2);

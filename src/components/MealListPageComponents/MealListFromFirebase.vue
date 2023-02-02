@@ -1,33 +1,17 @@
 <template>
   <div>
     <div class="box">
-      <ul class="box__list">
+      <TransitionGroup name="list-base" tag="ul" class="box__list">
         <MealListFromFirebaseItem
           v-for="meal in filterList"
           :key="meal.name"
           :meal="meal"
           :openModal="openModal" />
-      </ul>
-      <img
-        src="/icons/crab.png"
-        alt=""
-        aria-hidden="true"
-        class="img img1" />
-      <img
-        src="/icons/crab.png"
-        alt=""
-        aria-hidden="true"
-        class="img img2" />
-      <img
-        src="/icons/crab.png"
-        alt=""
-        aria-hidden="true"
-        class="img img3" />
-      <img
-        src="/icons/crab.png"
-        alt=""
-        aria-hidden="true"
-        class="img img4" />
+      </TransitionGroup>
+      <img src="/icons/crab.png" alt="" aria-hidden="true" class="img img1" />
+      <img src="/icons/crab.png" alt="" aria-hidden="true" class="img img2" />
+      <img src="/icons/crab.png" alt="" aria-hidden="true" class="img img3" />
+      <img src="/icons/crab.png" alt="" aria-hidden="true" class="img img4" />
     </div>
     <div class="box__search">
       <i class="fas fa-search icon"></i>
@@ -104,8 +88,12 @@ export default {
     gap: 10px;
     height: 410px;
     overflow: scroll;
-    border: 4px solid #ffff;
-    background-color: rgb(157, 212, 172);
+    background: linear-gradient(
+      109.6deg,
+      rgb(148, 233, 194) 11.2%,
+      rgb(224, 235, 186) 91.1%
+    );
+    border: $borderMealList;
     padding: 10px;
     border-radius: 30px;
     &::after,
@@ -117,8 +105,12 @@ export default {
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
-      background-color: #e2882ffb;
-      border: 4px solid #ffff;
+      background: radial-gradient(
+        circle at 10% 20%,
+        rgb(253, 193, 104) 0%,
+        rgb(251, 128, 128) 90%
+      );
+      border: $borderMealList;
     }
     &::before {
       border-top-left-radius: 20px;
@@ -173,6 +165,25 @@ export default {
     right: -20px;
     transform: rotate(145deg);
   }
+}
+.list-base-move, /* apply transition to moving elements */
+.list-base-enter-active,
+.list-base-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-base-leave-to {
+  opacity: 0;
+}
+
+.list-base-enter-from {
+  opacity: 0;
+  transform: translateY(200%);
+}
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-base-leave-active {
+  position: absolute;
 }
 @media screen and (min-width: 454px) {
   .box {

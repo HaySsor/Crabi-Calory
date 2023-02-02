@@ -22,7 +22,11 @@
       </div>
 
       <label class="form__label"> How many gram ?</label>
-      <input class="form__input" type="text" v-model="times" @keyup.enter="addToDailyList"/>
+      <input
+        class="form__input"
+        type="text"
+        v-model="times"
+        @keyup.enter="addToDailyList" />
       <div class="form__alert" v-if="message === 1">
         <span>Meal added <i class="fas fa-check-circle"></i></span>
       </div>
@@ -86,14 +90,17 @@ export default {
     function addToDailyList() {
       if (times.value > 0) {
         const meal = {
-          name: props.picketMeal.name,
-          kcal: kcal.value,
-          carbohydrates: carb.value,
-          protein: protein.value,
-          fat: fat.value,
-          id: props.picketMeal.id,
           idD: Math.floor(Math.random() * 200),
+          meal: {
+            name: props.picketMeal.name,
+            kcal: kcal.value,
+            carbohydrates: carb.value,
+            protein: protein.value,
+            fat: fat.value,
+            id: props.picketMeal.id,
+          },
         };
+        console.log(meal);
         message.value = 1;
         useMeal.addDailyMeal(meal);
 

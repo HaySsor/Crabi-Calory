@@ -25,6 +25,8 @@ export default defineStore("meals", {
                 return JSON.parse(meal)
             })
             this.useDailyMeals = x
+
+            
         },
         async addDailyMeal(meal) {
             const m = JSON.stringify(meal)

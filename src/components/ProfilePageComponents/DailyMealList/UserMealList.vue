@@ -11,9 +11,9 @@
           v-if="useMeal.useDailyMeals.length > 0"
           class="box__list-ul">
           <UserMealListItem
-            v-for="meal in listMeal"
-            :key="meal.id"
-            :meal="meal"
+            v-for="product in listMeal"
+            :key="product.meal.id"
+            :product="product"
             :useMeal="useMeal" />
         </TransitionGroup>
         <UserMealListEmpty v-else />
@@ -59,11 +59,12 @@ export default {
       text-align: center;
       font-size: 2.2rem;
       padding: 10px;
-      background-color: #ffff;
+      background-color: $secColor;
       transform: translateY(-11px);
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
       width: 80%;
+      color: $textColor;
     }
   }
   &__list {

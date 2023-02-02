@@ -32,7 +32,6 @@ export default {
   background-color: #ffff;
   transition: background 0.3s;
 
-
   h3 {
     font-size: 1.6rem;
     width: 65%;

@@ -41,11 +41,11 @@ export default {
         carbohydrates: 0,
         fat: 0,
       };
-      props.useDailyMeals.forEach((item) => {
-        for (const key1 in item) {
+      props.useDailyMeals.forEach(({meal}) => {
+        for (const key1 in meal) {
           for (const key2 in userCaloryUsedInDay) {
             if (key1 === key2) {
-              userCaloryUsedInDay[key2] += parseFloat(item[key1]);
+              userCaloryUsedInDay[key2] += parseFloat(meal[key1]);
             }
           }
         }
@@ -130,12 +130,13 @@ export default {
       text-align: center;
       font-size: 2.2rem;
       padding: 10px;
-      background-color: #ffff;
+      background-color: $secColor;
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
       width: 80%;
       margin-bottom: 10px;
       transform: translateY(-11px);
+      color: $textColor;
     }
   }
   &__middle {

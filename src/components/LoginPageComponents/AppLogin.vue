@@ -111,8 +111,8 @@ export default {
     max-width: 500px;
     margin-top: 20px;
     padding: 15px;
-    background-color: transparent;
-    border: 4px solid #ffff;
+    background-color: $primeColor;
+    border: 4px solid $secColor;
     border-radius: 25px;
     display: flex;
     justify-content: center;
@@ -127,7 +127,7 @@ export default {
       width: 80%;
 
       &-label {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         margin-bottom: 5px;
       }
       &-input {
@@ -141,7 +141,7 @@ export default {
       }
     }
     &-title {
-      background-color: #ffff;
+      background-color: $secColor;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
       transform: translateY(-15px);
@@ -164,7 +164,6 @@ export default {
         gap: 5px;
         &-label {
           color: black;
-          font-size: 1.5rem;
           margin-bottom: 5px;
         }
         &-input {

@@ -27,12 +27,15 @@ export default {
 .button {
   padding: 15px 50px;
   border: none;
-  border-radius: 20px;
-  background-color: #e2882f;
-  color: white;
+  border-radius: $buttonRadius;
+  background: $buttonBgc;
+  box-shadow: -1px 12px 14px rgba(251, 128, 128, 0.3);
+  color: $textColor;
   font-size: 1.7rem;
+  font-weight: bold;
   cursor: pointer;
   transition: transform 0.3s;
+
   &:hover {
     transform: scale(1.1);
   }

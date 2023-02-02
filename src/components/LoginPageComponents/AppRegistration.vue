@@ -201,7 +201,8 @@ export default {
   &__form {
     margin-top: 20px;
     padding: 15px;
-    border: 4px solid #ffff;
+    border: 4px solid $secColor;
+    background-color: $primeColor;
     border-radius: 25px;
     display: flex;
     justify-content: center;
@@ -243,7 +244,7 @@ export default {
       margin-bottom: 10px;
       width: 80%;
       text-align: center;
-      background-color: #ffff;
+      background-color: $secColor;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
       transform: translateY(-15px);
@@ -282,8 +283,7 @@ export default {
 
       input[type='checkbox'] {
         -webkit-appearance: none;
-        appearance: none;
-        background-color: #fff;
+        border: 1px solid $secColor;
         margin: 0;
         font: inherit;
         color: orange;
@@ -300,8 +300,8 @@ export default {
         height: 2rem;
         transform: scale(0);
         transition: 120ms transform ease-in-out;
-        box-shadow: inset 2rem 2rem orange;
-        transform-origin: bottom left;
+        box-shadow: inset 2rem 2rem $secColor;
+        transform-origin: bottom;
         clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
       }
 
@@ -324,8 +324,8 @@ export default {
       input {
         width: 80%;
         padding: 5px;
+        border: 1px solid $secColor;
         border-radius: 25px;
-        border: none;
         background-color: white;
         margin-bottom: 15px;
       }
@@ -352,8 +352,6 @@ export default {
   .login {
     &__form {
       padding: 15px;
-      background-color: transparent;
-      border: 4px solid #ffff;
       width: 80%;
       margin: 0 auto;
       margin-top: 50px;
@@ -399,7 +397,6 @@ export default {
         input {
           padding: 5px;
           border-radius: 25px;
-          border: none;
           background-color: white;
           margin-bottom: 15px;
         }

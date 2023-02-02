@@ -27,7 +27,7 @@ export default {
   align-items: center;
   justify-content: space-around;
   height: 100px;
-  background-color: #ffff;
+  background-color: $primeColor;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.193);
   transform: translateY(-11px);
   border-bottom-left-radius: 30px;
@@ -41,7 +41,7 @@ export default {
     font-size: 1.8rem;
     width: 50%;
     text-align: center;
-    border-left: 1px solid black;
+    border-left: 1px solid $textColor;
   }
   .settings {
     position: absolute;
@@ -49,7 +49,7 @@ export default {
     right: 15px;
     font-size: 2rem;
     transition: transform 0.3s;
-    color: gray;
+    color: rgb(67, 66, 66);
     &:hover {
       transform: rotate(360deg);
     }

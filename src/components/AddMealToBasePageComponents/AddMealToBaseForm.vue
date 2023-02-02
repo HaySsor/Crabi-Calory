@@ -5,7 +5,9 @@
       <input
         type="text"
         v-model="form.name"
-        :style="{border: flag.name ? '1px solid tomato' : 'none'}" />
+        :style="{
+          borderColor: flag.name ? 'tomato' : 'rgb(115, 184, 152) ',
+        }" />
       <p v-if="flag.name" class="error">Name can't be empty</p>
     </div>
     <div class="form__kcal">
@@ -13,7 +15,9 @@
       <input
         type="text"
         v-model="form.kcal"
-        :style="{border: flag.kcal ? '1px solid tomato' : 'none'}" />
+        :style="{
+          borderColor: flag.kcal ? 'tomato' : 'rgb(115, 184, 152) ',
+        }" />
       <p v-if="flag.kcal" class="error">Calorie must be on 1 to 1000</p>
     </div>
     <div class="form__protein">
@@ -21,7 +25,9 @@
       <input
         type="text"
         v-model="form.protein"
-        :style="{border: flag.protein ? '1px solid tomato' : 'none'}" />
+        :style="{
+          borderColor: flag.protein ? 'tomato' : 'rgb(115, 184, 152)',
+        }" />
       <p v-if="flag.protein" class="error">Protein must be below 200</p>
     </div>
     <div class="form__fat">
@@ -29,7 +35,9 @@
       <input
         type="text"
         v-model="form.fat"
-        :style="{border: flag.fat ? '1px solid tomato' : 'none'}" />
+        :style="{
+          borderColor: flag.fat ? 'tomato' : 'rgb(115, 184, 152) ',
+        }" />
       <p v-if="flag.fat" class="error">Fat must be below 200</p>
     </div>
     <div class="form__carbohydrates">
@@ -37,7 +45,9 @@
       <input
         type="text"
         v-model="form.carbohydrates"
-        :style="{border: flag.carbohydrates ? '1px solid tomato' : 'none'}" />
+        :style="{
+          borderColor: flag.carbohydrates ? 'tomato' : 'gb(115, 184, 152)',
+        }" />
       <p v-if="flag.carbohydrates" class="error">
         Carbohydrates must be below 600
       </p>
@@ -163,7 +173,9 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-  border: 4px solid #fff;
+  border: 4px solid $secColor;
+  background-color: $primeColor;
+  box-shadow: 0px 10px 20px rgba(251, 128, 128, 0.2);
   border-radius: 20px;
   padding: 10px;
   display: flex;
@@ -196,6 +208,8 @@ export default {
       width: 50%;
       border-radius: 25px;
       padding: 9px;
+      border-width: 1px;
+      border-style: solid;
     }
   }
   &__name {
@@ -206,6 +220,7 @@ export default {
     display: flex;
     justify-content: flex-end;
     margin-right: 10px;
+    margin-top: 20px;
   }
   .error {
     margin: 0 auto;

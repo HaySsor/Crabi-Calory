@@ -12,14 +12,16 @@ export default {
 
 <style lang="scss" scoped>
 .window-component {
-  min-height: 430px;
+  position: relative;
   width: 90%;
-  border-radius: 30px;
-  border: 5px solid #ffff;
+  height: 400px;
+  min-height: 430px;
+  padding: 10px;
   margin: auto;
   margin-top: 40px;
-  padding: 10px;
-  position: relative;
-  height: 400px;
+  border: $windowsBorderSize $secColor;
+  border-radius: $windowsBorderRadius;
+  background-color: $primeColor;
+  box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
 }
 </style>

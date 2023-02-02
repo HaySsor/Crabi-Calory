@@ -3,14 +3,15 @@
     <div class="window">
       <h3>{{ message }}</h3>
       <img src="/icons/crab.png" alt="" />
-      <button :disabled="passData" class="button" @click.prevent="closeModal">
+      <AppButton :disabled="passData" class="button" @click.prevent="closeModal">
         OK
-      </button>
+      </AppButton>
     </div>
   </div>
 </template>
 
 <script>
+import AppButton from './styleComponents/AppButton.vue';
 export default {
   name: 'AppModal',
   props: {
@@ -31,49 +32,37 @@ export default {
       type: Function,
     },
   },
+  components: {AppButton},
 };
 </script>
 
 <style lang="scss" scoped>
-  .window {
-    width: 320px;
-    height: 250px;
-    background-color: #e2882f;
-    border-radius: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 15px;
-    h3 {
-      font-size: 1.8rem;
+.window {
+  width: 320px;
+  height: 250px;
+  background-color: $primeColor;
+  border: 2px solid $secColor;
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  h3 {
+    font-size: 1.8rem;
 
-      text-align: center;
-    }
-    img {
-      width: 70px;
-      height: 70px;
-      animation: rotate 3s infinite;
-      margin-bottom: 10px;
-    }
+    text-align: center;
   }
-  .button {
-    padding: 15px 50px;
-    border: none;
-    border-radius: 20px;
-    background-color: white;
-    color: #e2882f;
-    font-size: 1.7rem;
-    cursor: pointer;
-    transition: transform 0.3s;
-    &:hover {
-      transform: scale(1.1);
-    }
+  img {
+    width: 70px;
+    height: 70px;
+    animation: rotate 3s infinite;
+    margin-bottom: 10px;
   }
-  .button:disabled {
-    background-color: gray;
-  }
-
+}
+.button:disabled {
+  background-color: gray;
+}
 
 @media screen and (min-width: 1200px) {
   .modal {

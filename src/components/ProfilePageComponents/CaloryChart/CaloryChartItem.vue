@@ -6,12 +6,12 @@
         class="item__bar-fill"
         :style="{
           height: counted.value,
-          backgroundColor: counted.value === '100%' ? 'lightgreen' : '#e2882f',
+          backgroundColor: backgroundColorColorChangeFill,
         }"></div>
       <div
         class="item__bar-circle"
         :style="{
-          background: counted.value === '100%' ? 'lightgreen' : 'rgb(157,212,172)',
+          backgroundColor: backgroundColorColorChangeCircle,
         }">
         <i v-if="counted.value === '100%'" class="fas fa-check"></i>
         <img
@@ -23,12 +23,13 @@
       </div>
     </div>
     <p class="item__info">
-      <span class="color-orange"> {{ used[parameter] }} </span> /
+      <span class="color-orange"> {{ Math.floor(used[parameter]) }} </span> /
       {{ personalData[parameter] }}
     </p>
   </div>
 </template>
 <script>
+import {computed} from 'vue';
 export default {
   name: 'CaloryChartItem',
   props: {
@@ -47,6 +48,20 @@ export default {
     parameter: {
       required: true,
     },
+  },
+  setup(props) {
+    const backgroundColorColorChangeCircle = computed(() => {
+      return props.counted.value === '100%'
+        ? 'lightgreen'
+        : 'rgb(115, 184, 152) ';
+    });
+    const backgroundColorColorChangeFill = computed(() => {
+      return props.counted.value === '100%'
+        ? 'lightgreen'
+        : 'rgba(253, 193, 104,.8)';
+    });
+
+    return {backgroundColorColorChangeCircle, backgroundColorColorChangeFill};
   },
 };
 </script>
@@ -67,12 +82,11 @@ export default {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 2px solid #ffff;
+    border: 2px solid $secColor;
     overflow: hidden;
     position: relative;
 
     &-fill {
-      background-color: #e2882f;
       width: 100%;
       transition: height 0.5s;
       position: absolute;

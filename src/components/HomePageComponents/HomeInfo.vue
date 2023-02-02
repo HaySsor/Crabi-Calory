@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 .info {
-  background-color: #f4f4f4;
+  background-color: $primeColor;
   border-top-left-radius: 35px;
   border-top-right-radius: 35px;
   padding: 20px;
@@ -91,7 +91,7 @@ export default {
       height: 5px;
       position: absolute;
       bottom: -2px;
-      background-color: #e2882f79;
+      background-color: $secColor;
       border-radius: 20px;
     }
     &-crab {
@@ -140,10 +140,11 @@ export default {
       content: '';
       width: 400px;
       height: 400px;
-      background-color: #121111;
+
       top: 0px;
       border-radius: 35px;
       z-index: 10;
+      background: $secColor;
     }
 
     &::before {

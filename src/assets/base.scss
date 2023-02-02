@@ -12,11 +12,12 @@ html {
 
 body {
   min-height: 100vh;
-  background: rgb(157, 212, 172);
+  background: $bodyColor;
   font-family: 'Montserrat', sans-serif;
+  color: $textColor;
 }
 .color-orange {
-  color: #e2882f;
+  color: $textDecorate;
 }
 .family-Nerko {
   font-family: 'Nerko One', cursive;
