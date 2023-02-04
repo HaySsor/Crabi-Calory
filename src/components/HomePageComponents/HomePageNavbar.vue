@@ -7,7 +7,7 @@
           >Crabi <span class="color-orange">Calory</span></span
         >
       </li>
-      <li v-if="userStore.userLoggedIn">
+      <li v-if="userLogged">
         <RouterLink :to="{name: 'profile'}">
           <i class="fas fa-home color-orange icon"></i>
         </RouterLink>
@@ -22,13 +22,20 @@
 </template>
 
 <script>
-import useUserStore from '@/stores/user';
+import {computed} from 'vue';
 export default {
   name: 'HomePageNavbar',
-  setup() {
-    const userStore = useUserStore();
+  props: {
+    userStore: {
+      required: true,
+    },
+  },
+  setup(props) {
+    const userLogged = computed(() => {
+      return props.userStore.userLoggedIn;
+    });
 
-    return {userStore};
+    return {userLogged};
   },
 };
 </script>

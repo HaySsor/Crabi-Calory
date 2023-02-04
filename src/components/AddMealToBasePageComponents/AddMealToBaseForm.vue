@@ -3,50 +3,71 @@
     <div class="form__name">
       <label class="family-Nerko">Name</label>
       <input
+        data-name
         type="text"
         v-model="form.name"
         :style="{
-          borderColor: addMealValidationForm.name ? 'tomato' : 'rgb(115, 184, 152) ',
+          borderColor: addMealValidationForm.name
+            ? 'tomato'
+            : 'rgb(115, 184, 152) ',
         }" />
       <p v-if="addMealValidationForm.name" class="error">Name can't be empty</p>
     </div>
     <div class="form__kcal">
       <label class="family-Nerko">Calory</label>
       <input
+        data-calory
         type="text"
         v-model="form.kcal"
         :style="{
-          borderColor: addMealValidationForm.kcal ? 'tomato' : 'rgb(115, 184, 152) ',
+          borderColor: addMealValidationForm.kcal
+            ? 'tomato'
+            : 'rgb(115, 184, 152) ',
         }" />
-      <p v-if="addMealValidationForm.kcal" class="error">Calorie must be on 1 to 1000</p>
+      <p v-if="addMealValidationForm.kcal" class="error">
+        Calorie must be on 1 to 1000
+      </p>
     </div>
     <div class="form__protein">
       <label class="family-Nerko">Protein</label>
       <input
+        data-protein
         type="text"
         v-model="form.protein"
         :style="{
-          borderColor: addMealValidationForm.protein ? 'tomato' : 'rgb(115, 184, 152)',
+          borderColor: addMealValidationForm.protein
+            ? 'tomato'
+            : 'rgb(115, 184, 152)',
         }" />
-      <p v-if="addMealValidationForm.protein" class="error">Protein must be below 200</p>
+      <p v-if="addMealValidationForm.protein" class="error">
+        Protein must be below 200
+      </p>
     </div>
     <div class="form__fat">
       <label class="family-Nerko">Fat</label>
       <input
+        data-fat
         type="text"
         v-model="form.fat"
         :style="{
-          borderColor: addMealValidationForm.fat ? 'tomato' : 'rgb(115, 184, 152) ',
+          borderColor: addMealValidationForm.fat
+            ? 'tomato'
+            : 'rgb(115, 184, 152) ',
         }" />
-      <p v-if="addMealValidationForm.fat" class="error">Fat must be below 200</p>
+      <p v-if="addMealValidationForm.fat" class="error">
+        Fat must be below 200
+      </p>
     </div>
     <div class="form__carbohydrates">
       <label class="family-Nerko">Carbohydrates</label>
       <input
+      data-carbohydrates
         type="text"
         v-model="form.carbohydrates"
         :style="{
-          borderColor: addMealValidationForm.carbohydrates ? 'tomato' : 'gb(115, 184, 152)',
+          borderColor: addMealValidationForm.carbohydrates
+            ? 'tomato'
+            : 'gb(115, 184, 152)',
         }" />
       <p v-if="addMealValidationForm.carbohydrates" class="error">
         Carbohydrates must be below 600

@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <section class="home">
-      <HomePageNavbar />
+      <HomePageNavbar :userStore="userStore" />
       <HeroImage />
       <HomeInfo :userStore="userStore" />
     </section>
@@ -18,7 +18,6 @@ export default {
   components: {HomePageNavbar, HeroImage, HomeInfo},
   setup() {
     const userStore = useUserStore();
-
     return {userStore};
   },
 };

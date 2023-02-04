@@ -31,12 +31,12 @@
     </div>
     <div class="info__box" v-if="!userStore.userLoggedIn">
       <RouterLink :to="{name: 'login'}">
-        <AppButton>Sign in / Login</AppButton>
+        <AppButton class="text1">Sign in / Login</AppButton>
       </RouterLink>
     </div>
     <div class="info__box" v-else>
       <RouterLink :to="{name: 'profile'}">
-        <AppButton>Enter</AppButton>
+        <AppButton class="text2">Enter</AppButton>
       </RouterLink>
     </div>
   </article>

@@ -5,7 +5,7 @@
     </router-link>
     <div class="flex-box">
       <h2 class="login__title family-Nerko">Craby Family</h2>
-      <AppButton
+      <AppButton data-button
         @click="login = !login"
         className="login__switch">
         {{ loginButtonText }}
