@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="box__search">
+      <i class="fas fa-search icon"></i>
+      <input type="search" placeholder="Search Meal" v-model="searchMeal" />
+    </div>
     <div class="box">
       <TransitionGroup name="list-base" tag="ul" class="box__list">
         <MealListFromFirebaseItem
@@ -13,10 +17,7 @@
       <img src="/icons/crab.png" alt="" aria-hidden="true" class="img img3" />
       <img src="/icons/crab.png" alt="" aria-hidden="true" class="img img4" />
     </div>
-    <div class="box__search">
-      <i class="fas fa-search icon"></i>
-      <input type="search" placeholder="Search Meal" v-model="searchMeal" />
-    </div>
+
     <ModalAddMeal
       v-if="modal"
       :picketMeal="picketMeal"
@@ -127,7 +128,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-bottom: 10px;
     input {
       padding: 8px;
       border-radius: 20px;
