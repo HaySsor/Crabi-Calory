@@ -63,7 +63,7 @@ export default {
       showModal.value = true;
       failLogin.value = false;
       message.value = 'Wait';
-      passData.value = false;
+      passData.value = true;
       try {
         await userStore.login(value);
         message.value = 'Welcome Crab';

@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="classes">
+  <button :disabled="dis" class="button" :class="classes">
     <slot />
   </button>
 </template>
@@ -12,6 +12,7 @@ export default {
     className: {
       type: String,
     },
+    dis: {},
   },
   setup(props) {
     const classes = computed(() => {
@@ -40,7 +41,8 @@ export default {
     transform: scale(1.1);
   }
   &:disabled {
-    background-color: gray;
+    background: gray;
+    cursor: not-allowed;
   }
 }
 </style>

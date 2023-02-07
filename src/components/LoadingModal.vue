@@ -3,7 +3,7 @@
     <div class="window">
       <h3>{{ message }}</h3>
       <img src="/icons/crab.png" alt="" />
-      <AppButton :disabled="passData" class="button cypress-modal-btn" @click.prevent="closeModal">
+      <AppButton :dis="passData" class="button cypress-modal-btn" @click.prevent="closeModal">
         OK
       </AppButton>
     </div>
