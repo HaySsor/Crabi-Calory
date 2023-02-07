@@ -13,12 +13,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app)
-const db = getFirestore();
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-enableIndexedDbPersistence(db)
+export { auth, db };
 
-export {
-    db,
-    auth
-}
+enableIndexedDbPersistence(db);

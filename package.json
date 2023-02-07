@@ -34,6 +34,7 @@
     "eslint": "^8.22.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^9.3.0",
+    "jest": "^29.4.2",
     "rollup-plugin-visualizer": "^5.9.0",
     "sass": "^1.58.0",
     "start-server-and-test": "^1.14.0",

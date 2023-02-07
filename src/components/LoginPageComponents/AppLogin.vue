@@ -8,20 +8,20 @@
       <!-- email input -->
       <div class="login__form-box">
         <label class="login__form-box-label">Email</label>
-        <VeeField class="login__form-box-input" name="email" type="email" />
+        <VeeField class="login__form-box-input cypress-login" name="email" type="email" />
         <ErrorMessage class="error" name="email" />
       </div>
       <!-- password input -->
       <div class="login__form-box">
         <label class="login__form-box-label">Password</label>
         <VeeField
-          class="login__form-box-input"
+          class="login__form-box-input cypress-password"
           name="password"
           type="password" />
         <ErrorMessage class="error" name="password" />
       </div>
       <div class="login__form-btn">
-        <AppButton :disabled="regInSubmission"> Submit </AppButton>
+        <AppButton class="cypress-btn" :disabled="regInSubmission"> Submit </AppButton>
       </div>
     </VeeForm>
     <LoadingModal

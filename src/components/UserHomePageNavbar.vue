@@ -16,7 +16,7 @@
           <button @click.prevent="singOut">
             <i class="fas fa-sign-out-alt icon"></i>
           </button>
-          <span class="family-Nerko">LogOut</span>
+          <span class="family-Nerko cypress-log-out">LogOut</span>
         </li>
       </ul>
     </div>

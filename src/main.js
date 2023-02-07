@@ -3,8 +3,8 @@ import { createPinia } from 'pinia'
 import { Icon } from '@iconify/vue';
 import App from './App.vue'
 import router from './router/router'
-import VeeValidatePlugin from './includes/validation'
 import { auth } from './includes/firebase'
+import VeeValidatePlugin from './includes/validation'
 import { registerSW } from 'virtual:pwa-register';
 import progressBar from './includes/progress-bar';
 

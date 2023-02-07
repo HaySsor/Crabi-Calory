@@ -61,7 +61,7 @@ export default {
 .login {
   position: relative;
   min-height: 100vh;
-  padding: 5px 0;
+  padding: 10px;
   .flex-box {
     display: flex;
     justify-content: center;

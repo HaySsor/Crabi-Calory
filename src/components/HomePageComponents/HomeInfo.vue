@@ -30,12 +30,12 @@
       <div class="flor"></div>
     </div>
     <div class="info__box" v-if="!userStore.userLoggedIn">
-      <RouterLink :to="{name: 'login'}">
+      <RouterLink data-login :to="{name: 'login'}">
         <AppButton class="text1">Sign in / Login</AppButton>
       </RouterLink>
     </div>
     <div class="info__box" v-else>
-      <RouterLink :to="{name: 'profile'}">
+      <RouterLink data-profile :to="{name: 'profile'}">
         <AppButton class="text2">Enter</AppButton>
       </RouterLink>
     </div>
