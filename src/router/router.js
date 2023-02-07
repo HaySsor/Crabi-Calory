@@ -50,7 +50,11 @@ const router = createRouter({
     }
   ],
 
-  linkExactActiveClass: 'active'
+  linkExactActiveClass: 'active',
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return { top: 0 }
+  },
 })
 
 router.beforeEach((to, form, next) => {

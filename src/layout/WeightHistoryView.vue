@@ -1,23 +1,6 @@
 <template>
   <div class="weight-container">
     <div class="img-box">
-      <div>
-        <img src="/icons/crane.png" alt="" />
-      </div>
-      <div class="crab-box">
-        <img src="/icons/helmet.png" alt="" class="helmet" />
-        <img src="/icons/crab.png" alt="" class="crab" />
-      </div>
-      <div class="constructor constructor1">
-        <img src="/icons/build.png" alt="" />
-      </div>
-      <div class="crab-box">
-        <img src="/icons/helmet.png" alt="" class="helmet" />
-        <img src="/icons/crab.png" alt="" class="crab" />
-      </div>
-      <div class="constructor constructor2">
-        <img src="/icons/crane.png" alt="" />
-      </div>
       <div class="crab-box">
         <img src="/icons/helmet.png" alt="" class="helmet" />
         <img src="/icons/crab.png" alt="" class="crab" />
@@ -40,7 +23,7 @@ export default {
   align-items: center;
   position: relative;
   flex-direction: column;
-  height: 500px;
+  height: 400px;
   width: 80%;
   margin: 0 auto;
   border: 5px solid $secColor;
@@ -49,36 +32,36 @@ export default {
   img {
     width: 100px;
   }
-  .crab-box {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    .helmet {
-      position: absolute;
-      width: 40px;
-      top: -40px;
-      z-index: 1;
-    }
-    .crab {
-      position: absolute;
-    }
-  }
   .constructor2 {
     transform: rotateY(180deg);
   }
   .img-box {
-    width: 500px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-items: center;
+    .crab-box {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .helmet {
+        position: absolute;
+        width: 40px;
+        top: -40px;
+        z-index: 1;
+      }
+      .crab {
+        position: absolute;
+      }
+    }
   }
   h3 {
     margin-top: 80px;
     font-size: 5rem;
+    text-align: center;
   }
 }
 </style>
