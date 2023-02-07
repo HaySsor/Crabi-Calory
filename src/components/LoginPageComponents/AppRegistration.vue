@@ -108,7 +108,7 @@
 import {conversion} from '@/helper/demandConversion';
 import AppModal from '../LoadingModal.vue';
 import useUserStore from '@/stores/user';
-import {ref, computed} from 'vue';
+import {ref, computed, watch} from 'vue';
 import {useRouter} from 'vue-router';
 import AppButton from '../styleComponents/AppButton.vue';
 
@@ -137,6 +137,22 @@ export default {
     const fat = ref(0);
     const carbohydrates = ref(0);
     const protein = ref(0);
+
+    watch(fat, (currentValue) => {
+      if (currentValue < 0) {
+        fat.value = 0;
+      }
+    });
+    watch(carbohydrates, (currentValue) => {
+      if (currentValue < 0) {
+        carbohydrates.value = 0;
+      }
+    });
+    watch(fat, (currentValue) => {
+      if (currentValue < 0) {
+        protein.value = 0;
+      }
+    });
 
     const message = ref('Wait');
     const showModal = ref(false);

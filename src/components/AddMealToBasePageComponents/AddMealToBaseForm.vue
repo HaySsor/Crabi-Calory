@@ -67,7 +67,7 @@
         :style="{
           borderColor: addMealValidationForm.carbohydrates
             ? 'tomato'
-            : 'gb(115, 184, 152)',
+            : 'rgb(115, 184, 152)',
         }" />
       <p v-if="addMealValidationForm.carbohydrates" class="error">
         Carbohydrates must be below 600
