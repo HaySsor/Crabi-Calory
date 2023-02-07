@@ -25,6 +25,7 @@
       <input
         class="form__input"
         type="text"
+        ref="inputEl"
         v-model="times"
         @keyup.enter="addToDailyList" />
       <div class="form__alert" v-if="message === 1">
@@ -45,7 +46,7 @@
 </template>
 
 <script>
-import {ref, computed} from 'vue';
+import {ref, computed, onMounted} from 'vue';
 import useMealStore from '@/stores/meals';
 import AppButton from '../styleComponents/AppButton.vue';
 
@@ -112,6 +113,11 @@ export default {
       }
     }
 
+    const inputEl = ref(null);
+    onMounted(() => {
+      inputEl.value.focus(); // the DOM node
+    });
+
     return {
       times,
       kcal,
@@ -120,6 +126,7 @@ export default {
       fat,
       message,
       addToDailyList,
+      inputEl,
     };
   },
 };
