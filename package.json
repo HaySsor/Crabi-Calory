@@ -22,6 +22,7 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.0.26",
     "vee-validate": "^4.7.3",
+    "vercel": "^28.15.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
