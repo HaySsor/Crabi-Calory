@@ -67,25 +67,23 @@ export default {
     const times = ref(100);
     const useMeal = useMealStore();
 
-    const kcal = computed(() => {
-      let k = props.picketMeal.kcal;
+    function calculateSum(name) {
+      let k = props.picketMeal[name];
       let sum = parseFloat(k) * (times.value / 100);
       return sum.toFixed(1);
+    }
+
+    const kcal = computed(() => {
+      return calculateSum('kcal');
     });
     const carb = computed(() => {
-      let k = props.picketMeal.carbohydrates;
-      let sum = parseFloat(k) * (times.value / 100);
-      return sum.toFixed(1);
+      return calculateSum('carbohydrates');
     });
     const protein = computed(() => {
-      let k = props.picketMeal.protein;
-      let sum = parseFloat(k) * (times.value / 100);
-      return sum.toFixed(1);
+      return calculateSum('protein');
     });
     const fat = computed(() => {
-      let k = props.picketMeal.fat;
-      let sum = parseFloat(k) * (times.value / 100);
-      return sum.toFixed(1);
+      return calculateSum('fat');
     });
 
     function addToDailyList() {
@@ -101,7 +99,6 @@ export default {
             id: props.picketMeal.id,
           },
         };
-        console.log(meal);
         message.value = 1;
         useMeal.addDailyMeal(meal);
 
