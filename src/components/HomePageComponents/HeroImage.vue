@@ -57,6 +57,7 @@ export default {
     &__img {
       width: 300px;
       right: 20px;
+      top: 30px;
       z-index: 1;
       &-photo {
         width: 100%;

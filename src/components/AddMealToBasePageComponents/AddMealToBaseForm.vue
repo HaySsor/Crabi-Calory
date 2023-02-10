@@ -17,7 +17,11 @@
       <label class="family-Nerko">Calory</label>
       <input
         data-calory
-        type="text"
+        type="number"
+        min="0"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        title="Non-negative integral number"
         v-model="form.kcal"
         :style="{
           borderColor: addMealValidationForm.kcal
@@ -32,7 +36,11 @@
       <label class="family-Nerko">Protein</label>
       <input
         data-protein
-        type="text"
+        type="number"
+        min="0"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        title="Non-negative integral number"
         v-model="form.protein"
         :style="{
           borderColor: addMealValidationForm.protein
@@ -47,7 +55,11 @@
       <label class="family-Nerko">Fat</label>
       <input
         data-fat
-        type="text"
+        type="number"
+        min="0"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        title="Non-negative integral number"
         v-model="form.fat"
         :style="{
           borderColor: addMealValidationForm.fat
@@ -61,8 +73,12 @@
     <div class="form__carbohydrates">
       <label class="family-Nerko">Carbohydrates</label>
       <input
-      data-carbohydrates
-        type="text"
+        data-carbohydrates
+        type="number"
+        min="0"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        title="Non-negative integral number"
         v-model="form.carbohydrates"
         :style="{
           borderColor: addMealValidationForm.carbohydrates
@@ -130,7 +146,11 @@ export default {
         return;
       }
       addMealValidationForm.name = false;
-      if (form.kcal <= 0 && form.kcal < 1000) {
+      if (
+        form.kcal <= 0 &&
+        form.kcal < 1000 &&
+        form.kcal.match(/^-?\d*\.?\d*$/)
+      ) {
         addMealValidationForm.kcal = true;
         return;
       }

@@ -1,11 +1,7 @@
 <template>
   <article class="info">
     <p class="info__text">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum accusamus
-      veritatis et incidunt. Harum, cumque. Fugiat exercitationem architecto sit
-      quae voluptate pariatur, iure eligendi? Expedita blanditiis aliquid animi!
-      Expedita repudiandae ipsam deserunt tempore reprehenderit quaerat
-      accusantium molestiae nam ea dolor.
+      Welcome to Crab Calory! This app is designed to help you keep track of your daily caloric intake and reach your health and fitness goals. With a user-friendly interface, it's easy to log your meals and snacks. You can also track your progress over time. Whether you're trying to lose weight, build muscle, or simply maintain a balanced diet, Crab Calory is here to help. Let's get started!
     </p>
     <!-- Dancing Crab section -->
     <h3 class="info__title">Join our Crab family</h3>

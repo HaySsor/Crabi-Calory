@@ -240,7 +240,6 @@ export default {
       width: 100%;
 
       &-label {
-        font-family: 'Nerko One', cursive;
         font-size: 1.7rem;
         margin-bottom: 5px;
       }
@@ -276,7 +275,6 @@ export default {
       label {
         font-size: 1.5rem;
         margin-bottom: 5px;
-        font-family: 'Nerko One', cursive;
         font-size: 1.7rem;
       }
       select {
@@ -387,7 +385,6 @@ export default {
 
         &-label {
           color: black;
-          font-weight: bold;
         }
         &-input {
           padding: 8px;
