@@ -61,8 +61,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The project is a simple quiz application, built from several components
-
 Crab calory is a calorie counting application, this project is based on Vue.js/ Pina/ Firebase .
 The app simply and clearly shows the user their daily requirement calculated from the PPM and CPM formula , suitably adapted for both men and women, 
 The application is colourful, clear and as user-friendly as possible, so as not to put off those who have never counted calories before.
