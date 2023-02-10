@@ -98,7 +98,7 @@ The application is colourful, clear and as user-friendly as possible, so as not 
    ```
 5.Unit test 
    ```sh
-   npm npm run test:e2e
+   npm run test:e2e
    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
