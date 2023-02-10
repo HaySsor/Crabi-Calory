@@ -76,7 +76,7 @@ The application is colourful, clear and as user-friendly as possible, so as not 
 ### Built With
 
 
-**Vue.js** **Composition API** **vee-validate** **firebase** **Pinia**
+**Vue.js**/**Composition API**/**vee-validate**/**firebase**/**Pinia**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
