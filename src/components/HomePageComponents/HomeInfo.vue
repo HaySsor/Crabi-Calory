@@ -70,7 +70,7 @@ export default {
     text-align: center;
     margin-top: 10px;
     font-family: 'Nerko One', cursive;
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-top: 30px;
   }
   &__family {
@@ -102,7 +102,7 @@ export default {
       }
       &-crab1,
       &-crab2 {
-        animation: crab-move1 3s infinite;
+        animation: crab-move1 4s infinite;
       }
       &-crab3 {
         right: 20%;
@@ -113,7 +113,7 @@ export default {
       }
       &-crab3,
       &-crab4 {
-        animation: crab-move2 3s infinite;
+        animation: crab-move2 4s infinite;
       }
     }
   }
@@ -145,12 +145,12 @@ export default {
 
     &::before {
       left: -100px;
-      animation: entry-left 10s forwards;
+      animation: entry-left 2s forwards;
     }
     &::after {
       right: -100px;
       transform: rotate(0deg);
-      animation: entry-right 10s forwards;
+      animation: entry-right 2s forwards;
     }
     &__text {
       width: 100%;
