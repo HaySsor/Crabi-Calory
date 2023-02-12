@@ -70,7 +70,7 @@ export default {
     text-align: center;
     margin-top: 10px;
     font-family: 'Nerko One', cursive;
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-top: 30px;
   }
   &__family {
