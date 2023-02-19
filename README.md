@@ -17,7 +17,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://crabi-calory.vercel.app/">
     <img src="https://crabi-calory.vercel.app/icons/crab.png" alt="Logo" width="80" height="80">
   </a>
 
