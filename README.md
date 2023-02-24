@@ -104,7 +104,7 @@ The application is colourful, clear and as user-friendly as possible, so as not 
 
 ### Future
 
-1) Move app to TS
+1) Move app to TS ✅
 2) Add Weight layout with Chart.js
 3) Add user posibility to viwe past day with meal 
 
