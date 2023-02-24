@@ -23,30 +23,39 @@
       </div>
     </div>
     <p class="item__info">
-      <span class="color-orange"> {{ Math.floor(used[parameter]) }} </span> /
-      {{ personalData[parameter] }}
+      <span class="color-orange"> {{ usedParams }} </span> /
+      {{ maxParams }}
     </p>
   </div>
 </template>
-<script>
+<script lang="ts">
+import type {PropType, ComputedRef} from 'vue';
+import {defineComponent} from 'vue';
 import {computed} from 'vue';
-export default {
+import type {ProfileMacro, GetUser} from '../../../types/interfaces';
+
+export default defineComponent({
   name: 'CaloryChartItem',
   props: {
     name: {
       required: true,
+      type: String,
     },
     counted: {
       required: true,
+      type: Object as PropType<ComputedRef>,
     },
     used: {
       required: true,
+      type: Object as PropType<ProfileMacro>,
     },
     personalData: {
       required: true,
+      type: Object as PropType<GetUser>,
     },
     parameter: {
       required: true,
+      type: String,
     },
   },
   setup(props) {
@@ -61,9 +70,21 @@ export default {
         : 'rgba(253, 193, 104,.8)';
     });
 
-    return {backgroundColorColorChangeCircle, backgroundColorColorChangeFill};
+    const usedParams = computed(() => {
+      return Math.floor(props.used[props.parameter as keyof ProfileMacro]);
+    });
+    const maxParams = computed(() => {
+      return props.personalData[props.parameter as keyof GetUser];
+    });
+
+    return {
+      usedParams,
+      maxParams,
+      backgroundColorColorChangeCircle,
+      backgroundColorColorChangeFill,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

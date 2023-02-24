@@ -2,22 +2,33 @@
   <div class="profile">
     <img src="/icons/frankenstein.png" alt="" />
     <div class="profile__name family-Nerko">{{ personalData.name }}</div>
-    <i @click="OpenModalUserEditProfile" class="settings fas fa-cog"></i>
+    <i @click="handleClick" class="settings fas fa-cog"></i>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from 'vue';
+import type {PropType} from 'vue';
+import type {GetUser} from '../../../types/interfaces';
+export default defineComponent({
   name: 'UserProfileBox',
   props: {
     personalData: {
       required: true,
+      type: Object as PropType<GetUser>,
     },
     OpenModalUserEditProfile: {
       required: true,
+      type: Function,
     },
   },
-};
+  setup(props) {
+    const handleClick = () => {
+      props.OpenModalUserEditProfile();
+    };
+    return {handleClick};
+  },
+});
 </script>
 
 <style lang="scss" scoped>

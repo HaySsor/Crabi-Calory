@@ -2,30 +2,43 @@
   <li class="item">
     <img class="img" src="/icons/crab.png" alt="" aria-hidden="true" />
     <div class="item-cont">
-      <h3>{{ product.meal.name }}</h3>
-      <i @click="removeMeal(product)" class="fas fa-trash-alt"></i>
+      <h3>{{ productName }}</h3>
+      <i
+        @click="
+          () => {
+            removeMeal(product);
+          }
+        "
+        class="fas fa-trash-alt"></i>
     </div>
   </li>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import {computed, defineComponent} from 'vue';
+import type {MealObj} from '../../../types/interfaces';
+import type {PropType} from 'vue';
+
+export default defineComponent({
   name: 'UserMealListItem',
   props: {
     useMeal: {
       required: true,
+      type: Object,
     },
     product: {
       required: true,
+      type: Object as PropType<MealObj>,
     },
   },
   setup(props) {
-    async function removeMeal(value) {
+    const productName = computed(() => props.product.meal.name);
+    async function removeMeal(value: MealObj) {
       await props.useMeal.removeMealFromDaily(value);
     }
-    return {removeMeal};
+    return {removeMeal, productName};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

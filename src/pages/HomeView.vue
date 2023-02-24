@@ -8,19 +8,20 @@
   </div>
 </template>
 
-<script>
-import HomePageNavbar from '@/components/HomePageComponents/HomePageNavbar.vue';
-import useUserStore from '@/stores/user';
+<script lang="ts">
+import HomePageNavbar from '../components/HomePageComponents/HomePageNavbar.vue';
+import useUserStore from '../stores/user';
 import HeroImage from '../components/HomePageComponents/HeroImage.vue';
 import HomeInfo from '../components/HomePageComponents/HomeInfo.vue';
-export default {
+import {defineComponent} from 'vue';
+export default defineComponent({
   name: 'HomeView',
   components: {HomePageNavbar, HeroImage, HomeInfo},
   setup() {
     const userStore = useUserStore();
     return {userStore};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -5,9 +5,7 @@
     </router-link>
     <div class="flex-box">
       <h2 class="login__title family-Nerko">Craby Family</h2>
-      <AppButton data-button
-        @click="login = !login"
-        className="login__switch">
+      <AppButton data-button @click="login = !login" className="login__switch">
         {{ loginButtonText }}
       </AppButton>
     </div>
@@ -19,12 +17,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import AppRegistration from '../components/LoginPageComponents/AppRegistration.vue';
 import AppLogin from '../components/LoginPageComponents/AppLogin.vue';
 import AppButton from '../components/styleComponents/AppButton.vue';
+import {defineComponent} from 'vue';
 import {ref, computed} from 'vue';
-export default {
+export default defineComponent({
   name: 'LoginSingView',
   components: {AppRegistration, AppLogin, AppButton},
   setup() {
@@ -36,7 +35,7 @@ export default {
 
     return {login, loginButtonText};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -68,7 +67,7 @@ export default {
   }
   &__title {
     text-align: center;
-    font-size: 30px;  
+    font-size: 30px;
   }
   &__back {
     border-radius: 50%;

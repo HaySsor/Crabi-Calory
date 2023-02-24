@@ -8,7 +8,7 @@
         <TransitionGroup
           name="list"
           tag="ul"
-          v-if="useMeal.useDailyMeals.length > 0"
+          v-if="listMeal.length > 0"
           class="box__list-ul">
           <UserMealListItem
             v-for="product in listMeal"
@@ -22,13 +22,16 @@
   </WindowComponent>
 </template>
 
-<script>
+<script lang="ts">
 import UserMealListItem from './UserMealListItem.vue';
 import UserMealListEmpty from './UserMealListEmpty.vue';
 import WindowComponent from '../../styleComponents/WindowComponent.vue';
 import {computed} from 'vue';
 import ComponentTitle from '../../styleComponents/ComponentTitle.vue';
-export default {
+import {defineComponent} from 'vue';
+import type {MealObj} from '../../../types/interfaces';
+
+export default defineComponent({
   name: 'UserMealList',
   components: {
     UserMealListItem,
@@ -39,16 +42,17 @@ export default {
   props: {
     useMeal: {
       required: true,
+      type: Object,
     },
   },
   setup(props) {
-    const listMeal = computed(() => {
-      return props.useMeal.useDailyMeals;
+    const listMeal = computed<MealObj[]>(() => {
+      const list = [...props.useMeal.useDailyMeals];
+      return list;
     });
-
     return {listMeal};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

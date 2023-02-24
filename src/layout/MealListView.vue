@@ -25,12 +25,14 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import MealListFromFirebase from '../components/MealListPageComponents/MealListFromFirebase.vue';
-export default {
+import {defineComponent} from 'vue';
+
+export default defineComponent({
   name: 'MealList',
   components: {MealListFromFirebase},
-};
+});
 </script>
 
 <style lang="scss" scoped>

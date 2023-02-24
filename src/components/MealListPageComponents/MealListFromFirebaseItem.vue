@@ -1,25 +1,38 @@
 <template>
   <li class="item">
     <h3>{{ meal.name }}</h3>
-    <AppButton @click="openModal(meal)" className="btn">Add meal</AppButton>
+    <AppButton @click="openModalHandler" className="btn">Add meal</AppButton>
   </li>
 </template>
 
-<script>
+<script lang="ts">
 import AppButton from '../styleComponents/AppButton.vue';
-export default {
+import {defineComponent} from 'vue';
+import type {PropType} from 'vue';
+import type {Meal} from '../../types/interfaces';
+
+
+export default defineComponent({
   name: 'MealListFromFirebaseItem',
   components: {AppButton},
   props: {
     meal: {
       required: true,
+      type: Object as PropType<Meal>,
     },
     openModal: {
       required: true,
+      type: Function,
     },
   },
-  setup() {},
-};
+  setup(props) {
+    const openModalHandler = () => {
+      props.openModal(props.meal);
+    };
+
+    return {openModalHandler};
+  },
+});
 </script>
 
 <style lang="scss" scoped>

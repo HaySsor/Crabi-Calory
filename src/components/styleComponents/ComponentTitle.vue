@@ -2,10 +2,11 @@
   <h2 class="title family-Nerko"><slot /></h2>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from 'vue';
+export default defineComponent({
   name: 'ComponentTitle',
-};
+});
 </script>
 
 <style lang="scss" scoped>

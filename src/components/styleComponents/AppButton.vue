@@ -4,24 +4,27 @@
   </button>
 </template>
 
-<script>
+<script lang="ts">
+import {defineComponent} from 'vue';
 import {computed} from 'vue';
 
-export default {
+export default defineComponent({
   props: {
     className: {
       type: String,
     },
-    dis: {},
+    dis: {
+      type: Boolean,
+    },
   },
   setup(props) {
-    const classes = computed(() => {
+    const classes = computed<string | undefined>(() => {
       return props.className;
     });
 
     return {classes};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
