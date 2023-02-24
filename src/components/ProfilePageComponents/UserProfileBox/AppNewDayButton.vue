@@ -4,10 +4,12 @@
   </AppButton>
 </template>
 
-<script>
-import useMealStore from '@/stores/meals';
+<script lang="ts">
+import useMealStore from '../../../stores/meals';
+import {defineComponent} from 'vue';
 import AppButton from '../../styleComponents/AppButton.vue';
-export default {
+
+export default defineComponent({
   name: 'NewDayButton',
   components: {AppButton},
   setup() {
@@ -15,7 +17,7 @@ export default {
 
     return {useMeal};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -23,3 +25,5 @@ export default {
   padding: 15px 20px;
 }
 </style>
+
+ts

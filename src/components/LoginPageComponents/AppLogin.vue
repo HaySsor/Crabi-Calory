@@ -8,7 +8,10 @@
       <!-- email input -->
       <div class="login__form-box">
         <label class="login__form-box-label">Email</label>
-        <VeeField class="login__form-box-input cypress-login" name="email" type="email" />
+        <VeeField
+          class="login__form-box-input cypress-login"
+          name="email"
+          type="email" />
         <ErrorMessage class="error" name="email" />
       </div>
       <!-- password input -->
@@ -21,7 +24,9 @@
         <ErrorMessage class="error" name="password" />
       </div>
       <div class="login__form-btn">
-        <AppButton class="cypress-btn" :disabled="regInSubmission"> Submit </AppButton>
+        <AppButton class="cypress-btn" :disabled="regInSubmission">
+          Submit
+        </AppButton>
       </div>
     </VeeForm>
     <LoadingModal
@@ -33,14 +38,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import LoadingModal from '../LoadingModal.vue';
 import {ref} from 'vue';
-import useUserStore from '@/stores/user';
+import useUserStore from '../../stores/user';
 import {useRouter} from 'vue-router';
+import {defineComponent} from 'vue';
 import AppButton from '../styleComponents/AppButton.vue';
+import type {Login} from '../../types/interfaces';
 
-export default {
+export default defineComponent({
   name: 'AppLogin',
   components: {LoadingModal, AppButton},
   setup() {
@@ -48,17 +55,17 @@ export default {
     const router = useRouter();
     const failLogin = ref(false);
 
-    const loginSchema = {
+    const loginSchema: Login = {
       email: 'required|email',
       password: 'required|min:6|max:100',
     };
 
-    const message = ref('Wait');
-    const showModal = ref(false);
-    const regInSubmission = ref(false);
-    const passData = ref(true);
+    const message = ref<string>('Wait');
+    const showModal = ref<boolean>(false);
+    const regInSubmission = ref<boolean>(false);
+    const passData = ref<boolean>(true);
 
-    async function login(value) {
+    async function login(value: Login) {
       regInSubmission.value = true;
       showModal.value = true;
       failLogin.value = false;
@@ -94,7 +101,7 @@ export default {
       closeModal,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

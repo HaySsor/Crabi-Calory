@@ -18,35 +18,56 @@
   </WindowComponent>
 </template>
 
-<script>
+<script lang="ts">
+import {defineComponent} from 'vue';
 import CaloryChartItem from './CaloryChartItem.vue';
 import WindowComponent from '../../styleComponents/WindowComponent.vue';
 import {computed} from 'vue';
 import ComponentTitle from '../../styleComponents/ComponentTitle.vue';
-export default {
+import type {PropType, ComputedRef} from 'vue';
+import type {
+  GetUser,
+  MealObj,
+  Meal,
+  ProfileMacro,
+} from '../../../types/interfaces';
+
+type Key = {[propKey: string]: number};
+
+export default defineComponent({
   name: 'CaloryChart',
   components: {CaloryChartItem, WindowComponent, ComponentTitle},
   props: {
     personalData: {
       required: true,
+      type: Object as PropType<GetUser>,
     },
     useDailyMeals: {
       required: true,
+      type: Object as PropType<MealObj[]>,
     },
   },
+
   setup(props) {
     const used = computed(() => {
-      const userCaloryUsedInDay = {
+      const userCaloryUsedInDay: ProfileMacro = {
         kcal: 0,
         protein: 0,
         carbohydrates: 0,
         fat: 0,
       };
-      props.useDailyMeals.forEach(({meal}) => {
+      props.useDailyMeals.forEach((item: MealObj) => {
+        const {meal}: {meal: Meal} = item;
         for (const key1 in meal) {
           for (const key2 in userCaloryUsedInDay) {
-            if (key1 === key2) {
-              userCaloryUsedInDay[key2] += parseFloat(meal[key1]);
+            if (key1 === key2 && meal[key1 as keyof Meal] !== undefined) {
+              const value = meal[key1 as keyof Meal];
+              if (typeof value === 'number') {
+                userCaloryUsedInDay[key2 as keyof ProfileMacro] += value;
+              } else if (typeof value === 'string') {
+                userCaloryUsedInDay[key2 as keyof ProfileMacro] +=
+                  parseFloat(value);
+              }
             }
           }
         }
@@ -68,15 +89,21 @@ export default {
       return calculate('kcal');
     });
 
-    function calculate(uName) {
-      if (used.value[uName] > props.personalData[uName]) {
+    function calculate(uName: string) {
+      const u = used.value[uName as keyof ProfileMacro];
+      const p = props.personalData[uName as keyof GetUser];
+      if (u > p) {
         return '100%';
-      } else {
-        return (used.value[uName] / props.personalData[uName]) * 100 + '%';
+      } else if (typeof p === 'number') {
+        return (u / p) * 100 + '%';
       }
     }
 
-    const ComponentRenderArray = [
+    const ComponentRenderArray: {
+      name: string;
+      counted: ComputedRef<string | undefined>;
+      parameter: string;
+    }[] = [
       {
         name: 'Protein',
         counted: countedProtein,
@@ -104,7 +131,7 @@ export default {
       ComponentRenderArray,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

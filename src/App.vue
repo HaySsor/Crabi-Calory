@@ -10,10 +10,12 @@
   </main>
 </template>
 
-<script>
-import useUserStore from '@/stores/user';
-import {auth} from '@/includes/firebase';
-export default {
+<script lang="ts">
+import useUserStore from './stores/user';
+import {auth} from './includes/firebase';
+import {defineComponent} from 'vue';
+
+export default defineComponent({
   name: 'MainApp',
   setup() {
     const userStore = useUserStore();
@@ -22,7 +24,7 @@ export default {
       userStore.userLoggedIn = true;
     }
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 .wrapper {

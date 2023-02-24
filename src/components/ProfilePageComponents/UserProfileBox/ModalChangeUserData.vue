@@ -1,6 +1,6 @@
 <template>
   <div class="modal">
-    <div class="shadow" @click="closeModalUserEditProfile"></div>
+    <div class="shadow" @click="handleClick"></div>
     <form @submit.prevent="edit" class="form">
       <h3 class="family-Nerko title">Edit calorific requirement</h3>
       <div class="form__data">
@@ -22,17 +22,23 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {defineComponent} from 'vue';
 import {ref, computed} from 'vue';
-import useUserStore from '@/stores/user';
-export default {
+import useUserStore from '../../../stores/user';
+import type {PropType} from 'vue';
+import type {GetUser} from '../../../types/interfaces';
+
+export default defineComponent({
   name: 'ModalChangeDataToBase',
   props: {
     personalData: {
       required: true,
+      type: Object as PropType<GetUser>,
     },
     closeModalUserEditProfile: {
       required: true,
+      type: Function,
     },
   },
   setup(props) {
@@ -42,10 +48,7 @@ export default {
     const protein = ref(props.personalData.protein);
 
     const calory = computed(() => {
-      let c =
-        parseFloat(fat.value) * 9 +
-        parseFloat(carbohydrates.value) * 4 +
-        parseFloat(protein.value * 4);
+      let c = fat.value * 9 + carbohydrates.value * 4 + protein.value * 4;
       return c;
     });
     function edit() {
@@ -60,9 +63,13 @@ export default {
       props.closeModalUserEditProfile();
     }
 
-    return {fat, carbohydrates, protein, calory, edit};
+    function handleClick() {
+      props.closeModalUserEditProfile();
+    }
+
+    return {fat, carbohydrates, protein, calory, edit, handleClick};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

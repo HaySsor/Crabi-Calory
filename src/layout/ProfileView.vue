@@ -21,17 +21,20 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import UserProfileBox from '../components/ProfilePageComponents/UserProfileBox/UserProfileBox.vue';
 import AppCaloryChartVue from '../components/ProfilePageComponents/CaloryChart/CaloryChart.vue';
 import UserMealList from '../components/ProfilePageComponents/DailyMealList/UserMealList.vue';
 import AppNewDayButtonVue from '../components/ProfilePageComponents/UserProfileBox/AppNewDayButton.vue';
-import useMealsStore from '@/stores/meals';
-import {onBeforeMount, ref} from 'vue';
-import useUserStore from '@/stores/user';
+import useMealsStore from '../stores/meals';
+import {compile, computed, onBeforeMount, ref} from 'vue';
+import useUserStore from '../stores/user';
 import ModalChangeUserData from '../components/ProfilePageComponents/UserProfileBox/ModalChangeUserData.vue';
+import {defineComponent} from 'vue';
+import type {UserData} from '../types/interfaces';
+import {propsToAttrMap} from '@vue/shared';
 
-export default {
+export default defineComponent({
   name: 'ProfileView',
   components: {
     UserProfileBox,
@@ -43,11 +46,11 @@ export default {
   setup() {
     const useUser = useUserStore();
     const useMeal = useMealsStore();
-    const showModalUserEditProfile = ref(false);
+    const showModalUserEditProfile = ref<boolean>(false);
 
     onBeforeMount(async () => {
-     await useUser.downloadUserData();
-     await useMeal.getUserMeal();
+      await useUser.downloadUserData();
+      await useMeal.getUserMeal();
     });
 
     function closeModalUserEditProfile() {
@@ -57,14 +60,14 @@ export default {
       showModalUserEditProfile.value = true;
     }
     return {
-      useUser,
       useMeal,
+      useUser,
       closeModalUserEditProfile,
       showModalUserEditProfile,
       openModalUserEditProfile,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

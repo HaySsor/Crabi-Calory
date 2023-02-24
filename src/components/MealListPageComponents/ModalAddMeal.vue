@@ -1,8 +1,8 @@
 <template>
   <div class="modal">
-    <div class="shadow" @click="closeModal"></div>
+    <div class="shadow" @click="handlerCloseModal"></div>
     <div class="form">
-      <i @click="closeModal" class="fas fa-times-circle form__exit"></i>
+      <i @click="handlerCloseModal" class="fas fa-times-circle form__exit"></i>
       <h3 class="form__name">{{ picketMeal.name }}</h3>
       <div class="form__box">
         <span class="form__box-name">Calories</span>
@@ -45,31 +45,41 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {ref, computed, onMounted} from 'vue';
-import useMealStore from '@/stores/meals';
+import useMealStore from '../../stores/meals';
 import AppButton from '../styleComponents/AppButton.vue';
+import {defineComponent} from 'vue';
+import type {PropType} from 'vue';
+import type {Meal, MealObj} from '../../types/interfaces';
 
-export default {
+export default defineComponent({
   name: 'ModalAddMeal',
   components: {AppButton},
 
   props: {
     picketMeal: {
       required: true,
+      type: Object as PropType<Meal>,
     },
     closeModal: {
       required: true,
+      type: Function,
     },
   },
   setup(props) {
-    const message = ref(0);
-    const times = ref(100);
+    const message = ref<number>(0);
+    const times = ref<number>(100);
     const useMeal = useMealStore();
 
-    function calculateSum(name) {
-      let k = props.picketMeal[name];
-      let sum = parseFloat(k) * (times.value / 100);
+    function calculateSum(name: string) {
+      let k = props.picketMeal[name as keyof Meal];
+      let sum: number = 0;
+      if (typeof k === 'string') {
+        sum = parseFloat(k) * (times.value / 100);
+      } else if (typeof k === 'number') {
+        sum = k * (times.value / 100);
+      }
       return sum.toFixed(1);
     }
 
@@ -88,14 +98,14 @@ export default {
 
     function addToDailyList() {
       if (times.value > 0) {
-        const meal = {
+        const meal: MealObj = {
           idD: Math.floor(Math.random() * 200),
           meal: {
             name: props.picketMeal.name,
-            kcal: kcal.value,
-            carbohydrates: carb.value,
-            protein: protein.value,
-            fat: fat.value,
+            kcal: parseInt(kcal.value),
+            carbohydrates: parseInt(carb.value),
+            protein: parseInt(protein.value),
+            fat: parseInt(fat.value),
             id: props.picketMeal.id,
           },
         };
@@ -109,10 +119,15 @@ export default {
         message.value = 2;
       }
     }
+    const handlerCloseModal = () => {
+      props.closeModal();
+    };
 
-    const inputEl = ref(null);
+    const inputEl = ref();
     onMounted(() => {
-      inputEl.value.focus(); // the DOM node
+      if (typeof inputEl !== null) {
+        inputEl.value.focus(); // the DOM node
+      }
     });
 
     return {
@@ -124,9 +139,10 @@ export default {
       message,
       addToDailyList,
       inputEl,
+      handlerCloseModal
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

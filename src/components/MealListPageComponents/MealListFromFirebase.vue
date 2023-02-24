@@ -25,18 +25,29 @@
   </div>
 </template>
 
-<script>
-import {ListMealFormFirebase} from '@/composables/getMeal';
+<script lang="ts">
+import {ListMealFormFirebase} from '../../composables/getMeal';
 import ModalAddMeal from './ModalAddMeal.vue';
 import MealListFromFirebaseItem from './MealListFromFirebaseItem.vue';
 import {ref, onMounted} from 'vue';
 import {computed} from 'vue';
-export default {
+import {defineComponent} from 'vue';
+import type {Meal} from '../../types/interfaces';
+
+const emptyPicketMeal: Meal = {
+  fat: 0,
+  carbohydrates: 0,
+  protein: 0,
+  kcal: 0,
+  name: '',
+};
+
+export default defineComponent({
   name: 'MealListFromFirebase',
   components: {MealListFromFirebaseItem, ModalAddMeal},
   setup() {
     // get Meals from firebase
-    const list = ref([]);
+    const list = ref<Meal[]>();
     async function getData() {
       const {mealsList} = await ListMealFormFirebase();
       list.value = [...mealsList.value];
@@ -46,24 +57,34 @@ export default {
     });
 
     // Modal
-    const modal = ref(false);
-    const picketMeal = ref('');
+    const modal = ref<boolean>(false);
+    const picketMeal = ref<Meal>(emptyPicketMeal);
 
-    function openModal(item) {
+    function openModal(item: Meal) {
       picketMeal.value = Object.assign(item);
       modal.value = true;
     }
-    function closeModal() {
-      modal.value = false;
-      picketMeal.value = '';
+    function closeModal(): void {
+      if (
+        picketMeal &&
+        picketMeal.value !== null &&
+        picketMeal.value !== undefined
+      ) {
+        modal.value = false;
+        picketMeal.value = emptyPicketMeal;
+      }
     }
     //search Meal
-    const searchMeal = ref('');
+    const searchMeal = ref<string>('');
 
     const filterList = computed(() => {
-      return list.value.filter((item) => {
-        return item.name.toLowerCase().includes(searchMeal.value.toLowerCase());
-      });
+      if (list.value) {
+        return list.value.filter((item) => {
+          return item.name
+            .toLowerCase()
+            .includes(searchMeal.value.toLowerCase());
+        });
+      }
     });
 
     return {
@@ -76,7 +97,7 @@ export default {
       filterList,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

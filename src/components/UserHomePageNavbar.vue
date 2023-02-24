@@ -23,13 +23,16 @@
   </nav>
 </template>
 
-<script>
-import useUserStore from '@/stores/user';
+<script lang="ts">
+import useUserStore from '../stores/user';
 import {useRouter} from 'vue-router';
-export default {
+import {defineComponent} from 'vue';
+import type {navbarLinkList} from '../types/interfaces';
+
+export default defineComponent({
   name: 'UserHomePageNavbar',
   setup() {
-    const navbarLinkList = [
+    const navbarLinkList: navbarLinkList[] = [
       {
         id: 1,
         name: 'Add Meal',
@@ -66,7 +69,7 @@ export default {
 
     return {singOut, navbarLinkList};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -8,12 +8,14 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import AddMealToBaseForm from '../components/AddMealToBasePageComponents/AddMealToBaseForm.vue';
-export default {
+import {defineComponent} from 'vue';
+
+export default defineComponent({
   name: 'AddMealView',
   components: {AddMealToBaseForm},
-};
+});
 </script>
 
 <style lang="scss" scoped>

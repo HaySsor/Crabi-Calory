@@ -9,10 +9,11 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from 'vue';
+export default defineComponent({
   name: 'UserMealListEmpty',
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -29,7 +30,7 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  &__info{
+  &__info {
     opacity: 0.3;
     font-size: 1.8rem;
   }

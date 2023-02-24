@@ -21,13 +21,17 @@
   </nav>
 </template>
 
-<script>
+
+<script lang="ts">
 import {computed} from 'vue';
-export default {
+import {defineComponent} from 'vue';
+
+export default defineComponent({
   name: 'HomePageNavbar',
   props: {
     userStore: {
       required: true,
+      type: Object
     },
   },
   setup(props) {
@@ -37,7 +41,7 @@ export default {
 
     return {userLogged};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

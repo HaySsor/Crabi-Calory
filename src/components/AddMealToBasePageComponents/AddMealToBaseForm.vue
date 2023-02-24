@@ -101,25 +101,27 @@
     :closeModal="closeModal" />
 </template>
 
-<script>
+<script lang="ts">
 import {reactive, ref} from 'vue';
 import {addMealToFireBase} from '../../composables/addMeal';
 import LoadingModal from '../LoadingModal.vue';
 import AppButton from '../styleComponents/AppButton.vue';
+import {defineComponent} from 'vue';
+import type {Meal, MealValidate} from '../../types/interfaces';
 
-export default {
+export default defineComponent({
   name: 'AddMealToBaseForm',
   components: {LoadingModal, AppButton},
 
   setup() {
-    const addedMeal = reactive({
+    const addedMeal: Meal = reactive({
       name: '',
       kcal: 0,
       protein: 0,
       fat: 0,
       carbohydrates: 0,
     });
-    const addMealValidationForm = reactive({
+    const addMealValidationForm: MealValidate = reactive({
       name: false,
       kcal: false,
       protein: false,
@@ -132,7 +134,7 @@ export default {
     const regInSubmission = ref(false);
     const passData = ref(true);
 
-    const form = reactive({
+    const form: Meal = reactive({
       name: '',
       kcal: 0,
       protein: 0,
@@ -146,43 +148,39 @@ export default {
         return;
       }
       addMealValidationForm.name = false;
-      if (
-        form.kcal <= 0 &&
-        form.kcal < 1000 &&
-        form.kcal.match(/^-?\d*\.?\d*$/)
-      ) {
+      if (form.kcal <= 0 && form.kcal < 1000) {
         addMealValidationForm.kcal = true;
         return;
       }
       addMealValidationForm.kcal = false;
 
-      if (parseFloat(form.protein) > 200) {
+      if (form.protein > 200) {
         addMealValidationForm.protein = true;
         return;
       }
       addMealValidationForm.protein = false;
-      if (parseFloat(form.fat) > 200) {
+      if (form.fat > 200) {
         addMealValidationForm.fat = true;
         return;
       }
       addMealValidationForm.fat = false;
-      if (parseFloat(form.carbohydrates) > 600) {
+      if (form.carbohydrates > 600) {
         addMealValidationForm.carbohydrates = true;
         return;
       }
       addMealValidationForm.carbohydrates = false;
       const f = {
         name: form.name,
-        kcal: parseFloat(form.kcal),
-        protein: parseFloat(form.protein),
-        fat: parseFloat(form.fat),
-        carbohydrates: parseFloat(form.carbohydrates),
+        kcal: Math.floor(form.kcal),
+        protein: Math.floor(form.protein),
+        fat: Math.floor(form.fat),
+        carbohydrates: Math.floor(form.carbohydrates),
         id: Math.floor(Math.random() * 200),
       };
       await addMeal(f);
     }
 
-    async function addMeal(f) {
+    async function addMeal(f: Meal) {
       regInSubmission.value = true;
       showModal.value = true;
       await addMealToFireBase(f);
@@ -209,7 +207,7 @@ export default {
       n,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

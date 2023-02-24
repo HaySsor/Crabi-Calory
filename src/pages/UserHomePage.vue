@@ -13,13 +13,14 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
 import UserHomePageNavbar from '../components/UserHomePageNavbar.vue';
+import {defineComponent} from 'vue';
 
-export default {
+export default defineComponent({
   name: 'UserHomePage',
   components: {UserHomePageNavbar},
-};
+});
 </script>
 
 <style lang="scss" scoped>

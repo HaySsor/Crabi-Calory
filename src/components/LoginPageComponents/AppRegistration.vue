@@ -104,15 +104,17 @@
   </div>
 </template>
 
-<script>
-import {conversion} from '@/helper/demandConversion';
+<script lang="ts">
+import {conversion} from '../../helper/demandConversion';
 import AppModal from '../LoadingModal.vue';
-import useUserStore from '@/stores/user';
+import useUserStore from '../../stores/user';
 import {ref, computed, watch} from 'vue';
 import {useRouter} from 'vue-router';
 import AppButton from '../styleComponents/AppButton.vue';
+import type {RegisterUserData} from '../../types/interfaces';
+import {defineComponent} from 'vue';
 
-export default {
+export default defineComponent({
   name: 'AppRegistration',
   components: {AppModal, AppButton},
   setup() {
@@ -128,7 +130,10 @@ export default {
       height: 'required|minVal:30|maxVal:300',
       weight: 'required|minVal:30|maxVal:300',
     };
-    const userData = {
+    const userData: {
+      sex: string;
+      goal: string;
+    } = {
       sex: 'M',
       goal: 'L',
     };
@@ -154,39 +159,53 @@ export default {
       }
     });
 
-    const message = ref('Wait');
-    const showModal = ref(false);
-    const regInSubmission = ref(false);
-    const passData = ref(true);
+    const message = ref<string>('Wait');
+    const showModal = ref<boolean>(false);
+    const regInSubmission = ref<boolean>(false);
+    const passData = ref<boolean>(true);
 
-    const calory = computed(() => {
-      let c =
-        parseFloat(fat.value) * 9 +
-        parseFloat(carbohydrates.value) * 4 +
-        parseFloat(protein.value * 4);
+    const calory = computed<number>(() => {
+      let c: number =
+        fat.value * 9 + carbohydrates.value * 4 + protein.value * 4;
       return c;
     });
 
-    function closeModal() {
+    function closeModal(): void {
       showModal.value = false;
       router.push({name: 'profile'});
     }
 
-    async function registration(value) {
+    async function registration(value: RegisterUserData) {
+      console.log(value);
+      const userData: RegisterUserData = {
+        name: value.name,
+        email: value.email,
+        password: value.password,
+        age: value.age,
+        weight: value.weight,
+        fat: value.fat,
+        carbohydrates: value.carbohydrates,
+        protein: value.protein,
+        kcal: value.kcal,
+        goal: value.goal,
+        height: value.height,
+        sex: value.sex,
+      };
       regInSubmission.value = true;
       showModal.value = true;
       if (advancedOptions.value) {
-        value.fat = parseInt(fat.value);
-        value.carbohydrates = parseInt(carbohydrates.value);
-        value.protein = parseInt(protein.value);
-        value.kcal = parseInt(calory.value);
-        await userStore.register(value);
+        userData.fat = Math.floor(fat.value);
+        userData.carbohydrates = Math.floor(carbohydrates.value);
+        userData.protein = Math.floor(protein.value);
+        userData.kcal = Math.floor(calory.value);
+        await userStore.register(userData);
         message.value = 'Yeey welcome :)';
         passData.value = false;
         regInSubmission.value = false;
       } else {
-        let user = conversion(value);
-        await userStore.register(user);
+        let user = conversion(userData);
+        console.log(user);
+        await userStore.register(userData);
         message.value = 'Yeey welcome :)';
         passData.value = false;
         regInSubmission.value = false;
@@ -209,7 +228,7 @@ export default {
       regInSubmission,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
