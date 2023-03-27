@@ -37,7 +37,7 @@ The application is colorful, clear, and user-friendly, making it easy for anyone
 
 ## Demo
 
-View a live demo of the app here: [https://crabi-calory.netlify.app/](https://crabi-calory.netlify.app/)
+View a live demo of the app here: [https://crabi-calory.netlify.app/](https://crabi-calory.vercel.app/)
 
 ## Installation
 
