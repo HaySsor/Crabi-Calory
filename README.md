@@ -31,101 +31,31 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li>
-     <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#future">Things added in the future </a></li>
-      </ul>
-    </li>
-  </ol>
-</details>
+Crabi Cal is a calorie counting application built with Vue.js, Composition API, VeeValidate, Firebase, and Pinia.
+The app helps users track their daily calorie intake based on their personal needs calculated from the PPM and CPM formula.
+The application is colorful, clear, and user-friendly, making it easy for anyone to start counting calories.
 
+## Demo
 
+View a live demo of the app here: [https://crabi-calory.netlify.app/](https://crabi-calory.netlify.app/)
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+## Installation
 
-Crab calory is a calorie counting application, this project is based on Vue.js/ Pina/ Firebase .
-The app simply and clearly shows the user their daily requirement calculated from the PPM and CPM formula , suitably adapted for both men and women, 
-The application is colourful, clear and as user-friendly as possible, so as not to put off those who have never counted calories before.
+1. Clone the repository: `git clone https://github.com/HaySsor/Crabi-Calory.git`
+2. Install NPM packages: `npm install`
+3. Run the project: `npm run dev`
+4. Run unit tests: `npm run test:e2e`
 
+## Features
 
+- Calculate daily calorie needs based on user information (height, weight, gender, age, activity level)
+- Track daily calorie intake with meal logging
+- View calorie and nutrient breakdown of logged meals
+- Responsive design for mobile and desktop
+- Move app to TypeScript
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Future Work
 
-
-
-### Built With
-
-
-**Vue.js**/**Composition API**/**vee-validate**/**firebase**/**Pinia**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- GETTING STARTED -->
-
-### Installation
-
-2. Clone the repo
-   ```sh
-   git clone https://github.com/HaySsor/Crabi-Calory.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. run project 
-   ```sh
-   npm run dev
-   ```
-5.Unit test 
-   ```sh
-   npm run test:e2e
-   ```
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Future
-
-1) Move app to TS ✅
-2) Add Weight layout with Chart.js
-3) Add user posibility to viwe past day with meal 
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
-
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-
-
+- Add weight layout with Chart.js
+- Add ability for users to view past days with meal logs
+- Implement additional nutrient tracking (e.g. protein, fat, carbs)
