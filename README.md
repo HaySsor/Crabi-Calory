@@ -21,7 +21,7 @@
     <img src="https://crabi-calory.vercel.app/icons/crab.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">QuizApp Vue</h3>
+<h3 align="center">Calory Crab Vue</h3>
 
   <p align="center">
     <br />
